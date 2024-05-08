@@ -1,0 +1,20 @@
+@import "../../../../config-scss/size-config.scss";
+
+:host {
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    .logotipo {
+      width: size-calc-iPhone(358);
+      height: auto;
+
+      @media (min-width: 540px) {
+        width: size-calc-iPad(530);
+        height: auto;
+      }
+    }
+  }
+}

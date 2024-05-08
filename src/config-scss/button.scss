@@ -1,0 +1,99 @@
+.button-main {
+  position: absolute;
+  bottom: size-calc-iPhone(72);
+  width: 100vw;
+  text-align: center;
+
+  @media (min-width: 540px) {
+    bottom: size-calc-iPad(94);
+  }
+
+  .button-main-red, .button-main-yellow {
+    font-size: size-calc-iPhone(32);
+    letter-spacing: size-calc-iPhone(3);
+    text-shadow: size-calc-iPhone(-0.5) 0 black, 0 size-calc-iPhone(0.5) black, size-calc-iPhone(0.5) 0 black, 0 size-calc-iPhone(-0.5) black;
+    width: 91.79vw;
+    height: size-calc-iPhone(62);
+    border-radius: size-calc-iPhone(20);
+    transition: all 0.2s ease-in-out;
+    padding-bottom: size-calc-iPhone(12);
+
+    @media (min-width: 540px) {
+      font-size: size-calc-iPad(42);
+      letter-spacing: size-calc-iPad(3);
+      text-shadow: size-calc-iPad(-0.5) 0 black, 0 size-calc-iPad(0.5) black, size-calc-iPad(0.5) 0 black, 0 size-calc-iPad(-0.5) black;
+      width: size-calc-iPad(530);
+      height: size-calc-iPad(98);
+      border-radius: size-calc-iPad(32);
+      transition: all 0.2s ease-in-out;
+      padding-bottom: size-calc-iPad(12);
+    }
+  }
+
+  .button-main-yellow {
+    background: url("../assets/button-main-yellow.png");
+    background-size: cover;
+    box-shadow: 0 size-calc-iPhone(4) #FFD540;
+
+    &:active {
+      box-shadow: 0 size-calc-iPhone(2) #FFA500;
+      transform: translateY(size-calc-iPhone(2));
+    }
+
+    @media (min-width: 540px) {
+      box-shadow: 0 size-calc-iPad(6) #FFD540;
+
+      &:active {
+        box-shadow: 0 size-calc-iPad(4) #FFA500;
+        transform: translateY(size-calc-iPad(4));
+      }
+    }
+  }
+
+  .button-main-red {
+    background: url("../assets/button-main-red.png");
+    background-size: cover;
+    box-shadow: 0 size-calc-iPhone(4) #DD233B;
+
+    &:active {
+      box-shadow: 0 size-calc-iPhone(2) #8B0000;
+      transform: translateY(size-calc-iPhone(2));
+    }
+
+    @media (min-width: 540px) {
+      box-shadow: 0 size-calc-iPad(6) #DD233B;
+
+      &:active {
+        box-shadow: 0 size-calc-iPad(4) #8B0000;
+        transform: translateY(size-calc-iPad(4));
+      }
+    }
+  }
+}
+
+.button-icon {
+  background: url("../assets/button-icon.png");
+  background-size: cover;
+  width: size-calc-iPhone(62);
+  height: size-calc-iPhone(62);
+  border-radius: size-calc-iPhone(18);
+  box-shadow: 0 size-calc-iPhone(3) #DD233B;
+  transition: all 0.2s ease-in-out;
+
+  &:active {
+    box-shadow: 0 size-calc-iPhone(2) #8B0000;
+    transform: translateY(size-calc-iPhone(2));
+  }
+
+  @media (min-width: 540px) {
+    width: size-calc-iPad(75);
+    height: size-calc-iPad(75);
+    border-radius: size-calc-iPad(22);
+    box-shadow: 0 size-calc-iPad(3) #DD233B;
+
+    &:active {
+      box-shadow: 0 size-calc-iPad(2) #8B0000;
+      transform: translateY(size-calc-iPad(2));
+    }
+  }
+}

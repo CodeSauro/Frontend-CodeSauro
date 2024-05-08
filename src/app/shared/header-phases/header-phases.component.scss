@@ -1,0 +1,45 @@
+@import "../../../config-scss/size-config.scss";
+
+.container {
+  position: absolute;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: size-calc-iPhone(76);
+  gap: size-calc-iPhone(126);
+
+  @media (min-width: 540px) {
+    margin-top: size-calc-iPad(122);
+    gap: size-calc-iPad(241);
+  }
+
+  .button-to-close{
+    background-color: #EF3349;
+    width: size-calc-iPhone(36);
+    height: size-calc-iPhone(36);
+    border-radius: size-calc-iPhone(12);
+    box-shadow: 0 size-calc-iPhone(3) #D92036;
+    transition: all 0.2s ease-in-out;
+
+    &:active {
+      box-shadow: 0 size-calc-iPhone(2) #8B0000;
+      transform: translateY(size-calc-iPhone(2));
+    }
+
+    p {
+      font-size: size-calc-iPhone(24);
+      text-shadow: size-calc-iPad(-2) 0 black, 0 size-calc-iPad(2) black, size-calc-iPad(2) 0 black, 0 size-calc-iPad(-2) black;
+
+    }
+  }
+
+  .container-lives {
+    display: flex;
+
+    .icon-heart-img {
+      width: auto;
+      height: size-calc-iPhone(22);
+    }
+  }
+}

@@ -1,0 +1,21 @@
+@import "../../../config-scss/size-config.scss";
+
+:host {
+  .container {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    .codesauro-img {
+      width: size-calc-iPhone(0);
+      height: auto;
+
+      @media (min-width: 540px) {
+        width: size-calc-iPad(0);
+        height: auto;
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+@function size-calc-iPhone($size) {
+  @return ($size / 390) * 100vw;
+}
+
+@function size-calc-iPad($size) {
+  @return ($size / 834) * 100vw;
+}

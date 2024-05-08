@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Gluten:wght@100..900&display=swap');
+
+* {
+  font-family: "Gluten", cursive;
+  font-weight: 400;
+  color: white;
+}
+
+main {
+  background: url("../assets/background-iPhone.jpg");
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+  background-position: 50%;
+
+  @media (min-width: 540px) {
+    background: url("../assets/background-iPad.jpg");
+    background-size: cover;
+    background-position: 50%;
+  }
+}
