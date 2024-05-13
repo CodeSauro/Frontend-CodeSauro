@@ -1,0 +1,104 @@
+@import "../../../../../config-scss/size-config.scss";
+
+:host {
+  .container {
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.85);
+
+    .button-to-close{
+      background-color: #EF3349;
+      width: size-calc-iPhone(36);
+      height: size-calc-iPhone(36);
+      border-radius: size-calc-iPhone(12);
+      box-shadow: 0 size-calc-iPhone(3) #D92036;
+      transition: all 0.2s ease-in-out;
+      margin-top: size-calc-iPhone(102);
+      margin-left: size-calc-iPhone(318);
+
+      &:active {
+        box-shadow: 0 size-calc-iPhone(2) #8B0000;
+        transform: translateY(size-calc-iPhone(2));
+      }
+
+      p {
+        font-size: size-calc-iPhone(24);
+        text-shadow: size-calc-iPhone(-1) 0 black, 0 size-calc-iPhone(1) black, size-calc-iPhone(1) 0 black, 0 size-calc-iPhone(-1) black;
+        font-weight: 700;
+        margin-top: size-calc-iPhone(5);
+      }
+    }
+
+    h1 {
+      font-size: size-calc-iPhone(32);
+      width: size-calc-iPhone(358);
+      margin: 0 auto;
+      white-space: normal;
+      text-align: center;
+      margin-top: size-calc-iPhone(52);
+      text-shadow: size-calc-iPhone(-1) 0 black, 0 size-calc-iPhone(1) black, size-calc-iPhone(1) 0 black, 0 size-calc-iPhone(-1) black;
+      letter-spacing: size-calc-iPhone(3);
+    }
+
+    .codesauro-img {
+      position: absolute;
+      top: 50vh;
+      left: 50vw;
+      transform: translate(-50%, -50%);
+      width: size-calc-iPhone(187.08);
+      height: auto;
+    }
+
+    .stars-img {
+      position: absolute;
+      bottom: 0;
+      left: 50vw;
+      transform: translate(-50%);
+      margin-bottom: size-calc-iPhone(154);
+    }
+
+    .container-p {
+      position: absolute;
+      bottom: 0;
+      width: 100vw;
+      margin-bottom: size-calc-iPhone(94);
+      display: flex;
+      flex-direction: column;
+
+      p {
+        text-align: center;
+        font-size: size-calc-iPhone(18);
+        font-weight: 200;
+        text-shadow: size-calc-iPhone(-0.5) 0 black, 0 size-calc-iPhone(0.5) black, size-calc-iPhone(0.5) 0 black, 0 size-calc-iPhone(-0.5) black;
+        letter-spacing: size-calc-iPhone(1);
+      }
+    }
+
+    .container-heart {
+      position: absolute;
+      bottom: 0;
+      display: flex;
+      flex-direction: row;
+      gap: size-calc-iPhone(10);
+      margin-bottom: size-calc-iPhone(50);
+      left: 50vw;
+      transform: translate(-50%);
+
+      p {
+        margin: auto 0;
+        color: rgba(255, 75, 75, 0.5);
+        font-weight: bolder;
+      }
+
+      .icon-heart-without-life-img {
+        width: size-calc-iPhone(26.18);
+        height: auto;
+      }
+    }
+
+    .shine-img {
+      position: absolute;
+      bottom: 0;
+      width: 100vw;
+    }
+  }
+}

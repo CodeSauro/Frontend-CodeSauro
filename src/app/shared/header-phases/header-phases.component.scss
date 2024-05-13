@@ -6,8 +6,8 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-top: size-calc-iPhone(76);
-  gap: size-calc-iPhone(126);
+  margin-top: size-calc-iPhone(102);
+  gap: size-calc-iPhone(20);
 
   @media (min-width: 540px) {
     margin-top: size-calc-iPad(122);
@@ -29,17 +29,35 @@
 
     p {
       font-size: size-calc-iPhone(24);
-      text-shadow: size-calc-iPad(-2) 0 black, 0 size-calc-iPad(2) black, size-calc-iPad(2) 0 black, 0 size-calc-iPad(-2) black;
-
+      text-shadow: size-calc-iPhone(-1) 0 black, 0 size-calc-iPhone(1) black, size-calc-iPhone(1) 0 black, 0 size-calc-iPhone(-1) black;
     }
   }
 
   .container-lives {
     display: flex;
+    margin: auto 0;
+    gap: size-calc-iPhone(10);
 
     .icon-heart-img {
-      width: auto;
+      width: size-calc-iPhone(26);
       height: size-calc-iPhone(22);
     }
+
+    p {
+      margin: auto 0;
+      font-size: size-calc-iPhone(24);
+      font-weight: 700;
+      color: #FF4B4B;
+    }
   }
+
+  .container-progress-bar {
+    display: flex;
+    margin: auto 0;
+    background-color: white;
+    width: size-calc-iPhone(203);
+    height: size-calc-iPhone(20);
+    border-radius: size-calc-iPhone(6);
+  }
+
 }

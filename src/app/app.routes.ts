@@ -51,7 +51,7 @@ export const routes: Routes = [
         path: 'punctuation',
         children: [
           {
-          path: 'with-out-life', component: WithoutLifeComponent
+          path: 'without-life', component: WithoutLifeComponent
           },
           {
             path: 'zero-star', component: ZeroStarComponent
