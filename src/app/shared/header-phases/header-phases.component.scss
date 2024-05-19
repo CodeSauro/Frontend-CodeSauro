@@ -10,8 +10,8 @@
   gap: size-calc-iPhone(20);
 
   @media (min-width: 540px) {
-    margin-top: size-calc-iPad(122);
-    gap: size-calc-iPad(241);
+    margin-top: size-calc-iPad(144);
+    gap: size-calc-iPad(70);
   }
 
   .button-to-close{
@@ -22,14 +22,31 @@
     box-shadow: 0 size-calc-iPhone(3) #D92036;
     transition: all 0.2s ease-in-out;
 
+    @media (min-width: 540px) {
+      width: size-calc-iPad(48);
+      height: size-calc-iPad(48);
+      border-radius: size-calc-iPad(16);
+      box-shadow: 0 size-calc-iPad(3) #D92036;
+    }
+
     &:active {
       box-shadow: 0 size-calc-iPhone(2) #8B0000;
       transform: translateY(size-calc-iPhone(2));
+
+      @media (min-width: 540px) {
+        box-shadow: 0 size-calc-iPad(2) #8B0000;
+        transform: translateY(size-calc-iPad(2));
+      }
     }
 
     p {
       font-size: size-calc-iPhone(24);
       text-shadow: size-calc-iPhone(-1) 0 black, 0 size-calc-iPhone(1) black, size-calc-iPhone(1) 0 black, 0 size-calc-iPhone(-1) black;
+
+      @media (min-width: 540px) {
+        font-size: size-calc-iPad(36);
+        text-shadow: size-calc-iPad(-1) 0 black, 0 size-calc-iPad(1) black, size-calc-iPad(1) 0 black, 0 size-calc-iPad(-1) black;
+      }
     }
   }
 
@@ -38,9 +55,18 @@
     margin: auto 0;
     gap: size-calc-iPhone(10);
 
+    @media (min-width: 540px) {
+      gap: size-calc-iPad(22);
+    }
+
     .icon-heart-img {
       width: size-calc-iPhone(26);
       height: size-calc-iPhone(22);
+
+      @media (min-width: 540px) {
+        width: size-calc-iPad(38);
+        height: size-calc-iPad(34);
+      }
     }
 
     p {
@@ -48,6 +74,10 @@
       font-size: size-calc-iPhone(24);
       font-weight: 700;
       color: #FF4B4B;
+
+      @media (min-width: 540px) {
+        font-size: size-calc-iPad(32);
+      }
     }
   }
 
@@ -58,6 +88,12 @@
     width: size-calc-iPhone(203);
     height: size-calc-iPhone(20);
     border-radius: size-calc-iPhone(6);
+
+    @media (min-width: 540px) {
+      width: size-calc-iPad(288);
+      height: size-calc-iPad(32);
+      border-radius: size-calc-iPad(8);
+    }
   }
 
 }

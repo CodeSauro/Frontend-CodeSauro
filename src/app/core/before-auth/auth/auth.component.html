@@ -1,5 +1,5 @@
 <main>
-  <app-header-home-config></app-header-home-config>
+  <app-header-home></app-header-home>
   <div class="container-form">
     <div class="container-form-tittle">
       <p>ENTRAR</p>
@@ -10,23 +10,25 @@
           <div class="icon">
             <img src="../../../../assets/icon-pencil.png" alt="icon-pen" class="icon-pen">
           </div>
-          <input type="" name="" id="" placeholder="APELIDO">
+          <input type="" name="" #login placeholder="APELIDO">
         </div>
         <div>
           <div class="icon">
             <img src="../../../../assets/icon-padlock.png" alt="icon-padlock" class="icon-padlock">
           </div>
           <div class="icon-password">
-            <img src="../../../../assets/icon-eye.png" alt="icon-eye" class="icon-eye">
+            <img [src]="'../../../../assets/' + iconEye" alt="icon-eye" class="icon-eye" (click)="togglePasswordVisibility()">
           </div>
-          <input type="" name="" id="" placeholder="SENHA">
+          <input type="password" #senha placeholder="SENHA">
         </div>
       </div>
       <div class="container-form-router-link">
-        <p>Criar cadastro</p>
+        <a [routerLink]="['/register']"><p>Criar cadastro</p></a>
         <p>Esqueceu a senha?</p>
       </div>
     </form>
   </div>
-  <div class="button-main"><button class="button-main-red">CONFIRMAR</button></div>
+  <div class="button-main">
+    <button class="button-main-red" (click)="auth(login.value, senha.value)">CONFIRMAR</button>
+  </div>
 </main>

@@ -103,6 +103,16 @@
             }
           }
 
+          .icon-phone {
+            width: size-calc-iPhone(14);
+            height: auto;
+
+            @media (min-width: 540px) {
+              width: size-calc-iPad(16);
+              height: auto;
+            }
+          }
+
           .icon-padlock {
             width: size-calc-iPhone(16);
             height: size-calc-iPhone(16);

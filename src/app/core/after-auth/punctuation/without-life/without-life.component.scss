@@ -3,7 +3,7 @@
 :host {
   .container {
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.85);
+    background-color: rgba(0, 0, 0, 0.9);
 
     .button-to-close{
       background-color: #EF3349;
@@ -15,9 +15,23 @@
       margin-top: size-calc-iPhone(102);
       margin-left: size-calc-iPhone(318);
 
+      @media (min-width: 540px) {
+        width: size-calc-iPad(48);
+        height: size-calc-iPad(48);
+        border-radius: size-calc-iPad(16);
+        box-shadow: 0 size-calc-iPad(3) #D92036;
+        margin-top: size-calc-iPad(148);
+        margin-left: size-calc-iPad(634);
+      }
+
       &:active {
         box-shadow: 0 size-calc-iPhone(2) #8B0000;
         transform: translateY(size-calc-iPhone(2));
+
+        @media (min-width: 540px) {
+          box-shadow: 0 size-calc-iPad(2) #8B0000;
+          transform: translateY(size-calc-iPad(2));
+        }
       }
 
       p {
@@ -25,6 +39,11 @@
         text-shadow: size-calc-iPhone(-1) 0 black, 0 size-calc-iPhone(1) black, size-calc-iPhone(1) 0 black, 0 size-calc-iPhone(-1) black;
         font-weight: 700;
         margin-top: size-calc-iPhone(5);
+
+        @media (min-width: 540px) {
+          font-size: size-calc-iPad(36);
+          text-shadow: size-calc-iPad(-1) 0 black, 0 size-calc-iPad(1) black, size-calc-iPad(1) 0 black, 0 size-calc-iPad(-1) black;
+        }
       }
     }
 
@@ -37,6 +56,14 @@
       margin-top: size-calc-iPhone(52);
       text-shadow: size-calc-iPhone(-1) 0 black, 0 size-calc-iPhone(1) black, size-calc-iPhone(1) 0 black, 0 size-calc-iPhone(-1) black;
       letter-spacing: size-calc-iPhone(3);
+
+      @media (min-width: 540px) {
+        font-size: size-calc-iPad(44);
+        width: size-calc-iPad(393);
+        margin-top: size-calc-iPad(50);
+        text-shadow: size-calc-iPad(-1) 0 black, 0 size-calc-iPad(1) black, size-calc-iPad(1) 0 black, 0 size-calc-iPad(-1) black;
+        letter-spacing: size-calc-iPad(3);
+      }
     }
 
     .codesauro-img {
@@ -44,8 +71,12 @@
       top: 50vh;
       left: 50vw;
       transform: translate(-50%, -50%);
-      width: size-calc-iPhone(187.08);
+      width: size-calc-iPhone(187);
       height: auto;
+
+      @media (min-width: 540px) {
+        width: size-calc-iPad(272);
+      }
     }
 
     .stars-img {
@@ -54,6 +85,13 @@
       left: 50vw;
       transform: translate(-50%);
       margin-bottom: size-calc-iPhone(154);
+      width: size-calc-iPhone(232);
+      height: auto;
+
+      @media (min-width: 540px) {
+        margin-bottom: size-calc-iPad(196);
+        width: size-calc-iPad(393);
+      }
     }
 
     .container-p {
@@ -64,12 +102,22 @@
       display: flex;
       flex-direction: column;
 
+      @media (min-width: 540px) {
+        margin-bottom: size-calc-iPad(130);
+      }
+
       p {
         text-align: center;
         font-size: size-calc-iPhone(18);
         font-weight: 200;
         text-shadow: size-calc-iPhone(-0.5) 0 black, 0 size-calc-iPhone(0.5) black, size-calc-iPhone(0.5) 0 black, 0 size-calc-iPhone(-0.5) black;
         letter-spacing: size-calc-iPhone(1);
+
+        @media (min-width: 540px) {
+          font-size: size-calc-iPad(24);
+          text-shadow: size-calc-iPad(-0.5) 0 black, 0 size-calc-iPad(0.5) black, size-calc-iPad(0.5) 0 black, 0 size-calc-iPad(-0.5) black;
+          letter-spacing: size-calc-iPad(1);
+        }
       }
     }
 
@@ -83,6 +131,11 @@
       left: 50vw;
       transform: translate(-50%);
 
+      @media (min-width: 540px) {
+        gap: size-calc-iPad(10);
+        margin-bottom: size-calc-iPad(66);
+      }
+
       p {
         margin: auto 0;
         color: rgba(255, 75, 75, 0.5);
@@ -92,6 +145,10 @@
       .icon-heart-without-life-img {
         width: size-calc-iPhone(26.18);
         height: auto;
+
+        @media (min-width: 540px) {
+          width: size-calc-iPad(38);
+        }
       }
     }
 

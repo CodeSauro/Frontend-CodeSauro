@@ -172,11 +172,11 @@
 
         p {
           color: #9E6B2B;
-          //text-shadow: size-calc-iPhone(-0.1) 0 black, 0 size-calc-iPhone(0.1) black, size-calc-iPhone(0.1) 0 black, 0 size-calc-iPhone(-0.1) black;
+          text-shadow: size-calc-iPhone(-0.1) 0 black, 0 size-calc-iPhone(0.1) black, size-calc-iPhone(0.1) 0 black, 0 size-calc-iPhone(-0.1) black;
           font-size: size-calc-iPhone(14);
 
           @media (min-width: 540px) {
-            //text-shadow: size-calc-iPad(-0.1) 0 black, 0 size-calc-iPad(0.1) black, size-calc-iPad(0.1) 0 black, 0 size-calc-iPad(-0.1) black;
+            text-shadow: size-calc-iPad(-0.1) 0 black, 0 size-calc-iPad(0.1) black, size-calc-iPad(0.1) 0 black, 0 size-calc-iPad(-0.1) black;
             font-size: size-calc-iPad(20);
           }
         }

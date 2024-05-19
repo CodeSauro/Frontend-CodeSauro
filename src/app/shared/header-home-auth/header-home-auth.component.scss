@@ -1,0 +1,52 @@
+@import "../../../config-scss/size-config.scss";
+
+.container {
+  position: absolute;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: size-calc-iPhone(76);
+  gap: size-calc-iPhone(126);
+
+  @media (min-width: 540px) {
+    margin-top: size-calc-iPad(122);
+    gap: size-calc-iPad(241);
+  }
+
+  .logotipo-text {
+    width: auto;
+    height: size-calc-iPhone(62);
+
+    @media (min-width: 540px) {
+      height: size-calc-iPad(74);
+    }
+  }
+
+  .container-button {
+    display: flex;
+    gap: size-calc-iPhone(31);
+
+    @media (min-width: 540px) {
+      gap: size-calc-iPad(62);
+    }
+
+    .button-icon-house-img {
+      width: auto;
+      height: size-calc-iPhone(40);
+
+      @media (min-width: 540px) {
+        height: size-calc-iPad(50);
+      }
+    }
+
+    .button-icon-auth-img {
+      width: auto;
+      height: size-calc-iPhone(26);
+
+      @media (min-width: 540px) {
+        height: size-calc-iPad(34);
+      }
+    }
+  }
+}
