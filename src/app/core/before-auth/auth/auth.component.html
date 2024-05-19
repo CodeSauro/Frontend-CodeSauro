@@ -4,13 +4,13 @@
     <div class="container-form-tittle">
       <p>ENTRAR</p>
     </div>
-    <form>
+    <form #loginForm="ngForm" autocomplete="off" (ngSubmit)="auth(login.value, senha.value)">
       <div class="container-form-input">
         <div>
           <div class="icon">
             <img src="../../../../assets/icon-pencil.png" alt="icon-pen" class="icon-pen">
           </div>
-          <input type="" name="" #login placeholder="APELIDO">
+          <input type="text" name="login" #login="ngModel" ngModel required placeholder="APELIDO">
         </div>
         <div>
           <div class="icon">
@@ -19,16 +19,16 @@
           <div class="icon-password">
             <img [src]="'../../../../assets/' + iconEye" alt="icon-eye" class="icon-eye" (click)="togglePasswordVisibility()">
           </div>
-          <input type="password" #senha placeholder="SENHA">
+          <input type="password" name="senha" #senha="ngModel" ngModel required placeholder="SENHA" [type]="senhaVisivel ? 'text' : 'password'">
         </div>
       </div>
       <div class="container-form-router-link">
         <a [routerLink]="['/register']"><p>Criar cadastro</p></a>
         <p>Esqueceu a senha?</p>
       </div>
+      <div class="button-main">
+        <button class="button-main-red" [disabled]="!loginForm.form.valid">CONFIRMAR</button>
+      </div>
     </form>
-  </div>
-  <div class="button-main">
-    <button class="button-main-red" (click)="auth(login.value, senha.value)">CONFIRMAR</button>
   </div>
 </main>

@@ -1,16 +1,19 @@
-import { UsuarioService } from './../../../service/usuario.service';
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { FormsModule, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UsuarioService } from '../../../service/usuario.service';
 import { HeaderHomeAuthComponent } from '../../../shared/header-home-auth/header-home-auth.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-register',
   standalone: true,
   imports: [
-    HeaderHomeAuthComponent
+    HeaderHomeAuthComponent,
+    FormsModule
   ],
   templateUrl: './register.component.html',
-  styleUrl: './register.component.scss'
+  styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
 
@@ -34,6 +37,7 @@ export class RegisterComponent {
       senha
     ).subscribe(
       res => {
+        this.router.navigate(['/auth'])
         console.log('Resposta ', res);
       },
       error => {

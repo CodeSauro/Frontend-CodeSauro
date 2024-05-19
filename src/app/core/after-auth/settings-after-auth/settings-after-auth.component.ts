@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { HeaderHomeMapComponent } from '../../../shared/header-home-map/header-home-map.component';
+import { AuthService } from '../../../service/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-settings-after-auth',
@@ -12,4 +14,10 @@ import { HeaderHomeMapComponent } from '../../../shared/header-home-map/header-h
 })
 export class SettingsAfterAuthComponent {
 
+  constructor(private authService: AuthService, private router: Router) {}
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/']);
+  }
 }

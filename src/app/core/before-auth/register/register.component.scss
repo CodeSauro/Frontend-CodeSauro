@@ -50,6 +50,11 @@
         border-radius: size-calc-iPad(50);
       }
 
+      .button-main {
+        position: absolute;
+        left: 0;
+      }
+
       .container-form-input {
         display: flex;
         align-items: center;
