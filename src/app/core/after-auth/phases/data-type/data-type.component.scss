@@ -1,0 +1,51 @@
+@import "../../../../../config-scss/size-config.scss";
+
+:host {
+  .container {
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.35);
+
+    .selection-group {
+      position: absolute;
+      width: size-calc-iPhone(358);
+      height: size-calc-iPhone(216);
+      margin-top: size-calc-iPhone(198);
+      background-color: black;
+      left: 50%;
+      transform: translate(-50%);
+
+      .selection {
+        height: size-calc-iPhone(36);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #9E6B2B;
+        width: fit-content;
+        padding: 0 size-calc-iPhone(12);
+        border: solid #C2955C size-calc-iPhone(3);
+        border-radius: size-calc-iPhone(10);
+        font-size: size-calc-iPhone(28);
+        font-weight: 400;
+        letter-spacing: size-calc-iPhone(1);
+        text-shadow: size-calc-iPhone(-0.5) 0 black, 0 size-calc-iPhone(0.5) black, size-calc-iPhone(0.5) 0 black, 0 size-calc-iPhone(-0.5) black;
+      }
+    }
+
+    .selection-fit {
+      position: absolute;
+      width: size-calc-iPhone(358);
+      height: size-calc-iPhone(216);
+      bottom: 0;
+      background-color: black;
+      left: 50%;
+      transform: translate(-50%);
+      margin-bottom: size-calc-iPhone(104);
+    }
+
+    .cauldron {
+      width: 100vw;
+      position: absolute;
+      bottom: 0;
+    }
+  }
+}
