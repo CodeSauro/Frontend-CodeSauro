@@ -1,0 +1,112 @@
+@import "../../../config-scss/size-config.scss";
+
+.container {
+  position: absolute;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: size-calc-iPhone(76);
+  gap: size-calc-iPhone(24);
+
+  @media (min-width: 540px) {
+    margin-top: size-calc-iPad(122);
+    gap: size-calc-iPad(6);
+  }
+
+  .logotipo-text {
+    width: auto;
+    height: size-calc-iPhone(62);
+
+    @media (min-width: 540px) {
+      height: size-calc-iPad(74);
+    }
+  }
+
+  .button-icon-puzzle-img {
+    width: auto;
+    height: size-calc-iPhone(40);
+
+    @media (min-width: 540px) {
+      height: size-calc-iPad(50);
+    }
+  }
+
+  .container-icons {
+    width: size-calc-iPhone(171);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: size-calc-iPhone(10);
+
+    @media (min-width: 540px) {
+      gap: size-calc-iPad(18);
+    }
+
+    .container-stars {
+      display: flex;
+      justify-content: flex-start;
+      gap: size-calc-iPhone(10);
+
+      @media (min-width: 540px) {
+        gap: size-calc-iPad(18);
+        margin-left: size-calc-iPad(26);
+      }
+
+      .icon-star {
+        width: size-calc-iPhone(26);
+        height: size-calc-iPhone(24);
+        margin: auto 0;
+
+        @media (min-width: 540px) {
+          width: size-calc-iPad(34);
+          height: size-calc-iPad(32);
+        }
+      }
+
+      p {
+        margin: auto 0;
+        font-size: size-calc-iPhone(24);
+        font-weight: 700;
+        color: #ffd700;
+
+        @media (min-width: 540px) {
+          font-size: size-calc-iPad(32);
+        }
+      }
+    }
+
+    .container-lives {
+      display: flex;
+      justify-content: flex-start;
+      gap: size-calc-iPhone(10);
+
+      @media (min-width: 540px) {
+        gap: size-calc-iPad(22);
+        margin-left: size-calc-iPad(26);
+      }
+
+      .icon-heart {
+        width: size-calc-iPhone(32);
+        height: size-calc-iPhone(32);
+        margin: auto 0;
+
+        @media (min-width: 540px) {
+          width: size-calc-iPad(40);
+          height: size-calc-iPad(40);
+        }
+      }
+
+      p {
+        margin: auto 0;
+        font-size: size-calc-iPhone(24);
+        font-weight: 700;
+        color: #FF4B4B;
+
+        @media (min-width: 540px) {
+          font-size: size-calc-iPad(32);
+        }
+      }
+    }
+  }
+}

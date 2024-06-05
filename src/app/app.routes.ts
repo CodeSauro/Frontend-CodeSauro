@@ -12,6 +12,10 @@ import { OneStarComponent } from './core/after-auth/punctuation/one-star/one-sta
 import { TwoStarsComponent } from './core/after-auth/punctuation/two-stars/two-stars.component';
 import { ThreeStarsComponent } from './core/after-auth/punctuation/three-stars/three-stars.component';
 import { DataTypeComponent } from './core/after-auth/phases/data-type/data-type.component';
+import { ExplainingPhaseComponent } from './core/after-auth/phases/explaining-phase/explaining-phase.component';
+import { KnowledgeValidationRectangularBoxComponent } from './core/after-auth/phases/knowledge-validation-rectangular-box/knowledge-validation-rectangular-box.component';
+import { KnowledgeValidationSquareBoxComponent } from './core/after-auth/phases/knowledge-validation-square-box/knowledge-validation-square-box.component';
+import { MapComponent } from './core/after-auth/map/map.component';
 
 export const routes: Routes = [
   {
@@ -37,13 +41,25 @@ export const routes: Routes = [
     canActivateChild: [canActivateChildGuard],
     children: [
       {
+        path: 'map', component: MapComponent
+      },
+      {
         path: 'settings', component: SettingsAfterAuthComponent
       },
       {
         path: 'phases',
         children: [
           {
+            path: 'knowledge-validation-rectangular-box', component: KnowledgeValidationRectangularBoxComponent
+          },
+          {
+            path: 'knowledge-validation-square-box', component: KnowledgeValidationSquareBoxComponent
+          },
+          {
             path: 'data-type', component: DataTypeComponent
+          },
+          {
+            path: 'explaining-phase', component: ExplainingPhaseComponent
           }
         ]
       },

@@ -1,0 +1,89 @@
+@import "../../../../../config-scss/size-config.scss";
+
+.container {
+  position: absolute;
+  top: 50vh;
+  left: 50vw;
+  transform: translate(-50%, -50%);
+
+  .box-validation-question {
+    background-color: #DBAF77;
+    width: size-calc-iPhone(318);
+    height: size-calc-iPhone(250);
+    border: size-calc-iPhone(5) solid #C2955C;
+    border-radius: size-calc-iPhone(30);
+    box-shadow: 0px size-calc-iPhone(4) size-calc-iPhone(4) rgba(0, 0, 0, 0.25);
+
+    @media (min-width: 540px) {
+      width: size-calc-iPad(392);
+      height: size-calc-iPad(258);
+      border: size-calc-iPad(5) solid #C2955C;
+      border-radius: size-calc-iPad(30);
+      box-shadow: 0px size-calc-iPad(4) size-calc-iPad(4) rgba(0, 0, 0, 0.25);
+    }
+
+    p {
+      margin: size-calc-iPhone(24);
+      font-size: size-calc-iPhone(24);
+      color: #964B00;
+      font-weight: 400;
+      letter-spacing: size-calc-iPhone(1);
+
+      @media (min-width: 540px) {
+        margin: size-calc-iPad(28);
+        font-size: size-calc-iPad(28);
+        letter-spacing: size-calc-iPad(1);
+      }
+    }
+  }
+
+  .container-validation-response {
+    margin-top: size-calc-iPhone(16);
+    display: flex;
+    flex-wrap: wrap;
+    width: size-calc-iPhone(328);
+    gap: size-calc-iPhone(16);
+
+    @media (min-width: 540px) {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: size-calc-iPad(24);
+      width: size-calc-iPad(402);
+      gap: size-calc-iPad(24);
+    }
+
+    .box-validation-response {
+      background-color: #DBAF77;
+      width: size-calc-iPhone(328);
+      height: size-calc-iPhone(53);
+      border: size-calc-iPhone(5) solid #C2955C;
+      border-radius: size-calc-iPhone(10);
+      box-shadow: 0px size-calc-iPhone(4) size-calc-iPhone(4) rgba(0, 0, 0, 0.25);
+
+      @media (min-width: 540px) {
+        width: size-calc-iPad(402);
+        height: size-calc-iPad(78);
+        border: size-calc-iPad(5) solid #C2955C;
+        border-radius: size-calc-iPad(10);
+        box-shadow: 0px size-calc-iPad(4) size-calc-iPad(4) rgba(0, 0, 0, 0.25);
+      }
+
+      p {
+        text-align: start;
+        margin: size-calc-iPhone(4) size-calc-iPhone(24);
+        font-size: size-calc-iPhone(18);
+        color: #964B00;
+        font-weight: 400;
+        letter-spacing: size-calc-iPhone(1);
+
+        @media (min-width: 540px) {
+          margin: size-calc-iPad(8) size-calc-iPad(28);
+          font-size: size-calc-iPad(22);
+          letter-spacing: size-calc-iPad(1);
+        }
+      }
+    }
+  }
+}
+

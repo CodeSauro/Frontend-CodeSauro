@@ -38,7 +38,6 @@ export class RegisterComponent {
     ).subscribe(
       res => {
         this.router.navigate(['/auth'])
-        console.log('Resposta ', res);
       },
       error => {
         console.error('Erro ', error);

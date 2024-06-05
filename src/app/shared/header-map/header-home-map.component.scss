@@ -7,11 +7,11 @@
   flex-direction: row;
   justify-content: center;
   margin-top: size-calc-iPhone(76);
-  gap: size-calc-iPhone(126);
+  gap: size-calc-iPhone(219);
 
   @media (min-width: 540px) {
     margin-top: size-calc-iPad(122);
-    gap: size-calc-iPad(241);
+    gap: size-calc-iPad(378);
   }
 
   .logotipo-text {
@@ -42,10 +42,12 @@
 
     .button-icon-map-img {
       width: auto;
-      height: size-calc-iPhone(32);
+      height: size-calc-iPhone(34);
+      margin-top: size-calc-iPhone(3);
 
       @media (min-width: 540px) {
-        height: size-calc-iPad(44);
+        height: size-calc-iPad(42);
+        margin-top: size-calc-iPad(5);
       }
     }
   }

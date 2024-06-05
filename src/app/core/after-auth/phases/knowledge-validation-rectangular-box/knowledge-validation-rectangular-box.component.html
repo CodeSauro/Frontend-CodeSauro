@@ -1,0 +1,13 @@
+<main>
+  <app-header-phases></app-header-phases>
+  <div class="container">
+    <div class="box-validation-question">
+      <p>{{ knowledgeValidationQuestion }}</p>
+    </div>
+    <div class="container-validation-response">
+      <button class="box-validation-response" *ngFor="let answer of knowledgeValidationAnswers" (click)="checkAnswer(answer)">
+        <p>{{ answer }}</p>
+      </button>
+    </div>
+  </div>
+</main>

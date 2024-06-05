@@ -26,11 +26,9 @@ export class AuthComponent {
   ) {}
 
   public auth(login: string, senha: string) {
-    console.log('Chamando método auth com', { login, senha });
     this.service.auth({ login, senha }).subscribe(
       res => {
-        this.router.navigate(['/authenticated/phases/data-type'])
-        console.log('Resposta da autenticação', res);
+        this.router.navigate(['/authenticated/map'])
       },
       error => {
         console.error('Erro na autenticação', error);

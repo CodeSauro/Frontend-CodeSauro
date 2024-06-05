@@ -1,0 +1,60 @@
+@import "../../../../../config-scss/size-config.scss";
+
+.container {
+  position: absolute;
+  top: 50vh;
+  left: 50vw;
+  transform: translate(-50%, -50%);
+  height: size-calc-iPhone(536);
+
+  @media (min-width: 540px) {
+    height: size-calc-iPad(573);
+  }
+
+  .speech-bubble {
+    background: url('../../../../../assets/speech-bubble.png');
+    width: size-calc-iPhone(358);
+    height: size-calc-iPhone(389);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+
+    @media (min-width: 540px) {
+      width: size-calc-iPad(393);
+      height: size-calc-iPad(389);
+    }
+
+    #typing-animation {
+      text-align: center;
+      margin-bottom: size-calc-iPhone(102);
+      color: black;
+      width: size-calc-iPhone(296);
+      font-size: size-calc-iPhone(24);
+      letter-spacing: size-calc-iPhone(2);
+      white-space: pre-wrap;
+      overflow: hidden;
+      color: #964B00;
+
+      @media (min-width: 540px) {
+        margin-bottom: size-calc-iPad(102);
+        width: size-calc-iPad(296);
+        font-size: size-calc-iPad(24);
+        letter-spacing: size-calc-iPad(2);
+        white-space: pre-wrap;
+        overflow: hidden;
+      }
+    }
+  }
+
+  .codesauro-explaining-phase {
+    width: size-calc-iPhone(260);
+    height: auto;
+    position: absolute;
+    bottom: 0;
+
+    @media (min-width: 540px) {
+      width: size-calc-iPad(280);
+    }
+  }
+}

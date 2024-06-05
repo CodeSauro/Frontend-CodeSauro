@@ -51,35 +51,36 @@
   }
 
   .container-lives {
-    display: flex;
-    margin: auto 0;
-    gap: size-calc-iPhone(10);
-
-    @media (min-width: 540px) {
-      gap: size-calc-iPad(22);
-    }
-
-    .icon-heart-img {
-      width: size-calc-iPhone(26);
-      height: size-calc-iPhone(22);
+      display: flex;
+      justify-content: center;
+      gap: size-calc-iPhone(10);
 
       @media (min-width: 540px) {
-        width: size-calc-iPad(38);
-        height: size-calc-iPad(34);
+        gap: size-calc-iPad(22);
+      }
+
+      .icon-heart {
+        width: size-calc-iPhone(32);
+        height: size-calc-iPhone(32);
+        margin: auto 0;
+
+        @media (min-width: 540px) {
+          width: size-calc-iPad(40);
+          height: size-calc-iPad(40);
+        }
+      }
+
+      p {
+        margin: auto 0;
+        font-size: size-calc-iPhone(24);
+        font-weight: 700;
+        color: #FF4B4B;
+
+        @media (min-width: 540px) {
+          font-size: size-calc-iPad(32);
+        }
       }
     }
-
-    p {
-      margin: auto 0;
-      font-size: size-calc-iPhone(24);
-      font-weight: 700;
-      color: #FF4B4B;
-
-      @media (min-width: 540px) {
-        font-size: size-calc-iPad(32);
-      }
-    }
-  }
 
   .container-progress-bar {
     display: flex;
@@ -88,12 +89,18 @@
     width: size-calc-iPhone(203);
     height: size-calc-iPhone(20);
     border-radius: size-calc-iPhone(6);
+    overflow: hidden;
 
     @media (min-width: 540px) {
       width: size-calc-iPad(288);
       height: size-calc-iPad(32);
       border-radius: size-calc-iPad(8);
     }
-  }
 
+    .progress {
+      background-color: #F27728;
+      height: 100%;
+      transition: width 0.3s ease;
+    }
+  }
 }

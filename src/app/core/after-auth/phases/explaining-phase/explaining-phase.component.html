@@ -1,0 +1,12 @@
+<main>
+  <app-header-phases></app-header-phases>
+  <div class="container">
+    <div class="speech-bubble">
+      <p id="typing-animation"></p>
+    </div>
+    <img src="../../../../../assets/codesauro-explaining-phase.png" alt="codesauro-explaining-phase" class="codesauro-explaining-phase">
+  </div>
+  <div class="button-main">
+    <button class="button-main-red" [disabled]="isTyping" (click)="continue()">CONTINUAR</button>
+  </div>
+</main>

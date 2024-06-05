@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { HeaderConfigComponent } from '../../../shared/header-config/header-config.component';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../service/auth.service';
@@ -12,11 +12,7 @@ import { AuthService } from '../../../service/auth.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
-
-  ngOnInit(): void {
-    console.log("Token ativo: " + this.authService.isLoggedIn())
-  }
+export class HomeComponent {
 
   constructor(private router: Router, private authService: AuthService) {}
 
@@ -26,7 +22,7 @@ export class HomeComponent implements OnInit {
     if (token) {
       this.authService.validateToken(token).subscribe(isValid => {
         if (isValid) {
-          this.router.navigate(['/authenticated/phases/data-type']);
+          this.router.navigate(['/authenticated/map']);
         } else {
           this.router.navigate(['/auth']);
         }

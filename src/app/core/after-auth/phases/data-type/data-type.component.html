@@ -2,11 +2,33 @@
   <app-header-phases></app-header-phases>
   <div class="container">
     <div class="selection-group">
-      <p class="selection">10210</p>
+      <div
+        cdkDropList
+        cdkDropListSortingDisabled
+        #variablesList="cdkDropList"
+        [cdkDropListData]="variables"
+        [cdkDropListConnectedTo]="[answersList]"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
+        <div *ngFor="let item of variables" class="example-box" cdkDrag>{{item}}</div>
+      </div>
     </div>
-    <img src="../../../../../assets/cauldron-iPhone.png" alt="cauldron" class="cauldron">
-    <div class="selection-fit">
-
+    <div class="cauldron"></div>
+    <div class="selection-group">
+      <div
+        cdkDropList
+        cdkDropListSortingDisabled
+        #answersList="cdkDropList"
+        [cdkDropListData]="answers"
+        [cdkDropListConnectedTo]="[variablesList]"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
+        <div *ngFor="let item of answers" class="example-box" cdkDrag>{{item}}</div>
+      </div>
     </div>
   </div>
+  <div class="button-main">
+    <button class="button-main-red" [disabled]="isContinueDisabled" (click)="continue()">CONTINUAR</button>
+  </div>
 </main>
+

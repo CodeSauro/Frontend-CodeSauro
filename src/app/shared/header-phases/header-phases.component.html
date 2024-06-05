@@ -1,9 +1,9 @@
 <div class="container">
   <div>
-    <button class="button-to-close"><p>X</p></button>
+    <button class="button-to-close" (click)="leave()"><p>X</p></button>
   </div>
   <div class="container-progress-bar">
-
+    <div class="progress" [ngStyle]="{'width': progress + '%'}"></div>
   </div>
   <div class="container-lives">
     <img src="../../../assets/icon-heart.png" class="icon-heart-img" alt="icon-heart">

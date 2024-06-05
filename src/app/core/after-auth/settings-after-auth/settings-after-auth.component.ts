@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HeaderHomeMapComponent } from '../../../shared/header-home-map/header-home-map.component';
+import { HeaderHomeMapComponent } from '../../../shared/header-map/header-home-map.component';
 import { AuthService } from '../../../service/auth.service';
 import { Router } from '@angular/router';
 
