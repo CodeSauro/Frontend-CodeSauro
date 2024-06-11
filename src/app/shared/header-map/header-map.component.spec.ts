@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HeaderHomeMapComponent } from './header-home-map.component';
+import { HeaderMapComponent } from './header-map.component';
 
-describe('HeaderHomeMapComponent', () => {
-  let component: HeaderHomeMapComponent;
-  let fixture: ComponentFixture<HeaderHomeMapComponent>;
+describe('HeaderMapComponent', () => {
+  let component: HeaderMapComponent;
+  let fixture: ComponentFixture<HeaderMapComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HeaderHomeMapComponent]
+      imports: [HeaderMapComponent]
     })
     .compileComponents();
-    
-    fixture = TestBed.createComponent(HeaderHomeMapComponent);
+
+    fixture = TestBed.createComponent(HeaderMapComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

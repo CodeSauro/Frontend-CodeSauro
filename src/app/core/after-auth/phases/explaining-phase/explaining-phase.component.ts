@@ -32,7 +32,7 @@ export class ExplainingPhaseComponent implements OnInit, AfterViewInit {
     if (this.isTyping) return;
 
     this.currentPage++;
-    if (this.currentPage > 2) {
+    if (this.currentPage > 4) {
       this.router.navigate(['/authenticated/phases/data-type']);
     } else {
       this.updateText();
@@ -52,6 +52,10 @@ export class ExplainingPhaseComponent implements OnInit, AfterViewInit {
         text = item.explaining_phase_page_1;
       } else if (this.currentPage === 2) {
         text = item.explaining_phase_page_2;
+      } else if (this.currentPage === 3) {
+        text = item.explaining_phase_page_3;
+      } else if (this.currentPage === 4) {
+        text = item.explaining_phase_page_4;
       }
     }
 
@@ -69,12 +73,12 @@ export class ExplainingPhaseComponent implements OnInit, AfterViewInit {
           if (index < lines[lineIndex].length) {
             typingAnimationElement.innerHTML += lines[lineIndex].charAt(index);
             index++;
-            setTimeout(typeLine, 65);
+            setTimeout(typeLine, 80);
           } else {
             typingAnimationElement.innerHTML += '<br/>';
             index = 0;
             lineIndex++;
-            setTimeout(typeLine, 65);
+            setTimeout(typeLine, 80);
           }
         } else {
           this.isTyping = false;

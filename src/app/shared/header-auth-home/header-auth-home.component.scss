@@ -42,10 +42,10 @@
 
     .button-icon-auth-img {
       width: auto;
-      height: size-calc-iPhone(26);
+      height: size-calc-iPhone(36);
 
       @media (min-width: 540px) {
-        height: size-calc-iPad(34);
+        height: size-calc-iPad(44);
       }
     }
   }

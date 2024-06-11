@@ -11,7 +11,7 @@ describe('HeaderPhasesComponent', () => {
       imports: [HeaderPhasesComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(HeaderPhasesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

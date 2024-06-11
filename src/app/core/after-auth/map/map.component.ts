@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
-import { HeaderMapComponent } from '../../../shared/header-main/header-map.component';
 import { StartPhaseService } from '../../../service/start-phase.service';
+import { HeaderStarsLivesComponent } from '../../../shared/header-stars-lives-config/header-stars-lives-config.component';
 
 @Component({
-  selector: 'app-map',
-  standalone: true,
-  imports: [
-    HeaderMapComponent
-  ],
-  templateUrl: './map.component.html',
-  styleUrl: './map.component.scss'
+    selector: 'app-map',
+    standalone: true,
+    templateUrl: './map.component.html',
+    styleUrl: './map.component.scss',
+    imports: [
+      HeaderStarsLivesComponent
+    ]
 })
 export class MapComponent {
 

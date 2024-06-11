@@ -4,6 +4,7 @@ import { HeaderPhasesComponent } from '../../../../shared/header-phases/header-p
 import { Router, RouterModule } from '@angular/router';
 import { MockPhasesDataTypeService } from '../../../../service/mock-phases-data-type.service';
 import { CommonModule } from '@angular/common';
+import { ProgressBarService } from '../../../../service/progress-bar.service';
 
 @Component({
   selector: 'app-data-type',
@@ -12,7 +13,7 @@ import { CommonModule } from '@angular/common';
     HeaderPhasesComponent,
     DragDropModule,
     RouterModule,
-    CommonModule
+    CommonModule,
   ],
   templateUrl: './data-type.component.html',
   styleUrls: ['./data-type.component.scss']
@@ -25,9 +26,16 @@ export class DataTypeComponent implements OnInit {
   correct_answers: any[] = [];
   currentPage: number = 1;
   isContinueDisabled: boolean = true;
+  isValidationMode: boolean = false;
+  isCorrect: boolean = false;
+  validationMessage: string = '';
+  isDragDisabled: boolean = false;
+  numberOfPagesDataType: number = 0;
+  numberOfPagesTotal: number = 0;
 
   constructor(
     private mockPhasesDataTypeService: MockPhasesDataTypeService,
+    private progressService: ProgressBarService,
     private router: Router
   ) {}
 
@@ -37,6 +45,7 @@ export class DataTypeComponent implements OnInit {
   }
 
   drop(event: CdkDragDrop<string[]>) {
+    if (this.isDragDisabled) return;
     if (event.previousContainer !== event.container) {
       transferArrayItem(
         event.previousContainer.data,
@@ -49,17 +58,29 @@ export class DataTypeComponent implements OnInit {
   }
 
   continue() {
-    this.compareAnswers();
-    this.currentPage++;
-    if (this.currentPage > 4) {
-      this.router.navigate(['/authenticated/phases/knowledge-validation-rectangular-box']);
+    this.progressService.updateProgress((this.currentPage / this.numberOfPagesTotal) * 100);
+    if (this.isValidationMode) {
+      this.currentPage++;
+      if (this.currentPage > this.numberOfPagesDataType) {
+        this.router.navigate(['/authenticated/phases/knowledge-validation-rectangular-box']);
+      } else {
+        this.loadPageData();
+      }
+      this.isValidationMode = false;
+      this.validationMessage = '';
+      this.isDragDisabled = false;
     } else {
-      this.loadPageData();
+      this.compareAnswers();
+      this.isValidationMode = true;
+      this.isDragDisabled = true;
     }
   }
 
   private loadPageData() {
     const item = this.mock.find(data => data.id === 1);
+    this.numberOfPagesDataType = item.number_of_pages
+    this.numberOfPagesTotal = this.numberOfPagesDataType + 1;
+
     if (item) {
       switch (this.currentPage) {
         case 1:
@@ -75,9 +96,9 @@ export class DataTypeComponent implements OnInit {
           this.correct_answers = [...item.correct_answers_page_3];
           break;
         case 4:
-        this.variables = [...item.variables_page_4];
-        this.correct_answers = [...item.correct_answers_page_4];
-        break;
+          this.variables = [...item.variables_page_4];
+          this.correct_answers = [...item.correct_answers_page_4];
+          break;
       }
       this.answers = [];
       this.checkContinueButtonState();
@@ -89,16 +110,15 @@ export class DataTypeComponent implements OnInit {
   }
 
   private compareAnswers() {
-    console.log(this.answers)
-    console.log(this.correct_answers)
-
     const sortedAnswers = [...this.answers].sort();
     const sortedCorrectAnswers = [...this.correct_answers].sort();
 
     if (JSON.stringify(sortedAnswers) === JSON.stringify(sortedCorrectAnswers)) {
-      console.log('dados iguais');
+      this.validationMessage = 'Excelente!';
+      this.isCorrect = true;
     } else {
-      console.log('dados diferentes');
+      this.validationMessage = 'Incorreto! Resposta correta: ' + this.correct_answers.join(', ');
+      this.isCorrect = false;
     }
   }
 }

@@ -36,17 +36,18 @@
     width: size-calc-iPhone(171);
     display: flex;
     justify-content: center;
-    flex-direction: column;
-    gap: size-calc-iPhone(10);
+    flex-direction: row;
+    gap: size-calc-iPhone(16);
 
     @media (min-width: 540px) {
-      gap: size-calc-iPad(18);
+      gap: size-calc-iPad(24);
     }
 
     .container-stars {
       display: flex;
       justify-content: flex-start;
       gap: size-calc-iPhone(10);
+      margin: auto 0;
 
       @media (min-width: 540px) {
         gap: size-calc-iPad(18);
@@ -56,7 +57,6 @@
       .icon-star {
         width: size-calc-iPhone(26);
         height: size-calc-iPhone(24);
-        margin: auto 0;
 
         @media (min-width: 540px) {
           width: size-calc-iPad(34);
@@ -68,7 +68,7 @@
         margin: auto 0;
         font-size: size-calc-iPhone(24);
         font-weight: 700;
-        color: #ffd700;
+        color: #ECEC53;
 
         @media (min-width: 540px) {
           font-size: size-calc-iPad(32);

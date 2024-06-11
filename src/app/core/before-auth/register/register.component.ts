@@ -1,16 +1,17 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { FormsModule, NgForm } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsuarioService } from '../../../service/usuario.service';
-import { HeaderHomeAuthComponent } from '../../../shared/header-home-auth/header-home-auth.component';
+import { HeaderAuthHomeComponent } from '../../../shared/header-auth-home/header-auth-home.component';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-register',
   standalone: true,
   imports: [
-    HeaderHomeAuthComponent,
-    FormsModule
+    HeaderAuthHomeComponent,
+    FormsModule,
+    CommonModule
   ],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
@@ -50,8 +51,6 @@ export class RegisterComponent {
 
   togglePasswordVisibility() {
     this.senhaVisivel = !this.senhaVisivel;
-    const input = this.senhaInput.nativeElement;
-    input.type = this.senhaVisivel ? 'text' : 'password';
   }
 
   get iconEye() {

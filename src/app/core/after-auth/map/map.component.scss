@@ -2,53 +2,73 @@
 
 .container {
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.30);
 
-  .phase-select {
-    position: absolute;
-    margin-top: size-calc-iPhone(200);
-    right: 0;
-    margin-right: size-calc-iPhone(60);
+  .phase-number {
+    background: url("../../../../assets/phase-select.png");
+    width: size-calc-iPhone(160);
+    height: size-calc-iPhone(160);
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     @media (min-width: 540px) {
-      margin-top: size-calc-iPad(253);
-      margin-right: size-calc-iPad(40);
+      width: size-calc-iPad(160);
+      height: size-calc-iPad(160);
     }
 
-    .phase-number {
-      background: url("../../../../assets/phase-select.png");
-      width: size-calc-iPhone(140);
-      height: size-calc-iPhone(156);
-      background-size: cover;
+    p {
       display: flex;
       align-items: center;
       justify-content: center;
+      font-size: size-calc-iPhone(32);
+      font-weight: bolder;
+      width: size-calc-iPhone(80);
+      height: size-calc-iPhone(80);
+      margin: auto 0;
 
       @media (min-width: 540px) {
-        width: size-calc-iPad(156);
-        height: size-calc-iPad(172);
+        font-size: size-calc-iPad(40);
+        width: size-calc-iPad(80);
+        height: size-calc-iPad(80);
       }
+    }
 
-      p {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: size-calc-iPhone(32);
-        font-weight: bolder;
+    img {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: size-calc-iPhone(32);
+      font-weight: bolder;
+      margin: auto 0;
 
-        width: size-calc-iPhone(78);
-        height: size-calc-iPhone(86);
-        margin-bottom: size-calc-iPhone(39);
-        margin-left: size-calc-iPhone(8);
-
-        @media (min-width: 540px) {
-          font-size: size-calc-iPad(40);
-          width: size-calc-iPad(86);
-          height: size-calc-iPad(94);
-          margin-bottom: size-calc-iPad(39);
-          margin-left: size-calc-iPad(8);
-        }
+      @media (min-width: 540px) {
+        font-size: size-calc-iPad(40);
       }
+    }
+  }
+
+  .phase-select-1 {
+    position: absolute;
+    right: 0;
+    margin-top: size-calc-iPhone(220);
+    margin-right: size-calc-iPhone(40);
+
+    @media (min-width: 540px) {
+      margin-top: size-calc-iPad(220);
+      margin-right: size-calc-iPad(40);
+    }
+  }
+
+  .phase-select-2 {
+    position: absolute;
+    right: 0;
+    margin-top: size-calc-iPhone(460);
+    margin-right: size-calc-iPhone(60);
+
+    @media (min-width: 540px) {
+      margin-top: size-calc-iPad(460);
+      margin-right: size-calc-iPad(60);
     }
   }
 }

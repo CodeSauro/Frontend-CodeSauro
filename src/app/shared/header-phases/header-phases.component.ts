@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ProgressBarService } from '../../service/progress-bar.service';
 
 @Component({
   selector: 'app-header-phases',
@@ -15,18 +16,18 @@ export class HeaderPhasesComponent implements OnInit {
 
   public progress: number = 0;
 
-  constructor(private router: Router) {}
+  constructor(
+    private progressBarService: ProgressBarService,
+    private router: Router
+  ) {}
+
   ngOnInit(): void {
-    this.updateProgress(7)
+    this.progressBarService.currentProgress.subscribe(progress => {
+      this.progress = progress;
+    });
   }
 
   public leave() {
     this.router.navigate(['/authenticated/map']);
-  }
-
-  public updateProgress(value: number) {
-    if (value >= 0 && value <= 8) {
-      this.progress = (value / 8) * 100;
-    }
   }
 }

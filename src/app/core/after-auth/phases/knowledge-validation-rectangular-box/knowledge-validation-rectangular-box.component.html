@@ -5,9 +5,23 @@
       <p>{{ knowledgeValidationQuestion }}</p>
     </div>
     <div class="container-validation-response">
-      <button class="box-validation-response" *ngFor="let answer of knowledgeValidationAnswers" (click)="checkAnswer(answer)">
+      <button class="box-validation-response" *ngFor="let answer of knowledgeValidationAnswers" (click)="checkAnswer(answer)" [disabled]="isValidationMode">
         <p>{{ answer }}</p>
       </button>
     </div>
+  </div>
+  <div *ngIf="isValidationMode" [ngClass]="{'container-validation': true, 'correct': isCorrect, 'incorrect': !isCorrect}">
+    <div class="correct" *ngIf="isCorrect">
+      <p class="p-correct">{{validationMessage}}</p>
+      <p class="p-right-answer">Você acertou, continue assim</p>
+    </div>
+    <div class="incorrect" *ngIf="!isCorrect">
+      <p class="p-incorrect">Incorreto!</p>
+      <p class="p-right-answer">Resposta correta:</p>
+      <p class="interpolation-right-answer">{{validationMessage}}</p>
+    </div>
+  </div>
+  <div class="button-main">
+    <button class="button-main-red" (click)="continue()">CONTINUAR</button>
   </div>
 </main>

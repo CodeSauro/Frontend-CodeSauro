@@ -19,9 +19,6 @@
       border: size-calc-iPhone(5) solid #C2955C;
       border-radius: size-calc-iPhone(30);
       margin-bottom: size-calc-iPhone(441);
-      font-size: size-calc-iPhone(32);
-      letter-spacing: size-calc-iPhone(3);
-      text-shadow: size-calc-iPhone(-0.5) 0 black, 0 size-calc-iPhone(0.5) black, size-calc-iPhone(0.5) 0 black, 0 size-calc-iPhone(-0.5) black;
 
       @media (min-width: 540px) {
         width: size-calc-iPad(415);
@@ -29,9 +26,19 @@
         border: size-calc-iPad(5) solid #C2955C;
         border-radius: size-calc-iPad(30);
         margin-bottom: size-calc-iPad(573);
-        font-size: size-calc-iPad(38);
-        letter-spacing: size-calc-iPad(3);
-        text-shadow: size-calc-iPad(-0.5) 0 black, 0 size-calc-iPad(0.5) black, size-calc-iPad(0.5) 0 black, 0 size-calc-iPad(-0.5) black;
+      }
+
+      p {
+        margin: auto 0;
+        font-size: size-calc-iPhone(32);
+        letter-spacing: size-calc-iPhone(3);
+        text-shadow: size-calc-iPhone(-0.5) 0 black, 0 size-calc-iPhone(0.5) black, size-calc-iPhone(0.5) 0 black, 0 size-calc-iPhone(-0.5) black;
+
+        @media (min-width: 540px) {
+          font-size: size-calc-iPad(38);
+          letter-spacing: size-calc-iPad(3);
+          text-shadow: size-calc-iPad(-1) 0 black, 0 size-calc-iPad(1) black, size-calc-iPad(1) 0 black, 0 size-calc-iPad(-1) black;
+        }
       }
     }
 
@@ -129,15 +136,15 @@
           }
         }
 
-          .icon-password {
-            position: absolute;
-            margin-top: size-calc-iPhone(19);
-            margin-left: size-calc-iPhone(298);
+        .icon-password {
+          position: absolute;
+          margin-top: size-calc-iPhone(19);
+          margin-left: size-calc-iPhone(298);
 
-            @media (min-width: 540px) {
-              margin-top: size-calc-iPad(19);
-              margin-left: size-calc-iPad(387);
-            }
+          @media (min-width: 540px) {
+            margin-top: size-calc-iPad(19);
+            margin-left: size-calc-iPad(387);
+          }
 
           .icon-eye {
             width: size-calc-iPhone(15);
@@ -182,6 +189,14 @@
 
           @media (min-width: 540px) {
             font-size: size-calc-iPad(24);
+          }
+        }
+
+        & input[type="password"] {
+          font-size: size-calc-iPhone(12);
+
+          @media (min-width: 540px) {
+            font-size: size-calc-iPad(18);
           }
         }
       }

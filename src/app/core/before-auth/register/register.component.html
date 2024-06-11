@@ -1,5 +1,5 @@
 <main>
-  <app-header-home-auth></app-header-home-auth>
+  <app-header-auth-home></app-header-auth-home>
   <div class="container-form">
     <div class="container-form-tittle">
       <p>CADASTRAR</p>
@@ -10,13 +10,13 @@
           <div class="icon">
             <img src="../../../../assets/icon-pencil.png" alt="icon-pen" class="icon-pen">
           </div>
-          <input type="text" name="nome" #nome="ngModel" ngModel required placeholder="NOME">
+          <input type="text" name="nome" #nome="ngModel" ngModel required maxlength="100" placeholder="NOME">
         </div>
         <div>
           <div class="icon">
             <img src="../../../../assets/icon-pencil.png" alt="icon-pen" class="icon-pen">
           </div>
-          <input type="text" name="apelido" #apelido="ngModel" ngModel required placeholder="APELIDO">
+          <input type="text" name="apelido" #apelido="ngModel" ngModel required maxlength="100" placeholder="APELIDO">
         </div>
         <div>
           <div class="icon">
@@ -28,7 +28,7 @@
           <div class="icon">
             <img src="../../../../assets/icon-phone.png" alt="icon-phone" class="icon-phone">
           </div>
-          <input type="text" name="telefone" #telefone="ngModel" ngModel required placeholder="TELEFONE">
+          <input type="text" name="telefone" #telefone="ngModel" ngModel required maxlength="11" placeholder="TELEFONE">
         </div>
         <div>
           <div class="icon">
@@ -37,7 +37,7 @@
           <div class="icon-password">
             <img [src]="'../../../../assets/' + iconEye" alt="icon-eye" class="icon-eye" (click)="togglePasswordVisibility()">
           </div>
-          <input type="password" name="senha" #senha="ngModel" ngModel required placeholder="SENHA">
+          <input type="password" name="senha" #senha="ngModel" ngModel required maxlength="100" placeholder="SENHA" [type]="senhaVisivel ? 'text' : 'password'">
         </div>
       </div>
     </form>

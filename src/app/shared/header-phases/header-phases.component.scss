@@ -15,6 +15,7 @@
   }
 
   .button-to-close{
+
     background-color: #EF3349;
     width: size-calc-iPhone(36);
     height: size-calc-iPhone(36);
@@ -40,6 +41,7 @@
     }
 
     p {
+      margin: auto 0;
       font-size: size-calc-iPhone(24);
       text-shadow: size-calc-iPhone(-1) 0 black, 0 size-calc-iPhone(1) black, size-calc-iPhone(1) 0 black, 0 size-calc-iPhone(-1) black;
 

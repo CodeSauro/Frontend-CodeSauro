@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HeaderHomeMapComponent } from '../../../shared/header-map/header-home-map.component';
+import { HeaderMapComponent } from '../../../shared/header-map/header-map.component';
 import { AuthService } from '../../../service/auth.service';
 import { Router } from '@angular/router';
 
@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   selector: 'app-settings-after-auth',
   standalone: true,
   imports: [
-    HeaderHomeMapComponent
+    HeaderMapComponent
   ],
   templateUrl: './settings-after-auth.component.html',
   styleUrl: './settings-after-auth.component.scss'
