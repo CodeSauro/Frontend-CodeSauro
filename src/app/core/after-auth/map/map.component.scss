@@ -1,74 +1,250 @@
 @import "../../../../config-scss/size-config.scss";
 
-.container {
-  height: 100vh;
+main {
+  background: url("../../../../assets/background-map-iPhone.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center top;
+  height: size-calc-iPhone(2532);
+  width: 100vw;
+  overflow-y: auto;
 
-  .phase-number {
-    background: url("../../../../assets/phase-select.png");
-    width: size-calc-iPhone(160);
-    height: size-calc-iPhone(160);
+  @media (min-width: 540px) {
+    background: url("../../../../assets/background-map-iPad.jpg");
     background-size: cover;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background-repeat: no-repeat;
+    background-position: center top;
+    height: size-calc-iPad(2532);
+    width: 100vw;
+    overflow-y: auto;
+  }
+
+  .container {
+    height: size-calc-iPhone(2532);
+    background-color: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(size-calc-iPhone(4));
+    -webkit-backdrop-filter: blur(size-calc-iPhone(4));
 
     @media (min-width: 540px) {
-      width: size-calc-iPad(160);
-      height: size-calc-iPad(160);
+      height: size-calc-iPad(2532);
+      backdrop-filter: blur(size-calc-iPad(4));
+    -webkit-backdrop-filter: blur(size-calc-iPad(4));
     }
 
-    p {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: size-calc-iPhone(32);
-      font-weight: bolder;
-      width: size-calc-iPhone(80);
-      height: size-calc-iPhone(80);
-      margin: auto 0;
+    .phase-select {
 
-      @media (min-width: 540px) {
-        font-size: size-calc-iPad(40);
-        width: size-calc-iPad(80);
-        height: size-calc-iPad(80);
+      .phase-number {
+        background: url("../../../../assets/phase-select.png");
+        width: size-calc-iPhone(80);
+        height: size-calc-iPhone(80);
+        background-size: cover;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        @media (min-width: 540px) {
+          width: size-calc-iPad(88);
+          height: size-calc-iPad(88);
+        }
+
+        p {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: size-calc-iPhone(32);
+          font-weight: bolder;
+          width: size-calc-iPhone(80);
+          height: size-calc-iPhone(80);
+          margin: auto 0;
+
+          @media (min-width: 540px) {
+            font-size: size-calc-iPad(40);
+            width: size-calc-iPad(80);
+            height: size-calc-iPad(80);
+          }
+        }
+
+        img {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: size-calc-iPhone(32);
+          font-weight: bolder;
+          margin: auto 0;
+
+          @media (min-width: 540px) {
+            font-size: size-calc-iPad(40);
+          }
+        }
+      }
+
+      .progress-stars-bar-container {
+        display: flex;
+        justify-content: center;
+        margin-top: size-calc-iPhone(10);
+
+        @media (min-width: 540px) {
+          margin-top: size-calc-iPad(10);
+        }
+
+        .progress-stars-bar {
+          width: size-calc-iPhone(64);
+          height: size-calc-iPhone(10);
+          background-color: #D9D9D9;
+          border-radius: size-calc-iPhone(10);
+
+          @media (min-width: 540px) {
+            width: size-calc-iPad(64);
+            height: size-calc-iPad(10);
+            border-radius: size-calc-iPad(10);
+          }
+        }
       }
     }
 
-    img {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: size-calc-iPhone(32);
-      font-weight: bolder;
-      margin: auto 0;
+    .phase-select-1 {
+      position: absolute;
+      left: 0;
+      margin-top: size-calc-iPhone(256);
+      margin-left: size-calc-iPhone(156);
 
       @media (min-width: 540px) {
-        font-size: size-calc-iPad(40);
+        margin-top: size-calc-iPad(384);
+        margin-left: size-calc-iPad(377);
       }
     }
-  }
 
-  .phase-select-1 {
-    position: absolute;
-    right: 0;
-    margin-top: size-calc-iPhone(220);
-    margin-right: size-calc-iPhone(40);
+    .phase-select-2 {
+      position: absolute;
+      left: 0;
+      margin-top: size-calc-iPhone(384);
+      margin-left: size-calc-iPhone(120);
 
-    @media (min-width: 540px) {
-      margin-top: size-calc-iPad(220);
-      margin-right: size-calc-iPad(40);
+      @media (min-width: 540px) {
+        margin-top: size-calc-iPad(512);
+        margin-left: size-calc-iPad(340);
+      }
     }
-  }
 
-  .phase-select-2 {
-    position: absolute;
-    right: 0;
-    margin-top: size-calc-iPhone(460);
-    margin-right: size-calc-iPhone(60);
+    .phase-select-3 {
+      position: absolute;
+      left: 0;
+      margin-top: size-calc-iPhone(512);
+      margin-left: size-calc-iPhone(80);
 
-    @media (min-width: 540px) {
-      margin-top: size-calc-iPad(460);
-      margin-right: size-calc-iPad(60);
+      @media (min-width: 540px) {
+        margin-top: size-calc-iPad(640);
+        margin-left: size-calc-iPad(300);
+      }
     }
+
+    .phase-select-4 {
+      position: absolute;
+      left: 0;
+      margin-top: size-calc-iPhone(640);
+      margin-left: size-calc-iPhone(120);
+
+      @media (min-width: 540px) {
+        margin-top: size-calc-iPad(768);
+        margin-left: size-calc-iPad(340);
+      }
+    }
+
+    .phase-select-5 {
+      position: absolute;
+      left: 0;
+      margin-top: size-calc-iPhone(768);
+      margin-left: size-calc-iPhone(160);
+
+      @media (min-width: 540px) {
+        margin-top: size-calc-iPad(896);
+        margin-left: size-calc-iPad(380);
+      }
+    }
+
+    .phase-select-6 {
+      position: absolute;
+      left: 0;
+      margin-top: size-calc-iPhone(896);
+      margin-left: size-calc-iPhone(200);
+
+      @media (min-width: 540px) {
+        margin-top: size-calc-iPad(1024);
+        margin-left: size-calc-iPad(420);
+      }
+    }
+
+    .phase-select-7 {
+      position: absolute;
+      left: 0;
+      margin-top: size-calc-iPhone(1024);
+      margin-left: size-calc-iPhone(240);
+
+      @media (min-width: 540px) {
+        margin-top: size-calc-iPad(1152);
+        margin-left: size-calc-iPad(460);
+      }
+    }
+
+    .phase-select-8 {
+      position: absolute;
+      left: 0;
+      margin-top: size-calc-iPhone(1152);
+      margin-left: size-calc-iPhone(200);
+
+      @media (min-width: 540px) {
+        margin-top: size-calc-iPad(1280);
+        margin-left: size-calc-iPad(420);
+      }
+    }
+
+    .phase-select-9 {
+      position: absolute;
+      left: 0;
+      margin-top: size-calc-iPhone(1857);
+      margin-left: size-calc-iPhone(90);
+
+      @media (min-width: 540px) {
+        margin-top: size-calc-iPad(1857);
+        margin-left: size-calc-iPad(290);
+      }
+    }
+
+    .phase-select-10 {
+      position: absolute;
+      left: 0;
+      margin-top: size-calc-iPhone(1985);
+      margin-left: size-calc-iPhone(130);
+
+      @media (min-width: 540px) {
+        margin-top: size-calc-iPad(1985);
+        margin-left: size-calc-iPad(350);
+      }
+    }
+
+    .phase-select-11 {
+      position: absolute;
+      left: 0;
+      margin-top: size-calc-iPhone(2113);
+      margin-left: size-calc-iPhone(170);
+
+      @media (min-width: 540px) {
+        margin-top: size-calc-iPad(2113);
+        margin-left: size-calc-iPad(390);
+      }
+    }
+
+    .phase-select-12 {
+      position: absolute;
+      left: 0;
+      margin-top: size-calc-iPhone(2241);
+      margin-left: size-calc-iPhone(130);
+
+      @media (min-width: 540px) {
+        margin-top: size-calc-iPad(2241);
+        margin-left: size-calc-iPad(350);
+      }
+    }
+
   }
 }

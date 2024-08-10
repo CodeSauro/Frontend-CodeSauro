@@ -28,6 +28,7 @@ export class HeaderPhasesComponent implements OnInit {
   }
 
   public leave() {
+    this.progressBarService.setCurrentPage(1);
     this.router.navigate(['/authenticated/map']);
   }
 }

@@ -24,14 +24,16 @@ export class DataTypeComponent implements OnInit {
   variables: any[] = [];
   answers: any[] = [];
   correct_answers: any[] = [];
-  currentPage: number = 1;
   isContinueDisabled: boolean = true;
   isValidationMode: boolean = false;
   isCorrect: boolean = false;
   validationMessage: string = '';
   isDragDisabled: boolean = false;
-  numberOfPagesDataType: number = 0;
   numberOfPagesTotal: number = 0;
+  numberOfPagesPhases: number = 0;
+  numberOfPagesExplaining: number = 0;
+  currentPage: number = 0;
+  currentPagePhase: number = 0;
 
   constructor(
     private mockPhasesDataTypeService: MockPhasesDataTypeService,
@@ -41,6 +43,8 @@ export class DataTypeComponent implements OnInit {
 
   ngOnInit(): void {
     this.mock = this.mockPhasesDataTypeService.getMockData();
+    this.currentPage = this.progressService.getCurrentPage();
+    this.numberOfPagesTotal = this.progressService.numberOfPagesTotal;
     this.loadPageData();
   }
 
@@ -61,7 +65,8 @@ export class DataTypeComponent implements OnInit {
     this.progressService.updateProgress((this.currentPage / this.numberOfPagesTotal) * 100);
     if (this.isValidationMode) {
       this.currentPage++;
-      if (this.currentPage > this.numberOfPagesDataType) {
+      this.currentPagePhase++;
+      if (this.currentPage > (this.numberOfPagesExplaining + this.numberOfPagesPhases)) {
         this.router.navigate(['/authenticated/phases/knowledge-validation-rectangular-box']);
       } else {
         this.loadPageData();
@@ -78,11 +83,13 @@ export class DataTypeComponent implements OnInit {
 
   private loadPageData() {
     const item = this.mock.find(data => data.id === 1);
-    this.numberOfPagesDataType = item.number_of_pages
-    this.numberOfPagesTotal = this.numberOfPagesDataType + 1;
+    this.numberOfPagesPhases = item.number_of_pages_phases;
+    this.numberOfPagesExplaining = item.number_of_pages_explaining;
+    this.currentPagePhase = this.currentPage - this.numberOfPagesExplaining;
 
     if (item) {
-      switch (this.currentPage) {
+
+      switch (this.currentPagePhase) {
         case 1:
           this.variables = [...item.variables_page_1];
           this.correct_answers = [...item.correct_answers_page_1];
