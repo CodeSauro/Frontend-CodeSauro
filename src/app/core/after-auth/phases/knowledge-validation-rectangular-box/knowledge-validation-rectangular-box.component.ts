@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HeaderPhasesComponent } from '../../../../shared/header-phases/header-phases.component';
 import { MockPhasesDataTypeService } from '../../../../service/mock-phases-data-type.service';
-import { Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ProgressBarService } from '../../../../service/progress-bar.service';
 
@@ -18,38 +18,49 @@ import { ProgressBarService } from '../../../../service/progress-bar.service';
 })
 export class KnowledgeValidationRectangularBoxComponent implements OnInit {
 
+  phaseId!: number;
+  currentPage: number = 0;
   knowledgeValidationQuestion: string = '';
   knowledgeValidationAnswers: string[] = [];
   knowledgeValidationCorrectAnswer: string = '';
   isValidationMode: boolean = false;
   isCorrect: boolean = false;
   validationMessage: string = '';
+  numberOfPagesTotal: number = 0;
+  numberOfPagesQuestions: number = 0;
 
   constructor(
     private mockPhasesDataTypeService: MockPhasesDataTypeService,
+    private route: ActivatedRoute,
     private progressBarService: ProgressBarService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
-    const mockData = this.mockPhasesDataTypeService.getMockData();
-    const mock = mockData.find(m => m.id === 1);
-    if (mock) {
-      this.knowledgeValidationQuestion = mock.knowledge_validation_question;
-      this.knowledgeValidationAnswers = mock.knowledge_validation_answers;
-      this.knowledgeValidationCorrectAnswer = mock.knowledge_validation_correct_answer;
-    }
+    this.phaseId = Number(this.route.snapshot.paramMap.get('id'));
+    this.progressBarService.loadPageData(this.phaseId);
+    this.numberOfPagesTotal = this.progressBarService.getNumberOfPagesTotal();
+    this.currentPage = this.progressBarService.getCurrentPage();
+    this.loadPageData(this.phaseId);
+  }
+
+  private loadPageData(phaseId: number) {
+    const item = this.mockPhasesDataTypeService.getMockData().find(data => data.id === phaseId);
+    this.knowledgeValidationQuestion = item?.knowledge_validation_question || '';
+    this.knowledgeValidationAnswers = item?.knowledge_validation_answers || [];
+    this.knowledgeValidationCorrectAnswer = item?.knowledge_validation_correct_answer || '';
   }
 
   checkAnswer(answer: string): void {
     if (!this.isValidationMode) {
       this.isValidationMode = true;
-      this.progressBarService.updateProgress(100);
+      this.progressBarService.updateProgress((this.currentPage / this.numberOfPagesTotal) * 100);
+
       if (answer === this.knowledgeValidationCorrectAnswer) {
         this.validationMessage = 'Excelente!';
         this.isCorrect = true;
       } else {
-        this.validationMessage = this.knowledgeValidationCorrectAnswer;
+        this.validationMessage = `Incorreto! Resposta correta: ${this.knowledgeValidationCorrectAnswer}`;
         this.isCorrect = false;
       }
     }
@@ -57,7 +68,8 @@ export class KnowledgeValidationRectangularBoxComponent implements OnInit {
 
   continue(): void {
     if (this.isValidationMode) {
-      this.router.navigate(['authenticated/punctuation/three-stars']);
+      this.progressBarService.setCurrentPage(this.currentPage);
+      this.router.navigate(['/authenticated/punctuation/three-stars']);
     }
   }
 }

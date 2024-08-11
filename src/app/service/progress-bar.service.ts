@@ -19,9 +19,16 @@ export class ProgressBarService {
 
   constructor(
     private mockPhasesDataTypeService: MockPhasesDataTypeService,
-  ) {
+  ) {}
+
+  loadPageData(phaseId: number) {
     this.mock = this.mockPhasesDataTypeService.getMockData();
-    this.loadPageData();
+    const item = this.mock.find(data => data.id === phaseId);
+    this.numberOfPagesPhases = item.number_of_pages_phases;
+    this.numberOfPagesExplaining = item.number_of_pages_explaining;
+    this.numberOfPagesQuestions = item.number_of_pages_questions;
+    this.numberOfPagesTotal = this.numberOfPagesPhases + this.numberOfPagesExplaining + this.numberOfPagesQuestions;
+
   }
 
   updateProgress(progress: number) {
@@ -30,14 +37,6 @@ export class ProgressBarService {
 
   resetProgress() {
     this.progressSource.next(0);
-  }
-
-  private loadPageData() {
-    const item = this.mock.find(data => data.id === 1);
-    this.numberOfPagesPhases = item.number_of_pages_phases;
-    this.numberOfPagesExplaining = item.number_of_pages_explaining;
-    this.numberOfPagesQuestions = item.number_of_pages_questions
-    this.numberOfPagesTotal = this.numberOfPagesPhases + this.numberOfPagesExplaining + this.numberOfPagesQuestions;
   }
 
   getNumberOfPagesTotal(): number {

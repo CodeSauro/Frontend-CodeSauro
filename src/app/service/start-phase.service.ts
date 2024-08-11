@@ -12,8 +12,8 @@ export class StartPhaseService {
     private progressBarService: ProgressBarService
   ) { }
 
-  public start_phase_service() {
-    this.progressBarService.resetProgress()
-    this.router.navigate(['/authenticated/phases/explaining-phase']);
+  public start_phase_service(phaseId: number) {
+    this.progressBarService.resetProgress();
+    this.router.navigate(['/authenticated/phases/explaining-phase', phaseId]);
   }
 }

@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { HeaderPhasesComponent } from '../../../../shared/header-phases/header-phases.component';
 import { MockPhasesDataTypeService } from '../../../../service/mock-phases-data-type.service';
 import { ProgressBarService } from '../../../../service/progress-bar.service';
@@ -17,45 +17,39 @@ import { ProgressBarService } from '../../../../service/progress-bar.service';
 export class ExplainingPhaseComponent implements OnInit, AfterViewInit {
 
   mock!: any[];
-  isTyping: boolean = true;
+  phaseId!: number;
   currentPage: number = 0;
+  isTyping: boolean = true;
   numberOfPagesTotal: number = 0;
   numberOfPagesExplaining: number = 0;
 
   constructor(
     private mockPhasesDataTypeService: MockPhasesDataTypeService,
-    private progressService: ProgressBarService,
+    private route: ActivatedRoute,
+    private progressBarService: ProgressBarService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
+    this.phaseId = Number(this.route.snapshot.paramMap.get('id'));
     this.mock = this.mockPhasesDataTypeService.getMockData();
-    this.numberOfPagesTotal = this.progressService.getNumberOfPagesTotal();
-    this.currentPage = this.progressService.currentPage;
+    this.progressBarService.loadPageData(this.phaseId);
+    this.numberOfPagesTotal = this.progressBarService.getNumberOfPagesTotal();
+    this.currentPage = this.progressBarService.getCurrentPage();
     this.loadPageData();
-  }
-
-  public continue() {
-    this.progressService.updateProgress((this.currentPage / this.numberOfPagesTotal) * 100);
-
-    setTimeout(() => {
-        if (this.isTyping) return;
-        this.currentPage++;
-        if (this.currentPage > this.numberOfPagesExplaining) {
-          this.progressService.setCurrentPage(this.currentPage);
-          this.router.navigate(['/authenticated/phases/data-type']);
-        } else {
-          this.updateText();
-        }
-    }, 300);
   }
 
   ngAfterViewInit() {
     this.updateText();
   }
 
+  private loadPageData() {
+    const item = this.mock.find(data => data.id === this.phaseId);
+    this.numberOfPagesExplaining = item?.number_of_pages_explaining || 0;
+  }
+
   private updateText() {
-    const item = this.mock.find(data => data.id === 1);
+    const item = this.mock.find(data => data.id === this.phaseId);
     let text = '';
 
     if (item) {
@@ -84,13 +78,11 @@ export class ExplainingPhaseComponent implements OnInit, AfterViewInit {
           if (index < lines[lineIndex].length) {
             typingAnimationElement.innerHTML += lines[lineIndex].charAt(index);
             index++;
-            //setTimeout(typeLine, 50);
             setTimeout(typeLine, 0);
           } else {
             typingAnimationElement.innerHTML += '<br/>';
             index = 0;
             lineIndex++;
-            //setTimeout(typeLine, 50);
             setTimeout(typeLine, 0);
           }
         } else {
@@ -102,8 +94,18 @@ export class ExplainingPhaseComponent implements OnInit, AfterViewInit {
     }
   }
 
-  private loadPageData() {
-    const item = this.mock.find(data => data.id === 1);
-    this.numberOfPagesExplaining = item.number_of_pages_explaining;
+  public continue() {
+    this.progressBarService.updateProgress((this.currentPage / this.numberOfPagesTotal) * 100);
+
+    setTimeout(() => {
+      if (this.isTyping) return;
+      this.currentPage++;
+      if (this.currentPage <= this.numberOfPagesExplaining) {
+        this.updateText();
+      } else {
+        this.progressBarService.setCurrentPage(this.currentPage);
+        this.router.navigate(['/authenticated/phases/data-type', this.phaseId]);
+      }
+    }, 300);
   }
 }

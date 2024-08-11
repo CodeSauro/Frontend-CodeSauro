@@ -17,7 +17,8 @@ export class MapComponent {
     private startPhaseService: StartPhaseService,
   ) {}
 
-  public start_phase() {
-    this.startPhaseService.start_phase_service()
+  public start_phase(phaseId: number) {
+    this.startPhaseService.start_phase_service(phaseId);
   }
 }
+

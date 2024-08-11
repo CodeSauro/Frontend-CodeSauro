@@ -50,16 +50,16 @@ export const routes: Routes = [
         path: 'phases',
         children: [
           {
-            path: 'knowledge-validation-rectangular-box', component: KnowledgeValidationRectangularBoxComponent
+            path: 'knowledge-validation-rectangular-box/:id', component: KnowledgeValidationRectangularBoxComponent
           },
           {
-            path: 'knowledge-validation-square-box', component: KnowledgeValidationSquareBoxComponent
+            path: 'knowledge-validation-square-box/:id', component: KnowledgeValidationSquareBoxComponent
           },
           {
-            path: 'data-type', component: DataTypeComponent
+            path: 'data-type/:id', component: DataTypeComponent
           },
           {
-            path: 'explaining-phase', component: ExplainingPhaseComponent
+            path: 'explaining-phase/:id', component: ExplainingPhaseComponent
           }
         ]
       },
