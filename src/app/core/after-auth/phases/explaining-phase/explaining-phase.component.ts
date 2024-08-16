@@ -18,6 +18,7 @@ export class ExplainingPhaseComponent implements OnInit, AfterViewInit {
 
   mock!: any[];
   phaseId!: number;
+  ra!: number;
   currentPage: number = 0;
   isTyping: boolean = true;
   numberOfPagesTotal: number = 0;
@@ -46,6 +47,7 @@ export class ExplainingPhaseComponent implements OnInit, AfterViewInit {
   private loadPageData() {
     const item = this.mock.find(data => data.id === this.phaseId);
     this.numberOfPagesExplaining = item?.number_of_pages_explaining || 0;
+    this.ra = item?.ra || 0;
   }
 
   private updateText() {
@@ -104,7 +106,24 @@ export class ExplainingPhaseComponent implements OnInit, AfterViewInit {
         this.updateText();
       } else {
         this.progressBarService.setCurrentPage(this.currentPage);
-        this.router.navigate(['/authenticated/phases/data-type', this.phaseId]);
+
+        switch(this.ra) {
+          case 1:
+            this.router.navigate(['/authenticated/phases/data-type', this.phaseId]);
+            break;
+          case 2:
+            this.router.navigate(['/authenticated/phases/arithmetic-operator', this.phaseId]);
+            break;
+          case 3:
+
+            break;
+          case 4:
+
+            break;
+          case 5:
+
+            break;
+        }
       }
     }, 300);
   }

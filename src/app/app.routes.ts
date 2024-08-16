@@ -14,8 +14,8 @@ import { ThreeStarsComponent } from './core/after-auth/punctuation/three-stars/t
 import { DataTypeComponent } from './core/after-auth/phases/data-type/data-type.component';
 import { ExplainingPhaseComponent } from './core/after-auth/phases/explaining-phase/explaining-phase.component';
 import { KnowledgeValidationRectangularBoxComponent } from './core/after-auth/phases/knowledge-validation-rectangular-box/knowledge-validation-rectangular-box.component';
-import { KnowledgeValidationSquareBoxComponent } from './core/after-auth/phases/knowledge-validation-square-box/knowledge-validation-square-box.component';
 import { MapComponent } from './core/after-auth/map/map.component';
+import { ArithmeticOperatorComponent } from './core/after-auth/phases/arithmetic-operator/arithmetic-operator.component';
 
 export const routes: Routes = [
   {
@@ -53,13 +53,13 @@ export const routes: Routes = [
             path: 'knowledge-validation-rectangular-box/:id', component: KnowledgeValidationRectangularBoxComponent
           },
           {
-            path: 'knowledge-validation-square-box/:id', component: KnowledgeValidationSquareBoxComponent
-          },
-          {
             path: 'data-type/:id', component: DataTypeComponent
           },
           {
             path: 'explaining-phase/:id', component: ExplainingPhaseComponent
+          },
+          {
+            path: 'arithmetic-operator/:id', component: ArithmeticOperatorComponent
           }
         ]
       },

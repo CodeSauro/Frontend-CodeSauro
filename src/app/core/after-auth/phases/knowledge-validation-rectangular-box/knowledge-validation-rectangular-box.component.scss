@@ -11,14 +11,14 @@
     width: size-calc-iPhone(318);
     height: size-calc-iPhone(250);
     border: size-calc-iPhone(5) solid #C2955C;
-    border-radius: size-calc-iPhone(20);
+    border-radius: size-calc-iPhone(10);
     box-shadow: 0px size-calc-iPhone(4) size-calc-iPhone(4) rgba(0, 0, 0, 0.25);
 
     @media (min-width: 540px) {
       width: size-calc-iPad(392);
       height: size-calc-iPad(258);
       border: size-calc-iPad(5) solid #C2955C;
-      border-radius: size-calc-iPad(20);
+      border-radius: size-calc-iPad(14);
       box-shadow: 0px size-calc-iPad(4) size-calc-iPad(4) rgba(0, 0, 0, 0.25);
     }
 
@@ -66,7 +66,7 @@
         width: size-calc-iPad(402);
         height: size-calc-iPad(78);
         border: size-calc-iPad(5) solid #C2955C;
-        border-radius: size-calc-iPad(10);
+        border-radius: size-calc-iPad(14);
         box-shadow: 0px size-calc-iPad(4) size-calc-iPad(4) rgba(0, 0, 0, 0.25);
       }
 
