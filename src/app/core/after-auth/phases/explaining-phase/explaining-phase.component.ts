@@ -118,7 +118,7 @@ export class ExplainingPhaseComponent implements OnInit, AfterViewInit {
 
             break;
           case 4:
-
+            this.router.navigate(['/authenticated/phases/conditional-structures', this.phaseId]);
             break;
           case 5:
 

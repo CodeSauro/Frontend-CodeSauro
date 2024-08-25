@@ -16,6 +16,7 @@ import { ExplainingPhaseComponent } from './core/after-auth/phases/explaining-ph
 import { KnowledgeValidationRectangularBoxComponent } from './core/after-auth/phases/knowledge-validation-rectangular-box/knowledge-validation-rectangular-box.component';
 import { MapComponent } from './core/after-auth/map/map.component';
 import { ArithmeticOperatorComponent } from './core/after-auth/phases/arithmetic-operator/arithmetic-operator.component';
+import { ConditionalStructuresComponent } from './core/after-auth/phases/conditional-structures/conditional-structures.component';
 
 export const routes: Routes = [
   {
@@ -60,6 +61,9 @@ export const routes: Routes = [
           },
           {
             path: 'arithmetic-operator/:id', component: ArithmeticOperatorComponent
+          },
+          {
+            path: 'conditional-structures/:id', component: ConditionalStructuresComponent
           }
         ]
       },
