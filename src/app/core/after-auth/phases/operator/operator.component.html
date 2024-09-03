@@ -1,7 +1,7 @@
 <main>
   <app-header-phases></app-header-phases>
   <div class="context-phase">
-    <p>Arraste o tipo {{ dataType }}:</p>
+    <p>{{contextPhase}}</p>
   </div>
   <div class="container">
     <div class="selection-group">
@@ -16,18 +16,23 @@
         <div *ngFor="let item of variables" class="example-box" cdkDrag [cdkDragDisabled]="isDragDisabled">{{item}}</div>
       </div>
     </div>
-    <div class="cauldron"></div>
-    <div class="selection-group">
+    <div class="trunk"></div>
+    <div class="selection-group selection-group-2">
+      <p>{{variablesNumbers[0]}}</p>
       <div
         cdkDropList
         cdkDropListSortingDisabled
         #answersList="cdkDropList"
         [cdkDropListData]="answers"
         [cdkDropListConnectedTo]="[variablesList]"
-        class="example-list"
+        id="answersList"
+        class="example-list example-list-2"
         (cdkDropListDropped)="drop($event)">
         <div *ngFor="let item of answers" class="example-box" cdkDrag [cdkDragDisabled]="isDragDisabled">{{item}}</div>
       </div>
+        <p>{{variablesNumbers[1]}}</p>
+        <p>{{variablesNumbers[2]}}</p>
+        <p>{{variablesNumbers[3]}}</p>
     </div>
   </div>
   <div *ngIf="isValidationMode" [ngClass]="{'container-validation': true, 'correct': isCorrect, 'incorrect': !isCorrect}">
@@ -37,8 +42,10 @@
     </div>
     <div class="incorrect" *ngIf="!isCorrect">
       <p class="p-incorrect">Incorreto!</p>
-      <p class="p-right-answer">Resposta correta:</p>
-      <p class="interpolation-right-answer">{{correct_answers.join(', ')}}</p>
+      <div>
+        <p class="p-right-answer">Resposta correta:</p>
+        <p class="interpolation-right-answer">{{correct_answers.join(', ')}}</p>
+      </div>
     </div>
   </div>
   <div class="button-main">

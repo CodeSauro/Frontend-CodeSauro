@@ -63,6 +63,10 @@ export class ExplainingPhaseComponent implements OnInit, AfterViewInit {
         text = item.explaining_phase_page_3;
       } else if (this.currentPage === 4) {
         text = item.explaining_phase_page_4;
+      } else if (this.currentPage === 5) {
+        text = item.explaining_phase_page_5
+      } else if (this.currentPage === 6) {
+        text = item.explaining_phase_page_6
       }
     }
 
@@ -112,16 +116,10 @@ export class ExplainingPhaseComponent implements OnInit, AfterViewInit {
             this.router.navigate(['/authenticated/phases/data-type', this.phaseId]);
             break;
           case 2:
-            this.router.navigate(['/authenticated/phases/arithmetic-operator', this.phaseId]);
+            this.router.navigate(['/authenticated/phases/operator', this.phaseId]);
             break;
           case 3:
-
-            break;
-          case 4:
             this.router.navigate(['/authenticated/phases/conditional-structures', this.phaseId]);
-            break;
-          case 5:
-
             break;
         }
       }

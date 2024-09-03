@@ -4,6 +4,14 @@
   @return math.div($size, 390) * 100vw;
 }
 
+@function size-calc-iPhone-height($size) {
+  @return math.div($size, 844) * 100vh;
+}
+
 @function size-calc-iPad($size) {
   @return math.div($size, 834) * 100vw;
+}
+
+@function size-calc-iPad-height($size) {
+  @return math.div($size, 1194) * 100vh;
 }

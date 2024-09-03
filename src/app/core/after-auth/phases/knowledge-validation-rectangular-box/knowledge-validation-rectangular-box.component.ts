@@ -57,10 +57,9 @@ export class KnowledgeValidationRectangularBoxComponent implements OnInit {
       this.progressBarService.updateProgress((this.currentPage / this.numberOfPagesTotal) * 100);
 
       if (answer === this.knowledgeValidationCorrectAnswer) {
-        this.validationMessage = 'Excelente!';
         this.isCorrect = true;
       } else {
-        this.validationMessage = `Incorreto! Resposta correta: ${this.knowledgeValidationCorrectAnswer}`;
+        this.validationMessage = `${this.knowledgeValidationCorrectAnswer}`;
         this.isCorrect = false;
       }
     }

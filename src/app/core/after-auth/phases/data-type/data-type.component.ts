@@ -35,6 +35,7 @@ export class DataTypeComponent implements OnInit {
   numberOfPagesExplaining: number = 0;
   currentPage: number = 0;
   currentPagePhase: number = 0;
+  dataType: string = '';
 
   constructor(
     private mockPhasesDataTypeService: MockPhasesDataTypeService,
@@ -61,6 +62,7 @@ export class DataTypeComponent implements OnInit {
     this.numberOfPagesPhases = item?.number_of_pages_phases || 0;
     this.numberOfPagesExplaining = item?.number_of_pages_explaining || 0;
     this.currentPagePhase = this.currentPage - this.numberOfPagesExplaining;
+    this.dataType = item?.data_type || "";
 
     switch (this.currentPagePhase) {
       case 1:
@@ -78,6 +80,14 @@ export class DataTypeComponent implements OnInit {
       case 4:
         this.variables = [...item.variables_page_4];
         this.correct_answers = [...item.correct_answers_page_4];
+        break;
+      case 5:
+        this.variables = [...item.variables_page_5];
+        this.correct_answers = [...item.correct_answers_page_5];
+        break;
+      case 6:
+        this.variables = [...item.variables_page_6];
+        this.correct_answers = [...item.correct_answers_page_6];
         break;
     }
 

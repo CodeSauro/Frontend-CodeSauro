@@ -15,8 +15,8 @@ import { ProgressBarService } from '../../../../service/progress-bar.service';
     RouterModule,
     CommonModule,
   ],
-  templateUrl: './arithmetic-operator.component.html',
-  styleUrl: './arithmetic-operator.component.scss'
+  templateUrl: './operator.component.html',
+  styleUrl: './operator.component.scss'
 })
 export class ArithmeticOperatorComponent implements OnInit {
 
@@ -39,7 +39,7 @@ export class ArithmeticOperatorComponent implements OnInit {
   numberFirstPage: number = 0;
   numberSecondPage: number = 0;
   numberResponsePage: number = 0;
-
+  contextPhase: string = "";
 
   constructor(
     private mockPhasesDataTypeService: MockPhasesDataTypeService,
@@ -66,6 +66,7 @@ export class ArithmeticOperatorComponent implements OnInit {
     this.numberOfPagesPhases = item?.number_of_pages_phases || 0;
     this.numberOfPagesExplaining = item?.number_of_pages_explaining || 0;
     this.currentPagePhase = this.currentPage - this.numberOfPagesExplaining;
+    this.contextPhase = item?.context_phase;
 
     switch (this.currentPagePhase) {
       case 1:
@@ -87,6 +88,16 @@ export class ArithmeticOperatorComponent implements OnInit {
         this.variables = [...item.variables_page_4];
         this.variablesNumbers = [...item.variables_numbers_page_4];
         this.correct_answers = [...item.correct_answers_page_4];
+        break;
+      case 5:
+        this.variables = [...item.variables_page_5];
+        this.variablesNumbers = [...item.variables_numbers_page_5];
+        this.correct_answers = [...item.correct_answers_page_5];
+        break;
+      case 6:
+        this.variables = [...item.variables_page_6];
+        this.variablesNumbers = [...item.variables_numbers_page_6];
+        this.correct_answers = [...item.correct_answers_page_6];
         break;
     }
 

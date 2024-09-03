@@ -5,7 +5,7 @@ main {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center top;
-  height: size-calc-iPhone(2532);
+  height: size-calc-iPhone-height(7957);
   width: 100vw;
   overflow-y: auto;
 
@@ -14,21 +14,21 @@ main {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center top;
-    height: size-calc-iPad(2532);
+    height: size-calc-iPad-height(7957);
     width: 100vw;
     overflow-y: auto;
   }
 
   .container {
-    height: size-calc-iPhone(2532);
-    background-color: rgba(0, 0, 0, 0.1);
+    //background-color: rgba(0, 0, 0, 0.1);
+    height: size-calc-iPhone-height(7957);
     backdrop-filter: blur(size-calc-iPhone(4));
     -webkit-backdrop-filter: blur(size-calc-iPhone(4));
 
     @media (min-width: 540px) {
-      height: size-calc-iPad(2532);
+      height: size-calc-iPad-height(7957);
       backdrop-filter: blur(size-calc-iPad(4));
-    -webkit-backdrop-filter: blur(size-calc-iPad(4));
+      -webkit-backdrop-filter: blur(size-calc-iPad(4));
     }
 
     .phase-select {
@@ -92,11 +92,13 @@ main {
           height: size-calc-iPhone(10);
           background-color: #D9D9D9;
           border-radius: size-calc-iPhone(10);
+          box-shadow: 0 size-calc-iPhone(2) size-calc-iPhone(2) rgba(0, 0, 0, 0.25);
 
           @media (min-width: 540px) {
             width: size-calc-iPad(64);
             height: size-calc-iPad(10);
             border-radius: size-calc-iPad(10);
+            box-shadow: 0 size-calc-iPad(2) size-calc-iPad(2) rgba(0, 0, 0, 0.25);
           }
         }
       }
@@ -201,50 +203,385 @@ main {
     .phase-select-9 {
       position: absolute;
       left: 0;
-      margin-top: size-calc-iPhone(1857);
-      margin-left: size-calc-iPhone(90);
+      margin-top: size-calc-iPhone(1872);
+      margin-left: size-calc-iPhone(156);
 
       @media (min-width: 540px) {
-        margin-top: size-calc-iPad(1857);
-        margin-left: size-calc-iPad(290);
+        margin-top: size-calc-iPad(1872);
+        margin-left: size-calc-iPad(377);
       }
     }
 
     .phase-select-10 {
       position: absolute;
       left: 0;
-      margin-top: size-calc-iPhone(1985);
-      margin-left: size-calc-iPhone(130);
+      margin-top: size-calc-iPhone(2000);
+      margin-left: size-calc-iPhone(200);
 
       @media (min-width: 540px) {
-        margin-top: size-calc-iPad(1985);
-        margin-left: size-calc-iPad(350);
+        margin-top: size-calc-iPad(2000);
+        margin-left: size-calc-iPad(420);
       }
     }
 
     .phase-select-11 {
       position: absolute;
       left: 0;
-      margin-top: size-calc-iPhone(2113);
-      margin-left: size-calc-iPhone(170);
+      margin-top: size-calc-iPhone(2128);
+      margin-left: size-calc-iPhone(240);
 
       @media (min-width: 540px) {
-        margin-top: size-calc-iPad(2113);
-        margin-left: size-calc-iPad(390);
+        margin-top: size-calc-iPad(2128);
+        margin-left: size-calc-iPad(460);
       }
     }
 
     .phase-select-12 {
       position: absolute;
       left: 0;
-      margin-top: size-calc-iPhone(2241);
-      margin-left: size-calc-iPhone(130);
+      margin-top: size-calc-iPhone(2256);
+      margin-left: size-calc-iPhone(200);
 
       @media (min-width: 540px) {
-        margin-top: size-calc-iPad(2241);
-        margin-left: size-calc-iPad(350);
+        margin-top: size-calc-iPad(2256);
+        margin-left: size-calc-iPad(420);
       }
     }
 
+    .phase-select-13 {
+      position: absolute;
+      left: 0;
+      margin-top: size-calc-iPhone(2384);
+      margin-left: size-calc-iPhone(160);
+
+      @media (min-width: 540px) {
+        margin-top: size-calc-iPad(2384);
+        margin-left: size-calc-iPad(380);
+      }
+    }
+
+    .phase-select-14 {
+      position: absolute;
+      left: 0;
+      margin-top: size-calc-iPhone(2512);
+      margin-left: size-calc-iPhone(120);
+
+      @media (min-width: 540px) {
+        margin-top: size-calc-iPad(2512);
+        margin-left: size-calc-iPad(340);
+      }
+    }
+
+    .phase-select-15 {
+      position: absolute;
+      left: 0;
+      margin-top: size-calc-iPhone(2640);
+      margin-left: size-calc-iPhone(80);
+
+      @media (min-width: 540px) {
+        margin-top: size-calc-iPad(2640);
+        margin-left: size-calc-iPad(300);
+      }
+    }
+
+    .phase-select-16 {
+      position: absolute;
+      left: 0;
+      margin-top: size-calc-iPhone(2768);
+      margin-left: size-calc-iPhone(120);
+
+      @media (min-width: 540px) {
+        margin-top: size-calc-iPad(2768);
+        margin-left: size-calc-iPad(340);
+      }
+    }
+
+    .phase-select-17 {
+      position: absolute;
+      left: 0;
+      margin-top: size-calc-iPhone(3488);
+      margin-left: size-calc-iPhone(156);
+
+      @media (min-width: 540px) {
+        margin-top: size-calc-iPad(3488);
+        margin-left: size-calc-iPad(377);
+      }
+    }
+
+    .phase-select-18 {
+      position: absolute;
+      left: 0;
+      margin-top: size-calc-iPhone(3616);
+      margin-left: size-calc-iPhone(120);
+
+      @media (min-width: 540px) {
+        margin-top: size-calc-iPad(3616);
+        margin-left: size-calc-iPad(340);
+      }
+    }
+
+    .phase-select-19 {
+      position: absolute;
+      left: 0;
+      margin-top: size-calc-iPhone(3744);
+      margin-left: size-calc-iPhone(80);
+
+      @media (min-width: 540px) {
+        margin-top: size-calc-iPad(3744);
+        margin-left: size-calc-iPad(300);
+      }
+    }
+
+    .phase-select-20 {
+      position: absolute;
+      left: 0;
+      margin-top: size-calc-iPhone(3872);
+      margin-left: size-calc-iPhone(120);
+
+      @media (min-width: 540px) {
+        margin-top: size-calc-iPad(3872);
+        margin-left: size-calc-iPad(340);
+      }
+    }
+
+    .phase-select-21 {
+      position: absolute;
+      left: 0;
+      margin-top: size-calc-iPhone(4000);
+      margin-left: size-calc-iPhone(160);
+
+      @media (min-width: 540px) {
+        margin-top: size-calc-iPad(4000);
+        margin-left: size-calc-iPad(380);
+      }
+    }
+
+    .phase-select-22 {
+      position: absolute;
+      left: 0;
+      margin-top: size-calc-iPhone(4128);
+      margin-left: size-calc-iPhone(200);
+
+      @media (min-width: 540px) {
+        margin-top: size-calc-iPad(4128);
+        margin-left: size-calc-iPad(420);
+      }
+    }
+
+    .phase-select-23 {
+      position: absolute;
+      left: 0;
+      margin-top: size-calc-iPhone(4256);
+      margin-left: size-calc-iPhone(240);
+
+      @media (min-width: 540px) {
+        margin-top: size-calc-iPad(4256);
+        margin-left: size-calc-iPad(460);
+      }
+    }
+
+    .phase-select-24 {
+      position: absolute;
+      left: 0;
+      margin-top: size-calc-iPhone(4384);
+      margin-left: size-calc-iPhone(200);
+
+      @media (min-width: 540px) {
+        margin-top: size-calc-iPad(4384);
+        margin-left: size-calc-iPad(420);
+      }
+    }
+
+    .phase-select-25 {
+      position: absolute;
+      left: 0;
+      margin-top: size-calc-iPhone(5104);
+      margin-left: size-calc-iPhone(156);
+
+      @media (min-width: 540px) {
+        margin-top: size-calc-iPad(5104);
+        margin-left: size-calc-iPad(377);
+      }
+    }
+
+    .phase-select-26 {
+      position: absolute;
+      left: 0;
+      margin-top: size-calc-iPhone(5232);
+      margin-left: size-calc-iPhone(200);
+
+      @media (min-width: 540px) {
+        margin-top: size-calc-iPad(5232);
+        margin-left: size-calc-iPad(420);
+      }
+    }
+
+    .phase-select-27 {
+      position: absolute;
+      left: 0;
+      margin-top: size-calc-iPhone(5360);
+      margin-left: size-calc-iPhone(240);
+
+      @media (min-width: 540px) {
+        margin-top: size-calc-iPad(5360);
+        margin-left: size-calc-iPad(460);
+      }
+    }
+
+    .phase-select-28 {
+      position: absolute;
+      left: 0;
+      margin-top: size-calc-iPhone(5488);
+      margin-left: size-calc-iPhone(200);
+
+      @media (min-width: 540px) {
+        margin-top: size-calc-iPad(5488);
+        margin-left: size-calc-iPad(420);
+      }
+    }
+
+    .phase-select-29 {
+      position: absolute;
+      left: 0;
+      margin-top: size-calc-iPhone(5616);
+      margin-left: size-calc-iPhone(160);
+
+      @media (min-width: 540px) {
+        margin-top: size-calc-iPad(5616);
+        margin-left: size-calc-iPad(380);
+      }
+    }
+
+    .phase-select-30 {
+      position: absolute;
+      left: 0;
+      margin-top: size-calc-iPhone(5744);
+      margin-left: size-calc-iPhone(120);
+
+      @media (min-width: 540px) {
+        margin-top: size-calc-iPad(5744);
+        margin-left: size-calc-iPad(340);
+      }
+    }
+
+    .phase-select-31 {
+      position: absolute;
+      left: 0;
+      margin-top: size-calc-iPhone(5872);
+      margin-left: size-calc-iPhone(80);
+
+      @media (min-width: 540px) {
+        margin-top: size-calc-iPad(5872);
+        margin-left: size-calc-iPad(300);
+      }
+    }
+
+    .phase-select-32 {
+      position: absolute;
+      left: 0;
+      margin-top: size-calc-iPhone(6000);
+      margin-left: size-calc-iPhone(120);
+
+      @media (min-width: 540px) {
+        margin-top: size-calc-iPad(6000);
+        margin-left: size-calc-iPad(340);
+      }
+    }
+
+    .phase-select-33 {
+      position: absolute;
+      left: 0;
+      margin-top: size-calc-iPhone(6720);
+      margin-left: size-calc-iPhone(156);
+
+      @media (min-width: 540px) {
+        margin-top: size-calc-iPad(6720);
+        margin-left: size-calc-iPad(377);
+      }
+    }
+
+    .phase-select-34 {
+      position: absolute;
+      left: 0;
+      margin-top: size-calc-iPhone(6848);
+      margin-left: size-calc-iPhone(120);
+
+      @media (min-width: 540px) {
+        margin-top: size-calc-iPad(6848);
+        margin-left: size-calc-iPad(340);
+      }
+    }
+
+    .phase-select-35 {
+      position: absolute;
+      left: 0;
+      margin-top: size-calc-iPhone(6976);
+      margin-left: size-calc-iPhone(80);
+
+      @media (min-width: 540px) {
+        margin-top: size-calc-iPad(6976);
+        margin-left: size-calc-iPad(300);
+      }
+    }
+
+    .phase-select-36 {
+      position: absolute;
+      left: 0;
+      margin-top: size-calc-iPhone(7104);
+      margin-left: size-calc-iPhone(120);
+
+      @media (min-width: 540px) {
+        margin-top: size-calc-iPad(7104);
+        margin-left: size-calc-iPad(340);
+      }
+    }
+
+    .phase-select-37 {
+      position: absolute;
+      left: 0;
+      margin-top: size-calc-iPhone(7232);
+      margin-left: size-calc-iPhone(160);
+
+      @media (min-width: 540px) {
+        margin-top: size-calc-iPad(7232);
+        margin-left: size-calc-iPad(380);
+      }
+    }
+
+    .phase-select-38 {
+      position: absolute;
+      left: 0;
+      margin-top: size-calc-iPhone(7360);
+      margin-left: size-calc-iPhone(200);
+
+      @media (min-width: 540px) {
+        margin-top: size-calc-iPad(7360);
+        margin-left: size-calc-iPad(420);
+      }
+    }
+
+    .phase-select-39 {
+      position: absolute;
+      left: 0;
+      margin-top: size-calc-iPhone(7488);
+      margin-left: size-calc-iPhone(240);
+
+      @media (min-width: 540px) {
+        margin-top: size-calc-iPad(7488);
+        margin-left: size-calc-iPad(460);
+      }
+    }
+
+    .phase-select-40 {
+      position: absolute;
+      left: 0;
+      margin-top: size-calc-iPhone(7616);
+      margin-left: size-calc-iPhone(200);
+
+      @media (min-width: 540px) {
+        margin-top: size-calc-iPad(7616);
+        margin-left: size-calc-iPad(420);
+      }
+    }
   }
 }

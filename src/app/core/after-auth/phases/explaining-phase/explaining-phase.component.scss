@@ -30,8 +30,8 @@
       margin-bottom: size-calc-iPhone(102);
       color: black;
       width: size-calc-iPhone(296);
-      font-size: size-calc-iPhone(24);
-      letter-spacing: size-calc-iPhone(2);
+      font-size: size-calc-iPhone(22);
+      letter-spacing: size-calc-iPhone(1);
       white-space: pre-wrap;
       overflow: hidden;
       color: #964B00;
@@ -39,8 +39,8 @@
       @media (min-width: 540px) {
         margin-bottom: size-calc-iPad(102);
         width: size-calc-iPad(296);
-        font-size: size-calc-iPad(24);
-        letter-spacing: size-calc-iPad(2);
+        font-size: size-calc-iPad(22);
+        letter-spacing: size-calc-iPad(1);
         white-space: pre-wrap;
         overflow: hidden;
       }

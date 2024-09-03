@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { HeaderPhasesComponent } from '../../../../shared/header-phases/header-phases.component';
-import { CdkDragDrop, DragDropModule, transferArrayItem } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, CdkDropList, DragDropModule, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MockPhasesDataTypeService } from '../../../../service/mock-phases-data-type.service';
@@ -22,9 +22,7 @@ export class ConditionalStructuresComponent implements OnInit {
 
   mock!: any[];
   phaseId!: number;
-  variables: any[] = [];
-  answers: any[] = [];
-  variablesNumbers: any[] = [];
+  variablesArray: any[][] = [];
   correct_answers: any[] = [];
   isContinueDisabled: boolean = true;
   isValidationMode: boolean = false;
@@ -32,13 +30,12 @@ export class ConditionalStructuresComponent implements OnInit {
   validationMessage: string = '';
   isDragDisabled: boolean = false;
   numberOfPagesTotal: number = 0;
+  currentPage: number = 0;
   numberOfPagesPhases: number = 0;
   numberOfPagesExplaining: number = 0;
-  currentPage: number = 0;
   currentPagePhase: number = 0;
-  numberFirstPage: number = 0;
-  numberSecondPage: number = 0;
-  numberResponsePage: number = 0;
+  dropListIds: string[] = [];
+  mazeConfiguration: { class: string; content?: string; }[] = [];
 
 
   constructor(
@@ -57,10 +54,6 @@ export class ConditionalStructuresComponent implements OnInit {
     this.loadPageData(this.phaseId);
   }
 
-  private checkContinueButtonState() {
-    this.isContinueDisabled = this.answers.length === 0;
-  }
-
   private loadPageData(phaseId: number) {
     const item = this.mock.find(data => data.id === phaseId);
     this.numberOfPagesPhases = item?.number_of_pages_phases || 0;
@@ -69,44 +62,53 @@ export class ConditionalStructuresComponent implements OnInit {
 
     switch (this.currentPagePhase) {
       case 1:
-        this.variables = [...item.variables_page_1];
-        this.variablesNumbers = [...item.variables_numbers_page_1];
+        this.variablesArray = item.variables_page_1.map((variable: any) => [variable]);
         this.correct_answers = [...item.correct_answers_page_1];
+        this.mazeConfiguration = [...item.maze_configuration_1];
         break;
       case 2:
-        this.variables = [...item.variables_page_2];
-        this.variablesNumbers = [...item.variables_numbers_page_2];
+        this.variablesArray = item.variables_page_2.map((variable: any) => [variable]);
         this.correct_answers = [...item.correct_answers_page_2];
+        this.mazeConfiguration = [...item.maze_configuration_2];
         break;
       case 3:
-        this.variables = [...item.variables_page_3];
-        this.variablesNumbers = [...item.variables_numbers_page_3];
+        this.variablesArray = item.variables_page_3.map((variable: any) => [variable]);
         this.correct_answers = [...item.correct_answers_page_3];
+        this.mazeConfiguration = [...item.maze_configuration_3];
         break;
       case 4:
-        this.variables = [...item.variables_page_4];
-        this.variablesNumbers = [...item.variables_numbers_page_4];
+        this.variablesArray = item.variables_page_4.map((variable: any) => [variable]);
         this.correct_answers = [...item.correct_answers_page_4];
+        this.mazeConfiguration = [...item.maze_configuration_4];
+        break;
+      case 5:
+        this.variablesArray = item.variables_page_5.map((variable: any) => [variable]);
+        this.correct_answers = [...item.correct_answers_page_5];
+        this.mazeConfiguration = [...item.maze_configuration_5];
+        break;
+      case 6:
+        this.variablesArray = item.variables_page_6.map((variable: any) => [variable]);
+        this.correct_answers = [...item.correct_answers_page_6];
+        this.mazeConfiguration = [...item.maze_configuration_6];
         break;
     }
 
-    this.answers = [];
+    this.dropListIds = this.variablesArray.map((_, index) => `dropList${index}`);
     this.checkContinueButtonState();
   }
 
   continue() {
     this.progressBarService.updateProgress((this.currentPage / this.numberOfPagesTotal) * 100);
     if (this.isValidationMode) {
+      this.isValidationMode = false;
       this.currentPage++;
       this.currentPagePhase++;
-      if (this.currentPage <= (this.numberOfPagesExplaining + this.numberOfPagesPhases)) {
+      if (this.currentPage <= this.numberOfPagesPhases + this.numberOfPagesExplaining) {
         this.loadPageData(this.phaseId);
       } else {
         this.progressBarService.setCurrentPage(this.currentPage);
         this.router.navigate(['/authenticated/phases/knowledge-validation-rectangular-box', this.phaseId]);
       }
-      this.isValidationMode = false;
-      this.validationMessage = '';
       this.isDragDisabled = false;
     } else {
       this.compareAnswers();
@@ -116,10 +118,8 @@ export class ConditionalStructuresComponent implements OnInit {
   }
 
   private compareAnswers() {
-    const sortedAnswers = [...this.answers].sort();
-    const sortedCorrectAnswers = [...this.correct_answers].sort();
-
-    if (JSON.stringify(sortedAnswers) === JSON.stringify(sortedCorrectAnswers)) {
+    const currentOrder = this.variablesArray.map(variableList => variableList[0]);
+    if (JSON.stringify(currentOrder) === JSON.stringify(this.correct_answers)) {
       this.validationMessage = 'Excelente!';
       this.isCorrect = true;
     } else {
@@ -128,28 +128,26 @@ export class ConditionalStructuresComponent implements OnInit {
     }
   }
 
-  drop(event: CdkDragDrop<string[]>) {
+  private checkContinueButtonState() {
+    this.isContinueDisabled = this.variablesArray.some(variable => variable.length === 0);
+  }
+
+  drop(event: CdkDragDrop<string[]>, currentIndex: number) {
     if (this.isDragDisabled) return;
 
-    if (event.previousContainer !== event.container) {
+    const previousContainerIndex = this.dropListIds.indexOf(event.previousContainer.id);
+    const currentContainerIndex = this.dropListIds.indexOf(event.container.id);
 
-      if (event.container.id === 'answersList' && this.answers.length > 0) {
-        transferArrayItem(
-          event.container.data,
-          this.variables,
-          0,
-          this.variables.length
-        );
+    if (previousContainerIndex !== -1 && currentContainerIndex !== -1) {
+      if (previousContainerIndex === currentContainerIndex && event.previousIndex === event.currentIndex) {
+        return;
       }
 
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex,
-      );
-
-      this.checkContinueButtonState();
+      const [movedItem] = this.variablesArray[previousContainerIndex].splice(0, 1);
+      const [replacedItem] = this.variablesArray[currentContainerIndex].splice(0, 1, movedItem);
+      this.variablesArray[previousContainerIndex].splice(0, 1, replacedItem);
     }
+
+    this.checkContinueButtonState();
   }
 }

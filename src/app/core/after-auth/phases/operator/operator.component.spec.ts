@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ArithmeticOperatorComponent } from './arithmetic-operator.component';
+import { ArithmeticOperatorComponent } from './operator.component';
 
 describe('ArithmeticOperatorComponent', () => {
   let component: ArithmeticOperatorComponent;
@@ -11,7 +11,7 @@ describe('ArithmeticOperatorComponent', () => {
       imports: [ArithmeticOperatorComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(ArithmeticOperatorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
