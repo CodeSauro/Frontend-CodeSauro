@@ -20,7 +20,7 @@ main {
   }
 
   .container {
-    //background-color: rgba(0, 0, 0, 0.1);
+    //background-color: rgba(0, 0, 0, 0.05);
     height: size-calc-iPhone-height(7957);
     backdrop-filter: blur(size-calc-iPhone(4));
     -webkit-backdrop-filter: blur(size-calc-iPhone(4));
@@ -99,6 +99,13 @@ main {
             height: size-calc-iPad(10);
             border-radius: size-calc-iPad(10);
             box-shadow: 0 size-calc-iPad(2) size-calc-iPad(2) rgba(0, 0, 0, 0.25);
+          }
+
+          .progress {
+            background-color: #FFCF25;
+            height: 100%;
+            transition: width 0.3s ease;
+            border-radius: size-calc-iPhone(10);
           }
         }
       }

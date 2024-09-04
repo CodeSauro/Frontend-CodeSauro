@@ -22,12 +22,12 @@
 
     @media (min-width: 540px) {
       width: size-calc-iPad(393);
-      height: size-calc-iPad(389);
+      height: size-calc-iPad(392);
     }
 
     #typing-animation {
       text-align: center;
-      margin-bottom: size-calc-iPhone(102);
+      margin-bottom: size-calc-iPhone(112);
       color: black;
       width: size-calc-iPhone(296);
       font-size: size-calc-iPhone(22);
@@ -37,7 +37,7 @@
       color: #964B00;
 
       @media (min-width: 540px) {
-        margin-bottom: size-calc-iPad(102);
+        margin-bottom: size-calc-iPad(77);
         width: size-calc-iPad(296);
         font-size: size-calc-iPad(22);
         letter-spacing: size-calc-iPad(1);

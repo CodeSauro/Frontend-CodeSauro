@@ -12,6 +12,7 @@ export class MockPhasesDataTypeService {
         ra: 1,
         number_of_pages_explaining: 6,
         explaining_phase_page_1: "Ah, olá, jovem aventureiro! Bem-vindo ao Vale das Variáveis, onde as poções mágicas são criadas com um toque de programação! Hoje, vamos preparar uma poção especial.",
+        //explaining_phase_page_1: "a",
         explaining_phase_page_2: "Mas cuidado, não podemos misturar os ingredientes de qualquer jeito. Cada ingrediente aqui representa um tipo de dado diferente, e precisamos escolher com sabedoria para que a poção funcione corretamente.",
         explaining_phase_page_3: "Você sabe o que são variáveis? Deixa eu te explicar de forma simples! Uma variável é como uma caixinha onde guardamos informações importantes para usar na nossa programação.",
         explaining_phase_page_4: "Dependendo do tipo de informação que queremos guardar, usamos um tipo de caixinha diferente. Aqui no Portugol, temos algumas caixinhas especiais, ou melhor, tipos de variáveis, o qual iremos descobrir com o passar das fases.",
@@ -680,8 +681,8 @@ export class MockPhasesDataTypeService {
         correct_answers_page_1: ["ENQUANTO caminho", "caminhar", `"SE caminho = "B"`, "parar"],
         maze_configuration_1: [
           { class: "invisible" }, { class: "invisible" }, { class: "invisible" }, { class: "invisible" }, { class: "invisible" }, { class: "invisible" },
-          { class: "invisible" }, { class: "invisible" }, { class: "invisible" }, { class: "green" }, { class: "green" }, { class: "red", content: "B" },
-          { class: "red", content: "A" }, { class: "green" }, { class: "green" }, { class: "green" }, { class: "invisible" }, { class: "invisible" },
+          { class: "red", content: "A" }, { class: "green" }, { class: "green" }, { class: "green" }, { class: "green" }, { class: "red", content: "B" },
+          { class: "invisible" }, { class: "invisible" }, { class: "invisible" }, { class: "invisible" }, { class: "invisible" }, { class: "invisible" },
           { class: "invisible" }, { class: "invisible" }, { class: "invisible" }, { class: "invisible" }, { class: "invisible" }, { class: "invisible" }
         ],
         number_of_pages_questions: 1,
