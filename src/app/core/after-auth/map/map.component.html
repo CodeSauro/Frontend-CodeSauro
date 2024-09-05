@@ -2,8 +2,28 @@
   <div class="container">
     <app-header-stars-lives-config></app-header-stars-lives-config>
 
+    <div class="ra1">
+      <p>Tipo de dados</p>
+    </div>
+
+    <div class="ra2">
+      <p>Operadores Aritméticos</p>
+    </div>
+
+    <div class="ra3">
+      <p>Operadores Lógicos</p>
+    </div>
+
+    <div class="ra4">
+      <p>Estruturas Condicionais</p>
+    </div>
+
+    <div class="ra5">
+      <p>Laços de Repetição</p>
+    </div>
+
     <!-- Fase 1 -->
-    <div class="phase-select phase-select-1">
+    <div class="phase-select phase-select-1" id="fase-1">
       <button class="phase-number" [ngStyle]="{'background-image': getBackgroundImage(progressos[0].estrelas)}">
         <p *ngIf="progressos[0] && !progressos[0].bloqueada; else lockedPhase1" (click)="start_phase(1)">
           1
@@ -21,7 +41,7 @@
     </div>
 
     <!-- Fase 2 -->
-    <div class="phase-select phase-select-2">
+    <div class="phase-select phase-select-2" id="fase-2">
       <button class="phase-number" [ngStyle]="{'background-image': getBackgroundImage(progressos[1].estrelas)}">
         <p *ngIf="progressos[1] && !progressos[1].bloqueada; else lockedPhase2" (click)="start_phase(2)">
           2
@@ -39,7 +59,7 @@
     </div>
 
     <!-- Fase 3 -->
-    <div class="phase-select phase-select-3">
+    <div class="phase-select phase-select-3" id="fase-3">
       <button class="phase-number" [ngStyle]="{'background-image': getBackgroundImage(progressos[2].estrelas)}">
         <p *ngIf="progressos[2] && !progressos[2].bloqueada; else lockedPhase3" (click)="start_phase(3)">
           3
@@ -57,7 +77,7 @@
     </div>
 
     <!-- Fase 4 -->
-    <div class="phase-select phase-select-4">
+    <div class="phase-select phase-select-4" id="fase-4">
       <button class="phase-number" [ngStyle]="{'background-image': getBackgroundImage(progressos[3].estrelas)}">
         <p *ngIf="progressos[3] && !progressos[3].bloqueada; else lockedPhase4" (click)="start_phase(4)">
           4
@@ -75,7 +95,7 @@
     </div>
 
     <!-- Fase 5 -->
-    <div class="phase-select phase-select-5">
+    <div class="phase-select phase-select-5" id="fase-5">
       <button class="phase-number" [ngStyle]="{'background-image': getBackgroundImage(progressos[4].estrelas)}">
         <p *ngIf="progressos[4] && !progressos[4].bloqueada; else lockedPhase5" (click)="start_phase(5)">
           5
@@ -92,9 +112,8 @@
       </div>
     </div>
 
-    <!-- Replicando até a fase 40 -->
     <!-- Fase 6 -->
-    <div class="phase-select phase-select-6">
+    <div class="phase-select phase-select-6" id="fase-6">
       <button class="phase-number" [ngStyle]="{'background-image': getBackgroundImage(progressos[5].estrelas)}">
         <p *ngIf="progressos[5] && !progressos[5].bloqueada; else lockedPhase6" (click)="start_phase(6)">
           6
@@ -112,7 +131,7 @@
     </div>
 
     <!-- Fase 7 -->
-    <div class="phase-select phase-select-7">
+    <div class="phase-select phase-select-7" id="fase-7">
       <button class="phase-number" [ngStyle]="{'background-image': getBackgroundImage(progressos[6].estrelas)}">
         <p *ngIf="progressos[6] && !progressos[6].bloqueada; else lockedPhase7" (click)="start_phase(7)">
           7
@@ -130,7 +149,7 @@
     </div>
 
     <!-- Fase 8 -->
-    <div class="phase-select phase-select-8">
+    <div class="phase-select phase-select-8" id="fase-8">
       <button class="phase-number" [ngStyle]="{'background-image': getBackgroundImage(progressos[7].estrelas)}">
         <p *ngIf="progressos[7] && !progressos[7].bloqueada; else lockedPhase8" (click)="start_phase(8)">
           8
@@ -148,7 +167,7 @@
     </div>
 
     <!-- Fase 9 -->
-    <div class="phase-select phase-select-9">
+    <div class="phase-select phase-select-9" id="fase-9">
       <button class="phase-number" [ngStyle]="{'background-image': getBackgroundImage(progressos[8].estrelas)}">
         <p *ngIf="progressos[8] && !progressos[8].bloqueada; else lockedPhase9" (click)="start_phase(9)">
           9
@@ -166,7 +185,7 @@
     </div>
 
     <!-- Fase 10 -->
-    <div class="phase-select phase-select-10">
+    <div class="phase-select phase-select-10" id="fase-10">
       <button class="phase-number" [ngStyle]="{'background-image': getBackgroundImage(progressos[9].estrelas)}">
         <p *ngIf="progressos[9] && !progressos[9].bloqueada; else lockedPhase10" (click)="start_phase(10)">
           10
@@ -183,244 +202,242 @@
       </div>
     </div>
 
-        <!-- Fase 11 -->
-        <div class="phase-select phase-select-11">
-          <button class="phase-number" [ngStyle]="{'background-image': getBackgroundImage(progressos[10].estrelas)}">
-            <p *ngIf="progressos[10] && !progressos[10].bloqueada; else lockedPhase11" (click)="start_phase(11)">
-              11
-            </p>
-            <ng-template #lockedPhase11>
-              <img src="../../../../assets/icon-padlock-phases.png" alt="Locked">
-            </ng-template>
-          </button>
+    <!-- Fase 11 -->
+    <div class="phase-select phase-select-11" id="fase-11">
+      <button class="phase-number" [ngStyle]="{'background-image': getBackgroundImage(progressos[10].estrelas)}">
+        <p *ngIf="progressos[10] && !progressos[10].bloqueada; else lockedPhase11" (click)="start_phase(11)">
+          11
+        </p>
+        <ng-template #lockedPhase11>
+          <img src="../../../../assets/icon-padlock-phases.png" alt="Locked">
+        </ng-template>
+      </button>
 
-          <div *ngIf="!progressos[10]?.bloqueada" class="progress-stars-bar-container">
-            <div class="progress-stars-bar">
-              <div class="progress" [ngStyle]="{'width': getProgressWidth(progressos[10].estrelas)}"></div>
-            </div>
-          </div>
+      <div *ngIf="!progressos[10]?.bloqueada" class="progress-stars-bar-container">
+        <div class="progress-stars-bar">
+          <div class="progress" [ngStyle]="{'width': getProgressWidth(progressos[10].estrelas)}"></div>
         </div>
+      </div>
+    </div>
 
-        <!-- Fase 12 -->
-        <div class="phase-select phase-select-12">
-          <button class="phase-number" [ngStyle]="{'background-image': getBackgroundImage(progressos[11].estrelas)}">
-            <p *ngIf="progressos[11] && !progressos[11].bloqueada; else lockedPhase12" (click)="start_phase(12)">
-              12
-            </p>
-            <ng-template #lockedPhase12>
-              <img src="../../../../assets/icon-padlock-phases.png" alt="Locked">
-            </ng-template>
-          </button>
+    <!-- Fase 12 -->
+    <div class="phase-select phase-select-12" id="fase-12">
+      <button class="phase-number" [ngStyle]="{'background-image': getBackgroundImage(progressos[11].estrelas)}">
+        <p *ngIf="progressos[11] && !progressos[11].bloqueada; else lockedPhase12" (click)="start_phase(12)">
+          12
+        </p>
+        <ng-template #lockedPhase12>
+          <img src="../../../../assets/icon-padlock-phases.png" alt="Locked">
+        </ng-template>
+      </button>
 
-          <div *ngIf="!progressos[11]?.bloqueada" class="progress-stars-bar-container">
-            <div class="progress-stars-bar">
-              <div class="progress" [ngStyle]="{'width': getProgressWidth(progressos[11].estrelas)}"></div>
-            </div>
-          </div>
+      <div *ngIf="!progressos[11]?.bloqueada" class="progress-stars-bar-container">
+        <div class="progress-stars-bar">
+          <div class="progress" [ngStyle]="{'width': getProgressWidth(progressos[11].estrelas)}"></div>
         </div>
+      </div>
+    </div>
 
-        <!-- Fase 13 -->
-        <div class="phase-select phase-select-13">
-          <button class="phase-number" [ngStyle]="{'background-image': getBackgroundImage(progressos[12].estrelas)}">
-            <p *ngIf="progressos[12] && !progressos[12].bloqueada; else lockedPhase13" (click)="start_phase(13)">
-              13
-            </p>
-            <ng-template #lockedPhase13>
-              <img src="../../../../assets/icon-padlock-phases.png" alt="Locked">
-            </ng-template>
-          </button>
+    <!-- Fase 13 -->
+    <div class="phase-select phase-select-13" id="fase-13">
+      <button class="phase-number" [ngStyle]="{'background-image': getBackgroundImage(progressos[12].estrelas)}">
+        <p *ngIf="progressos[12] && !progressos[12].bloqueada; else lockedPhase13" (click)="start_phase(13)">
+          13
+        </p>
+        <ng-template #lockedPhase13>
+          <img src="../../../../assets/icon-padlock-phases.png" alt="Locked">
+        </ng-template>
+      </button>
 
-          <div *ngIf="!progressos[12]?.bloqueada" class="progress-stars-bar-container">
-            <div class="progress-stars-bar">
-              <div class="progress" [ngStyle]="{'width': getProgressWidth(progressos[12].estrelas)}"></div>
-            </div>
-          </div>
+      <div *ngIf="!progressos[12]?.bloqueada" class="progress-stars-bar-container">
+        <div class="progress-stars-bar">
+          <div class="progress" [ngStyle]="{'width': getProgressWidth(progressos[12].estrelas)}"></div>
         </div>
+      </div>
+    </div>
 
-        <!-- Fase 14 -->
-        <div class="phase-select phase-select-14">
-          <button class="phase-number" [ngStyle]="{'background-image': getBackgroundImage(progressos[13].estrelas)}">
-            <p *ngIf="progressos[13] && !progressos[13].bloqueada; else lockedPhase14" (click)="start_phase(14)">
-              14
-            </p>
-            <ng-template #lockedPhase14>
-              <img src="../../../../assets/icon-padlock-phases.png" alt="Locked">
-            </ng-template>
-          </button>
+    <!-- Fase 14 -->
+    <div class="phase-select phase-select-14" id="fase-14">
+      <button class="phase-number" [ngStyle]="{'background-image': getBackgroundImage(progressos[13].estrelas)}">
+        <p *ngIf="progressos[13] && !progressos[13].bloqueada; else lockedPhase14" (click)="start_phase(14)">
+          14
+        </p>
+        <ng-template #lockedPhase14>
+          <img src="../../../../assets/icon-padlock-phases.png" alt="Locked">
+        </ng-template>
+      </button>
 
-          <div *ngIf="!progressos[13]?.bloqueada" class="progress-stars-bar-container">
-            <div class="progress-stars-bar">
-              <div class="progress" [ngStyle]="{'width': getProgressWidth(progressos[13].estrelas)}"></div>
-            </div>
-          </div>
+      <div *ngIf="!progressos[13]?.bloqueada" class="progress-stars-bar-container">
+        <div class="progress-stars-bar">
+          <div class="progress" [ngStyle]="{'width': getProgressWidth(progressos[13].estrelas)}"></div>
         </div>
+      </div>
+    </div>
 
-        <!-- Fase 15 -->
-        <div class="phase-select phase-select-15">
-          <button class="phase-number" [ngStyle]="{'background-image': getBackgroundImage(progressos[14].estrelas)}">
-            <p *ngIf="progressos[14] && !progressos[14].bloqueada; else lockedPhase15" (click)="start_phase(15)">
-              15
-            </p>
-            <ng-template #lockedPhase15>
-              <img src="../../../../assets/icon-padlock-phases.png" alt="Locked">
-            </ng-template>
-          </button>
+    <!-- Fase 15 -->
+    <div class="phase-select phase-select-15" id="fase-15">
+      <button class="phase-number" [ngStyle]="{'background-image': getBackgroundImage(progressos[14].estrelas)}">
+        <p *ngIf="progressos[14] && !progressos[14].bloqueada; else lockedPhase15" (click)="start_phase(15)">
+          15
+        </p>
+        <ng-template #lockedPhase15>
+          <img src="../../../../assets/icon-padlock-phases.png" alt="Locked">
+        </ng-template>
+      </button>
 
-          <div *ngIf="!progressos[14]?.bloqueada" class="progress-stars-bar-container">
-            <div class="progress-stars-bar">
-              <div class="progress" [ngStyle]="{'width': getProgressWidth(progressos[14].estrelas)}"></div>
-            </div>
-          </div>
+      <div *ngIf="!progressos[14]?.bloqueada" class="progress-stars-bar-container">
+        <div class="progress-stars-bar">
+          <div class="progress" [ngStyle]="{'width': getProgressWidth(progressos[14].estrelas)}"></div>
         </div>
+      </div>
+    </div>
 
-        <!-- Fase 16 -->
-        <div class="phase-select phase-select-16">
-          <button class="phase-number" [ngStyle]="{'background-image': getBackgroundImage(progressos[15].estrelas)}">
-            <p *ngIf="progressos[15] && !progressos[15].bloqueada; else lockedPhase16" (click)="start_phase(16)">
-              16
-            </p>
-            <ng-template #lockedPhase16>
-              <img src="../../../../assets/icon-padlock-phases.png" alt="Locked">
-            </ng-template>
-          </button>
+    <!-- Fase 16 -->
+    <div class="phase-select phase-select-16" id="fase-16">
+      <button class="phase-number" [ngStyle]="{'background-image': getBackgroundImage(progressos[15].estrelas)}">
+        <p *ngIf="progressos[15] && !progressos[15].bloqueada; else lockedPhase16" (click)="start_phase(16)">
+          16
+        </p>
+        <ng-template #lockedPhase16>
+          <img src="../../../../assets/icon-padlock-phases.png" alt="Locked">
+        </ng-template>
+      </button>
 
-          <div *ngIf="!progressos[15]?.bloqueada" class="progress-stars-bar-container">
-            <div class="progress-stars-bar">
-              <div class="progress" [ngStyle]="{'width': getProgressWidth(progressos[15].estrelas)}"></div>
-            </div>
-          </div>
+      <div *ngIf="!progressos[15]?.bloqueada" class="progress-stars-bar-container">
+        <div class="progress-stars-bar">
+          <div class="progress" [ngStyle]="{'width': getProgressWidth(progressos[15].estrelas)}"></div>
         </div>
+      </div>
+    </div>
 
-        <!-- Fase 17 -->
-        <div class="phase-select phase-select-17">
-          <button class="phase-number" [ngStyle]="{'background-image': getBackgroundImage(progressos[16].estrelas)}">
-            <p *ngIf="progressos[16] && !progressos[16].bloqueada; else lockedPhase17" (click)="start_phase(17)">
-              17
-            </p>
-            <ng-template #lockedPhase17>
-              <img src="../../../../assets/icon-padlock-phases.png" alt="Locked">
-            </ng-template>
-          </button>
+    <!-- Fase 17 -->
+    <div class="phase-select phase-select-17" id="fase-17">
+      <button class="phase-number" [ngStyle]="{'background-image': getBackgroundImage(progressos[16].estrelas)}">
+        <p *ngIf="progressos[16] && !progressos[16].bloqueada; else lockedPhase17" (click)="start_phase(17)">
+          17
+        </p>
+        <ng-template #lockedPhase17>
+          <img src="../../../../assets/icon-padlock-phases.png" alt="Locked">
+        </ng-template>
+      </button>
 
-          <div *ngIf="!progressos[16]?.bloqueada" class="progress-stars-bar-container">
-            <div class="progress-stars-bar">
-              <div class="progress" [ngStyle]="{'width': getProgressWidth(progressos[16].estrelas)}"></div>
-            </div>
-          </div>
+      <div *ngIf="!progressos[16]?.bloqueada" class="progress-stars-bar-container">
+        <div class="progress-stars-bar">
+          <div class="progress" [ngStyle]="{'width': getProgressWidth(progressos[16].estrelas)}"></div>
         </div>
+      </div>
+    </div>
 
-        <!-- Fase 18 -->
-        <div class="phase-select phase-select-18">
-          <button class="phase-number" [ngStyle]="{'background-image': getBackgroundImage(progressos[17].estrelas)}">
-            <p *ngIf="progressos[17] && !progressos[17].bloqueada; else lockedPhase18" (click)="start_phase(18)">
-              18
-            </p>
-            <ng-template #lockedPhase18>
-              <img src="../../../../assets/icon-padlock-phases.png" alt="Locked">
-            </ng-template>
-          </button>
+    <!-- Fase 18 -->
+    <div class="phase-select phase-select-18" id="fase-18">
+      <button class="phase-number" [ngStyle]="{'background-image': getBackgroundImage(progressos[17].estrelas)}">
+        <p *ngIf="progressos[17] && !progressos[17].bloqueada; else lockedPhase18" (click)="start_phase(18)">
+          18
+        </p>
+        <ng-template #lockedPhase18>
+          <img src="../../../../assets/icon-padlock-phases.png" alt="Locked">
+        </ng-template>
+      </button>
 
-          <div *ngIf="!progressos[17]?.bloqueada" class="progress-stars-bar-container">
-            <div class="progress-stars-bar">
-              <div class="progress" [ngStyle]="{'width': getProgressWidth(progressos[17].estrelas)}"></div>
-            </div>
-          </div>
+      <div *ngIf="!progressos[17]?.bloqueada" class="progress-stars-bar-container">
+        <div class="progress-stars-bar">
+          <div class="progress" [ngStyle]="{'width': getProgressWidth(progressos[17].estrelas)}"></div>
         </div>
+      </div>
+    </div>
 
-        <!-- Fase 19 -->
-        <div class="phase-select phase-select-19">
-          <button class="phase-number" [ngStyle]="{'background-image': getBackgroundImage(progressos[18].estrelas)}">
-            <p *ngIf="progressos[18] && !progressos[18].bloqueada; else lockedPhase19" (click)="start_phase(19)">
-              19
-            </p>
-            <ng-template #lockedPhase19>
-              <img src="../../../../assets/icon-padlock-phases.png" alt="Locked">
-            </ng-template>
-          </button>
+    <!-- Fase 19 -->
+    <div class="phase-select phase-select-19" id="fase-19">
+      <button class="phase-number" [ngStyle]="{'background-image': getBackgroundImage(progressos[18].estrelas)}">
+        <p *ngIf="progressos[18] && !progressos[18].bloqueada; else lockedPhase19" (click)="start_phase(19)">
+          19
+        </p>
+        <ng-template #lockedPhase19>
+          <img src="../../../../assets/icon-padlock-phases.png" alt="Locked">
+        </ng-template>
+      </button>
 
-          <div *ngIf="!progressos[18]?.bloqueada" class="progress-stars-bar-container">
-            <div class="progress-stars-bar">
-              <div class="progress" [ngStyle]="{'width': getProgressWidth(progressos[18].estrelas)}"></div>
-            </div>
-          </div>
+      <div *ngIf="!progressos[18]?.bloqueada" class="progress-stars-bar-container">
+        <div class="progress-stars-bar">
+          <div class="progress" [ngStyle]="{'width': getProgressWidth(progressos[18].estrelas)}"></div>
         </div>
+      </div>
+    </div>
 
-        <!-- Fase 20 -->
-        <div class="phase-select phase-select-20">
-          <button class="phase-number" [ngStyle]="{'background-image': getBackgroundImage(progressos[19].estrelas)}">
-            <p *ngIf="progressos[19] && !progressos[19].bloqueada; else lockedPhase20" (click)="start_phase(20)">
-              20
-            </p>
-            <ng-template #lockedPhase20>
-              <img src="../../../../assets/icon-padlock-phases.png" alt="Locked">
-            </ng-template>
-          </button>
+    <!-- Fase 20 -->
+    <div class="phase-select phase-select-20" id="fase-20">
+      <button class="phase-number" [ngStyle]="{'background-image': getBackgroundImage(progressos[19].estrelas)}">
+        <p *ngIf="progressos[19] && !progressos[19].bloqueada; else lockedPhase20" (click)="start_phase(20)">
+          20
+        </p>
+        <ng-template #lockedPhase20>
+          <img src="../../../../assets/icon-padlock-phases.png" alt="Locked">
+        </ng-template>
+      </button>
 
-          <div *ngIf="!progressos[19]?.bloqueada" class="progress-stars-bar-container">
-            <div class="progress-stars-bar">
-              <div class="progress" [ngStyle]="{'width': getProgressWidth(progressos[19].estrelas)}"></div>
-            </div>
-          </div>
+      <div *ngIf="!progressos[19]?.bloqueada" class="progress-stars-bar-container">
+        <div class="progress-stars-bar">
+          <div class="progress" [ngStyle]="{'width': getProgressWidth(progressos[19].estrelas)}"></div>
         </div>
+      </div>
+    </div>
 
-        <!-- Continuação para as fases restantes (21 a 40) -->
+    <!-- Fase 21 -->
+    <div class="phase-select phase-select-21" id="fase-21">
+      <button class="phase-number" [ngStyle]="{'background-image': getBackgroundImage(progressos[20].estrelas)}">
+        <p *ngIf="progressos[20] && !progressos[20].bloqueada; else lockedPhase21" (click)="start_phase(21)">
+          21
+        </p>
+        <ng-template #lockedPhase21>
+          <img src="../../../../assets/icon-padlock-phases.png" alt="Locked">
+        </ng-template>
+      </button>
 
-        <!-- Fase 21 -->
-        <div class="phase-select phase-select-21">
-          <button class="phase-number" [ngStyle]="{'background-image': getBackgroundImage(progressos[20].estrelas)}">
-            <p *ngIf="progressos[20] && !progressos[20].bloqueada; else lockedPhase21" (click)="start_phase(21)">
-              21
-            </p>
-            <ng-template #lockedPhase21>
-              <img src="../../../../assets/icon-padlock-phases.png" alt="Locked">
-            </ng-template>
-          </button>
-
-          <div *ngIf="!progressos[20]?.bloqueada" class="progress-stars-bar-container">
-            <div class="progress-stars-bar">
-              <div class="progress" [ngStyle]="{'width': getProgressWidth(progressos[20].estrelas)}"></div>
-            </div>
-          </div>
+      <div *ngIf="!progressos[20]?.bloqueada" class="progress-stars-bar-container">
+        <div class="progress-stars-bar">
+          <div class="progress" [ngStyle]="{'width': getProgressWidth(progressos[20].estrelas)}"></div>
         </div>
+      </div>
+    </div>
 
-        <!-- Fase 22 -->
-        <div class="phase-select phase-select-22">
-          <button class="phase-number" [ngStyle]="{'background-image': getBackgroundImage(progressos[21].estrelas)}">
-            <p *ngIf="progressos[21] && !progressos[21].bloqueada; else lockedPhase22" (click)="start_phase(22)">
-              22
-            </p>
-            <ng-template #lockedPhase22>
-              <img src="../../../../assets/icon-padlock-phases.png" alt="Locked">
-            </ng-template>
-          </button>
+    <!-- Fase 22 -->
+    <div class="phase-select phase-select-22" id="fase-22">
+      <button class="phase-number" [ngStyle]="{'background-image': getBackgroundImage(progressos[21].estrelas)}">
+        <p *ngIf="progressos[21] && !progressos[21].bloqueada; else lockedPhase22" (click)="start_phase(22)">
+          22
+        </p>
+        <ng-template #lockedPhase22>
+          <img src="../../../../assets/icon-padlock-phases.png" alt="Locked">
+        </ng-template>
+      </button>
 
-          <div *ngIf="!progressos[21]?.bloqueada" class="progress-stars-bar-container">
-            <div class="progress-stars-bar">
-              <div class="progress" [ngStyle]="{'width': getProgressWidth(progressos[21].estrelas)}"></div>
-            </div>
-          </div>
+      <div *ngIf="!progressos[21]?.bloqueada" class="progress-stars-bar-container">
+        <div class="progress-stars-bar">
+          <div class="progress" [ngStyle]="{'width': getProgressWidth(progressos[21].estrelas)}"></div>
         </div>
+      </div>
+    </div>
 
-        <!-- Fase 23 -->
-        <div class="phase-select phase-select-23">
-          <button class="phase-number" [ngStyle]="{'background-image': getBackgroundImage(progressos[22].estrelas)}">
-            <p *ngIf="progressos[22] && !progressos[22].bloqueada; else lockedPhase23" (click)="start_phase(23)">
-              23
-            </p>
-            <ng-template #lockedPhase23>
-              <img src="../../../../assets/icon-padlock-phases.png" alt="Locked">
-            </ng-template>
-          </button>
+    <!-- Fase 23 -->
+    <div class="phase-select phase-select-23" id="fase-23">
+      <button class="phase-number" [ngStyle]="{'background-image': getBackgroundImage(progressos[22].estrelas)}">
+        <p *ngIf="progressos[22] && !progressos[22].bloqueada; else lockedPhase23" (click)="start_phase(23)">
+          23
+        </p>
+        <ng-template #lockedPhase23>
+          <img src="../../../../assets/icon-padlock-phases.png" alt="Locked">
+        </ng-template>
+      </button>
 
-          <div *ngIf="!progressos[22]?.bloqueada" class="progress-stars-bar-container">
-            <div class="progress-stars-bar">
-              <div class="progress" [ngStyle]="{'width': getProgressWidth(progressos[22].estrelas)}"></div>
-            </div>
-          </div>
+      <div *ngIf="!progressos[22]?.bloqueada" class="progress-stars-bar-container">
+        <div class="progress-stars-bar">
+          <div class="progress" [ngStyle]="{'width': getProgressWidth(progressos[22].estrelas)}"></div>
         </div>
+      </div>
+    </div>
 
     <!-- Fase 24 -->
-    <div class="phase-select phase-select-24">
+    <div class="phase-select phase-select-24" id="fase-24">
       <button class="phase-number" [ngStyle]="{'background-image': getBackgroundImage(progressos[23].estrelas)}">
         <p *ngIf="progressos[23] && !progressos[23].bloqueada; else lockedPhase24" (click)="start_phase(24)">
           24
@@ -438,7 +455,7 @@
     </div>
 
     <!-- Fase 25 -->
-    <div class="phase-select phase-select-25">
+    <div class="phase-select phase-select-25" id="fase-25">
       <button class="phase-number" [ngStyle]="{'background-image': getBackgroundImage(progressos[24].estrelas)}">
         <p *ngIf="progressos[24] && !progressos[24].bloqueada; else lockedPhase25" (click)="start_phase(25)">
           25
@@ -456,7 +473,7 @@
     </div>
 
     <!-- Fase 26 -->
-    <div class="phase-select phase-select-26">
+    <div class="phase-select phase-select-26" id="fase-26">
       <button class="phase-number" [ngStyle]="{'background-image': getBackgroundImage(progressos[25].estrelas)}">
         <p *ngIf="progressos[25] && !progressos[25].bloqueada; else lockedPhase26" (click)="start_phase(26)">
           26
@@ -474,7 +491,7 @@
     </div>
 
     <!-- Fase 27 -->
-    <div class="phase-select phase-select-27">
+    <div class="phase-select phase-select-27" id="fase-27">
       <button class="phase-number" [ngStyle]="{'background-image': getBackgroundImage(progressos[26].estrelas)}">
         <p *ngIf="progressos[26] && !progressos[26].bloqueada; else lockedPhase27" (click)="start_phase(27)">
           27
@@ -492,7 +509,7 @@
     </div>
 
     <!-- Fase 28 -->
-    <div class="phase-select phase-select-28">
+    <div class="phase-select phase-select-28" id="fase-28">
       <button class="phase-number" [ngStyle]="{'background-image': getBackgroundImage(progressos[27].estrelas)}">
         <p *ngIf="progressos[27] && !progressos[27].bloqueada; else lockedPhase28" (click)="start_phase(28)">
           28
@@ -510,7 +527,7 @@
     </div>
 
     <!-- Fase 29 -->
-    <div class="phase-select phase-select-29">
+    <div class="phase-select phase-select-29" id="fase-29">
       <button class="phase-number" [ngStyle]="{'background-image': getBackgroundImage(progressos[28].estrelas)}">
         <p *ngIf="progressos[28] && !progressos[28].bloqueada; else lockedPhase29" (click)="start_phase(29)">
           29
@@ -528,7 +545,7 @@
     </div>
 
     <!-- Fase 30 -->
-    <div class="phase-select phase-select-30">
+    <div class="phase-select phase-select-30" id="fase-30">
       <button class="phase-number" [ngStyle]="{'background-image': getBackgroundImage(progressos[29].estrelas)}">
         <p *ngIf="progressos[29] && !progressos[29].bloqueada; else lockedPhase30" (click)="start_phase(30)">
           30
@@ -546,7 +563,7 @@
     </div>
 
     <!-- Fase 31 -->
-    <div class="phase-select phase-select-31">
+    <div class="phase-select phase-select-31" id="fase-31">
       <button class="phase-number" [ngStyle]="{'background-image': getBackgroundImage(progressos[30].estrelas)}">
         <p *ngIf="progressos[30] && !progressos[30].bloqueada; else lockedPhase31" (click)="start_phase(31)">
           31
@@ -564,7 +581,7 @@
     </div>
 
     <!-- Fase 32 -->
-    <div class="phase-select phase-select-32">
+    <div class="phase-select phase-select-32" id="fase-32">
       <button class="phase-number" [ngStyle]="{'background-image': getBackgroundImage(progressos[31].estrelas)}">
         <p *ngIf="progressos[31] && !progressos[31].bloqueada; else lockedPhase32" (click)="start_phase(32)">
           32
@@ -582,7 +599,7 @@
     </div>
 
     <!-- Fase 33 -->
-    <div class="phase-select phase-select-33">
+    <div class="phase-select phase-select-33" id="fase-33">
       <button class="phase-number" [ngStyle]="{'background-image': getBackgroundImage(progressos[32].estrelas)}">
         <p *ngIf="progressos[32] && !progressos[32].bloqueada; else lockedPhase33" (click)="start_phase(33)">
           33
@@ -600,7 +617,7 @@
     </div>
 
     <!-- Fase 34 -->
-    <div class="phase-select phase-select-34">
+    <div class="phase-select phase-select-34" id="fase-34">
       <button class="phase-number" [ngStyle]="{'background-image': getBackgroundImage(progressos[33].estrelas)}">
         <p *ngIf="progressos[33] && !progressos[33].bloqueada; else lockedPhase34" (click)="start_phase(34)">
           34
@@ -618,7 +635,7 @@
     </div>
 
     <!-- Fase 35 -->
-    <div class="phase-select phase-select-35">
+    <div class="phase-select phase-select-35" id="fase-35">
       <button class="phase-number" [ngStyle]="{'background-image': getBackgroundImage(progressos[34].estrelas)}">
         <p *ngIf="progressos[34] && !progressos[34].bloqueada; else lockedPhase35" (click)="start_phase(35)">
           35
@@ -636,7 +653,7 @@
     </div>
 
     <!-- Fase 36 -->
-    <div class="phase-select phase-select-36">
+    <div class="phase-select phase-select-36" id="fase-36">
       <button class="phase-number" [ngStyle]="{'background-image': getBackgroundImage(progressos[35].estrelas)}">
         <p *ngIf="progressos[35] && !progressos[35].bloqueada; else lockedPhase36" (click)="start_phase(36)">
           36
@@ -654,7 +671,7 @@
     </div>
 
     <!-- Fase 37 -->
-    <div class="phase-select phase-select-37">
+    <div class="phase-select phase-select-37" id="fase-37">
       <button class="phase-number" [ngStyle]="{'background-image': getBackgroundImage(progressos[36].estrelas)}">
         <p *ngIf="progressos[36] && !progressos[36].bloqueada; else lockedPhase37" (click)="start_phase(37)">
           37
@@ -672,7 +689,7 @@
     </div>
 
     <!-- Fase 38 -->
-    <div class="phase-select phase-select-38">
+    <div class="phase-select phase-select-38" id="fase-38">
       <button class="phase-number" [ngStyle]="{'background-image': getBackgroundImage(progressos[37].estrelas)}">
         <p *ngIf="progressos[37] && !progressos[37].bloqueada; else lockedPhase38" (click)="start_phase(38)">
           38
@@ -690,7 +707,7 @@
     </div>
 
     <!-- Fase 39 -->
-    <div class="phase-select phase-select-39">
+    <div class="phase-select phase-select-39" id="fase-39">
       <button class="phase-number" [ngStyle]="{'background-image': getBackgroundImage(progressos[38].estrelas)}">
         <p *ngIf="progressos[38] && !progressos[38].bloqueada; else lockedPhase39" (click)="start_phase(39)">
           39
@@ -708,7 +725,7 @@
     </div>
 
     <!-- Fase 40 -->
-    <div class="phase-select phase-select-40">
+    <div class="phase-select phase-select-40" id="fase-40">
       <button class="phase-number" [ngStyle]="{'background-image': getBackgroundImage(progressos[39].estrelas)}">
         <p *ngIf="progressos[39] && !progressos[39].bloqueada; else lockedPhase40" (click)="start_phase(40)">
           40

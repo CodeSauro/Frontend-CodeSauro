@@ -677,7 +677,7 @@ export class MockPhasesDataTypeService {
         explaining_phase_page_4: `Aqui você pode usar laços de repetição como ENQUANTO e PARA. O comando ENQUANTO continua repetindo uma ação enquanto uma condição for verdadeira. Já o comando PARA define um número específico de repetições.`,
         explaining_phase_page_5: `Seu desafio aqui é usar esses laços de repetição para fazer o CodeSauro repetir movimentos de forma inteligente e sair do labirinto. Mostre sua habilidade com os laços de repetição e ajude o CodeSauro a escapar!”`,
         number_of_pages_phases: 1,
-        variables_page_1: ["parar", `"SE caminho = "B"`, "ENQUANTO caminho", "caminhar"],
+        variables_page_1: ["caminhar", `"SE caminho = "B"`, "ENQUANTO caminho", "parar"],
         correct_answers_page_1: ["ENQUANTO caminho", "caminhar", `"SE caminho = "B"`, "parar"],
         maze_configuration_1: [
           { class: "invisible" }, { class: "invisible" }, { class: "invisible" }, { class: "invisible" }, { class: "invisible" }, { class: "invisible" },

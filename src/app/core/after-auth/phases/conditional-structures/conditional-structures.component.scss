@@ -301,13 +301,13 @@
       .icon-wood {
         background-image: url("../../../../../assets/icon-wood.png");
         background-size: cover;
-        width: size-calc-iPhone(42);
-        height: size-calc-iPhone(32);
-        transform: rotate(15deg);
+        width: size-calc-iPhone(50);
+        height: size-calc-iPhone(40);
+        transform: rotate(25deg);
 
         @media (min-width: 540px) {
-          width: size-calc-iPad(58);
-          height: size-calc-iPad(48);
+          width: size-calc-iPad(72);
+          height: size-calc-iPad(60);
         }
       }
     }

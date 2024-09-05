@@ -7,7 +7,7 @@ import { Usuario } from '../modules/usuario.module';
   providedIn: 'root'
 })
 export class UsuarioService {
-  
+
   private url: string = 'http://localhost:8080/';
 
   constructor(private http: HttpClient) { }
@@ -32,6 +32,9 @@ export class UsuarioService {
   }
 
   public getUserById(id: number): Observable<Usuario> {
-    return this.http.get<Usuario>(`${this.url}usuarios/${id}`, { headers: this.getHeaders() });
+    return this.http.get<Usuario>(
+      `${this.url}usuarios/${id}`,
+      { headers: this.getHeaders() }
+    );
   }
 }

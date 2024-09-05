@@ -29,21 +29,18 @@ export class AuthService {
     );
   }
 
-  public isLoggedIn(): boolean {
+  public getUserIdFromToken(): number | null {
     const token = localStorage.getItem('access_token');
-    return !!token;
+    if (!token) return null;
+
+    const payload = token.split('.')[1];
+    const decodedPayload = atob(payload);
+    const parsedPayload = JSON.parse(decodedPayload);
+
+    return parsedPayload.id;
   }
 
   public logout() {
     localStorage.removeItem('access_token');
-  }
-
-  public GetUsuario(): Observable<Array<Usuario>> {
-    return this.http.get<Array<Usuario>>(`${this.url}auth`);
-  }
-
-  public buscarPorId(id: number): Observable<Usuario> {
-    const url = `${this.url}auth/${id}`;
-    return this.http.get<Usuario>(url);
   }
 }

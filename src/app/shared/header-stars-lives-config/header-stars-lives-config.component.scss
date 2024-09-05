@@ -1,13 +1,14 @@
 @import "../../../config-scss/size-config.scss";
 
 .container {
-  position: absolute;
+  position: fixed;
   width: 100vw;
   display: flex;
   flex-direction: row;
   justify-content: center;
   margin-top: size-calc-iPhone(76);
   gap: size-calc-iPhone(24);
+  z-index: 1000;
 
   @media (min-width: 540px) {
     margin-top: size-calc-iPad(122);

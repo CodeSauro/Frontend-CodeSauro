@@ -20,7 +20,7 @@ main {
   }
 
   .container {
-    //background-color: rgba(0, 0, 0, 0.05);
+    background-color: rgba(0, 0, 0, 0.05);
     height: size-calc-iPhone-height(7957);
     backdrop-filter: blur(size-calc-iPhone(4));
     -webkit-backdrop-filter: blur(size-calc-iPhone(4));
@@ -29,6 +29,101 @@ main {
       height: size-calc-iPad-height(7957);
       backdrop-filter: blur(size-calc-iPad(4));
       -webkit-backdrop-filter: blur(size-calc-iPad(4));
+    }
+
+    .ra1, .ra2, .ra3, .ra4, .ra5 {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      position: absolute;
+      width: 90vw;
+      left: 50%;
+      transform: translateX(-50%);
+
+      @media (min-width: 540px) {
+        width: 80vw;
+      }
+
+      &::before {
+        content: '';
+        flex: 1;
+        border-bottom: size-calc-iPhone(3) solid #F9F9F9;
+        //border-radius: size-calc-iPhone(10);
+        margin-right: size-calc-iPhone(10);
+
+        @media (min-width: 540px) {
+          border-bottom: size-calc-iPad(4) solid #F9F9F9;
+          //border-radius: size-calc-iPhone(10);
+          margin-right: size-calc-iPad(18);
+        }
+      }
+
+      &::after {
+        content: '';
+        flex: 1;
+        border-bottom: size-calc-iPhone(3) solid #F9F9F9;
+        //border-radius: size-calc-iPhone(10);
+        margin-left: size-calc-iPhone(10);
+
+        @media (min-width: 540px) {
+          border-bottom: size-calc-iPad(4) solid #F9F9F9;
+          //border-radius: size-calc-iPhone(10);
+          margin-right: size-calc-iPad(18);
+        }
+      }
+
+      p {
+        color: #F9F9F9;
+        font-size: size-calc-iPhone(18);
+        font-weight: 700;
+        margin: 0;
+        padding: 0 size-calc-iPhone(10);
+
+        @media (min-width: 540px) {
+          font-size: size-calc-iPad(22);
+          padding: 0 size-calc-iPad(18);
+        }
+      }
+    }
+
+    .ra1 {
+      top: size-calc-iPhone(197);
+
+      @media (min-width: 540px) {
+        top: size-calc-iPad(303);
+      }
+    }
+
+    .ra2 {
+      top: size-calc-iPhone(1813);
+
+      @media (min-width: 540px) {
+        top: size-calc-iPad(1791);
+      }
+    }
+
+    .ra3 {
+      top: size-calc-iPhone(3429);
+
+      @media (min-width: 540px) {
+        top: size-calc-iPad(3407);
+      }
+    }
+
+    .ra4 {
+      top: size-calc-iPhone(5045);
+
+      @media (min-width: 540px) {
+        top: size-calc-iPad(5023);
+      }
+    }
+
+    .ra5 {
+      top: size-calc-iPhone(6661);
+
+      @media (min-width: 540px) {
+        top: size-calc-iPad(6639);
+      }
     }
 
     .phase-select {

@@ -4,6 +4,7 @@ import { ProgressBarService } from './progress-bar.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { UsuarioProgresso } from '../modules/usuario-progresso.module';
+import { MockPhasesDataTypeService } from './mock-phases-data-type.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,8 @@ export class StartPhaseService {
   constructor(
     private router: Router,
     private progressBarService: ProgressBarService,
-    private http: HttpClient
+    private http: HttpClient,
+    private mockPhasesDataTypeService: MockPhasesDataTypeService
   ) { }
 
   private getHeaders(): HttpHeaders {
@@ -29,14 +31,45 @@ export class StartPhaseService {
 
   public startPhaseService(phaseId: number) {
     this.progressBarService.resetProgress();
-    this.router.navigate(['/authenticated/phases/explaining-phase', phaseId]);
+
+    const phaseData = this.mockPhasesDataTypeService.getMockData().find(phase => phase.id === phaseId);
+    if (phaseData) {
+      const numberOfPagesExplaining = phaseData.number_of_pages_explaining || 0;
+
+      if (numberOfPagesExplaining > 0) {
+        this.router.navigate(['/authenticated/phases/explaining-phase', phaseId]);
+      } else {
+        this.navigateToPhaseByRA(phaseData.ra, phaseId);
+      }
+    }
+  }
+
+  private navigateToPhaseByRA(ra: number, phaseId: number): void {
+    switch (ra) {
+      case 1:
+        this.router.navigate(['/authenticated/phases/data-type', phaseId]);
+        break;
+      case 2:
+        this.router.navigate(['/authenticated/phases/operator', phaseId]);
+        break;
+      case 3:
+        this.router.navigate(['/authenticated/phases/conditional-structures', phaseId]);
+        break;
+    }
   }
 
   public getUserProgress(userId: number): Observable<UsuarioProgresso[]> {
-    return this.http.get<UsuarioProgresso[]>(`${this.url}usuarios/${userId}/progresso`, { headers: this.getHeaders() });
+    return this.http.get<UsuarioProgresso[]>(
+      `${this.url}usuarios/${userId}/progresso`,
+      { headers: this.getHeaders() }
+    );
   }
 
-  public putUserProgress(userId: number, progressoData: UsuarioProgresso): Observable<UsuarioProgresso> {
-    return this.http.put<UsuarioProgresso>(`${this.url}usuarios/${userId}/progresso`, progressoData, { headers: this.getHeaders() });
+  public putUserProgress(userId: number, faseId: number, estrelas: number): Observable<any> {
+    return this.http.put<any>(
+      `${this.url}usuarios/${userId}/progresso/${faseId}?estrelas=${estrelas}`,
+      {},
+      { headers: this.getHeaders() }
+    );
   }
 }

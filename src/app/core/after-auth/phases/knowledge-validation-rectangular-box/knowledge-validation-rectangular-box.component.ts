@@ -4,6 +4,9 @@ import { MockPhasesDataTypeService } from '../../../../service/mock-phases-data-
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ProgressBarService } from '../../../../service/progress-bar.service';
+import { StartPhaseService } from '../../../../service/start-phase.service';
+import { UsuarioProgresso } from '../../../../modules/usuario-progresso.module';
+import { AuthService } from '../../../../service/auth.service';
 
 @Component({
   selector: 'app-knowledge-validation-rectangular-box',
@@ -33,7 +36,9 @@ export class KnowledgeValidationRectangularBoxComponent implements OnInit {
     private mockPhasesDataTypeService: MockPhasesDataTypeService,
     private route: ActivatedRoute,
     private progressBarService: ProgressBarService,
-    private router: Router
+    private startPhaseService: StartPhaseService,
+    private router: Router,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -68,7 +73,21 @@ export class KnowledgeValidationRectangularBoxComponent implements OnInit {
   continue(): void {
     if (this.isValidationMode) {
       this.progressBarService.setCurrentPage(this.currentPage);
-      this.router.navigate(['/authenticated/punctuation/three-stars']);
+
+      const userId = this.authService.getUserIdFromToken();
+      const estrelas = 3;
+
+      if (userId) {
+        this.startPhaseService.putUserProgress(userId, this.phaseId, estrelas).subscribe(
+          response => {
+            this.router.navigate(['/authenticated/punctuation/three-stars']);
+          },
+          error => {
+            console.error('Erro ao atualizar o progresso:', error);
+          }
+        );
+      }
     }
   }
+
 }
