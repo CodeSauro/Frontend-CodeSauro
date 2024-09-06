@@ -25,14 +25,14 @@
     p {
       text-align: start;
       margin: size-calc-iPhone(24);
-      font-size: size-calc-iPhone(22);
+      font-size: size-calc-iPhone(18);
       color: #5d2417;
       font-weight: 400;
       letter-spacing: size-calc-iPhone(1);
 
       @media (min-width: 540px) {
         margin: size-calc-iPad(32);
-        font-size: size-calc-iPad(26);
+        font-size: size-calc-iPad(22);
         letter-spacing: size-calc-iPad(1);
       }
     }

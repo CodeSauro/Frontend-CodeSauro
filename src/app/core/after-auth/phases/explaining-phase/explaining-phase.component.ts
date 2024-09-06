@@ -67,6 +67,14 @@ export class ExplainingPhaseComponent implements OnInit, AfterViewInit {
         text = item.explaining_phase_page_5
       } else if (this.currentPage === 6) {
         text = item.explaining_phase_page_6
+      } else if (this.currentPage === 7) {
+        text = item.explaining_phase_page_7
+      } else if (this.currentPage === 8) {
+        text = item.explaining_phase_page_8
+      } else if (this.currentPage === 9) {
+        text = item.explaining_phase_page_9
+      } else if (this.currentPage === 10) {
+        text = item.explaining_phase_page_10
       }
     }
 
