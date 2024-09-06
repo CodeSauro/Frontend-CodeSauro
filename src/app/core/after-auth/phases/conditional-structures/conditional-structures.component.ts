@@ -5,6 +5,7 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MockPhasesDataTypeService } from '../../../../service/mock-phases-data-type.service';
 import { ProgressBarService } from '../../../../service/progress-bar.service';
+import { ProgressStarService } from '../../../../service/progress-star.service';
 
 @Component({
   selector: 'app-conditional-structures',
@@ -34,6 +35,7 @@ export class ConditionalStructuresComponent implements OnInit {
   numberOfPagesPhases: number = 0;
   numberOfPagesExplaining: number = 0;
   currentPagePhase: number = 0;
+  correctAnswerCount: number = 0;
   dropListIds: string[] = [];
   mazeConfiguration: { class: string; content?: string; }[] = [];
 
@@ -42,6 +44,7 @@ export class ConditionalStructuresComponent implements OnInit {
     private mockPhasesDataTypeService: MockPhasesDataTypeService,
     private route: ActivatedRoute,
     private progressBarService: ProgressBarService,
+    private progressStarService: ProgressStarService,
     private router: Router
   ) {}
 
@@ -106,6 +109,9 @@ export class ConditionalStructuresComponent implements OnInit {
       if (this.currentPage <= this.numberOfPagesPhases + this.numberOfPagesExplaining) {
         this.loadPageData(this.phaseId);
       } else {
+        this.progressStarService.updateFases(this.numberOfPagesPhases);
+        this.progressStarService.updateAcertos(this.correctAnswerCount);
+
         this.progressBarService.setCurrentPage(this.currentPage);
         this.router.navigate(['/authenticated/phases/knowledge-validation-rectangular-box', this.phaseId]);
       }
@@ -122,6 +128,7 @@ export class ConditionalStructuresComponent implements OnInit {
     if (JSON.stringify(currentOrder) === JSON.stringify(this.correct_answers)) {
       this.validationMessage = 'Excelente!';
       this.isCorrect = true;
+      this.correctAnswerCount++; 
     } else {
       this.validationMessage = 'Incorreto! Resposta correta: ' + this.correct_answers.join(', ');
       this.isCorrect = false;

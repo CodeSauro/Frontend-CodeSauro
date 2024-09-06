@@ -1,3 +1,4 @@
+import { ProgressStarService } from './../../../../service/progress-star.service';
 import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, DragDropModule, transferArrayItem } from '@angular/cdk/drag-drop';
 import { HeaderPhasesComponent } from '../../../../shared/header-phases/header-phases.component';
@@ -36,11 +37,13 @@ export class DataTypeComponent implements OnInit {
   currentPage: number = 0;
   currentPagePhase: number = 0;
   dataType: string = '';
+  correctAnswerCount: number = 0;
 
   constructor(
     private mockPhasesDataTypeService: MockPhasesDataTypeService,
     private route: ActivatedRoute,
     private progressBarService: ProgressBarService,
+    private progressStarService: ProgressStarService,
     private router: Router
   ) {}
 
@@ -103,6 +106,9 @@ export class DataTypeComponent implements OnInit {
       if (this.currentPage <= (this.numberOfPagesExplaining + this.numberOfPagesPhases)) {
         this.loadPageData(this.phaseId);
       } else {
+        this.progressStarService.updateFases(this.numberOfPagesPhases);
+        this.progressStarService.updateAcertos(this.correctAnswerCount);
+
         this.progressBarService.setCurrentPage(this.currentPage);
         this.router.navigate(['/authenticated/phases/knowledge-validation-rectangular-box', this.phaseId]);
       }
@@ -123,6 +129,7 @@ export class DataTypeComponent implements OnInit {
     if (JSON.stringify(sortedAnswers) === JSON.stringify(sortedCorrectAnswers)) {
       this.validationMessage = 'Excelente!';
       this.isCorrect = true;
+      this.correctAnswerCount++; 
     } else {
       this.validationMessage = 'Incorreto! Resposta correta: ' + this.correct_answers.join(', ');
       this.isCorrect = false;

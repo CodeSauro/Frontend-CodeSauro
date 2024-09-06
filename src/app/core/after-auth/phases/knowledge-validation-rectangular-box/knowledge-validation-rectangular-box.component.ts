@@ -5,8 +5,8 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ProgressBarService } from '../../../../service/progress-bar.service';
 import { StartPhaseService } from '../../../../service/start-phase.service';
-import { UsuarioProgresso } from '../../../../modules/usuario-progresso.module';
 import { AuthService } from '../../../../service/auth.service';
+import { ProgressStarService } from '../../../../service/progress-star.service';
 
 @Component({
   selector: 'app-knowledge-validation-rectangular-box',
@@ -31,12 +31,14 @@ export class KnowledgeValidationRectangularBoxComponent implements OnInit {
   validationMessage: string = '';
   numberOfPagesTotal: number = 0;
   numberOfPagesQuestions: number = 0;
+  correctAnswerCount: number = 0;
 
   constructor(
     private mockPhasesDataTypeService: MockPhasesDataTypeService,
     private route: ActivatedRoute,
     private progressBarService: ProgressBarService,
     private startPhaseService: StartPhaseService,
+    private progressStarService: ProgressStarService,
     private router: Router,
     private authService: AuthService
   ) {}
@@ -45,6 +47,7 @@ export class KnowledgeValidationRectangularBoxComponent implements OnInit {
     this.phaseId = Number(this.route.snapshot.paramMap.get('id'));
     this.progressBarService.loadPageData(this.phaseId);
     this.numberOfPagesTotal = this.progressBarService.getNumberOfPagesTotal();
+    this.numberOfPagesQuestions = 1;
     this.currentPage = this.progressBarService.getCurrentPage();
     this.loadPageData(this.phaseId);
   }
@@ -63,6 +66,7 @@ export class KnowledgeValidationRectangularBoxComponent implements OnInit {
 
       if (answer === this.knowledgeValidationCorrectAnswer) {
         this.isCorrect = true;
+        this.correctAnswerCount++;
       } else {
         this.validationMessage = `${this.knowledgeValidationCorrectAnswer}`;
         this.isCorrect = false;
@@ -75,19 +79,37 @@ export class KnowledgeValidationRectangularBoxComponent implements OnInit {
       this.progressBarService.setCurrentPage(this.currentPage);
 
       const userId = this.authService.getUserIdFromToken();
-      const estrelas = 3;
+
+      this.progressStarService.updateFases(this.numberOfPagesQuestions);
+      this.progressStarService.updateAcertos(this.correctAnswerCount);
+
+      const estrelas = this.progressStarService.calculateStars();
 
       if (userId) {
         this.startPhaseService.putUserProgress(userId, this.phaseId, estrelas).subscribe(
           response => {
-            this.router.navigate(['/authenticated/punctuation/three-stars']);
+            switch (estrelas) {
+              case 0:
+                this.router.navigate(['/authenticated/punctuation/zero-star']);
+                break;
+              case 1:
+                this.router.navigate(['/authenticated/punctuation/one-star']);
+                break;
+              case 2:
+                this.router.navigate(['/authenticated/punctuation/two-stars']);
+                break;
+              case 3:
+                this.router.navigate(['/authenticated/punctuation/three-stars']);
+                break;
+            }
           },
           error => {
             console.error('Erro ao atualizar o progresso:', error);
           }
         );
       }
+
+      this.progressStarService.resetProgress();
     }
   }
-
 }

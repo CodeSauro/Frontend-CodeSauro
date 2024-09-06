@@ -47,12 +47,12 @@ main {
       &::before {
         content: '';
         flex: 1;
-        border-bottom: size-calc-iPhone(3) solid #F9F9F9;
+        border-bottom: size-calc-iPhone(3) solid #FFFFFF;
         //border-radius: size-calc-iPhone(10);
         margin-right: size-calc-iPhone(10);
 
         @media (min-width: 540px) {
-          border-bottom: size-calc-iPad(4) solid #F9F9F9;
+          border-bottom: size-calc-iPad(4) solid #FFFFFF;
           //border-radius: size-calc-iPhone(10);
           margin-right: size-calc-iPad(18);
         }
@@ -61,19 +61,19 @@ main {
       &::after {
         content: '';
         flex: 1;
-        border-bottom: size-calc-iPhone(3) solid #F9F9F9;
+        border-bottom: size-calc-iPhone(3) solid #FFFFFF;
         //border-radius: size-calc-iPhone(10);
         margin-left: size-calc-iPhone(10);
 
         @media (min-width: 540px) {
-          border-bottom: size-calc-iPad(4) solid #F9F9F9;
+          border-bottom: size-calc-iPad(4) solid #FFFFFF;
           //border-radius: size-calc-iPhone(10);
           margin-right: size-calc-iPad(18);
         }
       }
 
       p {
-        color: #F9F9F9;
+        color: #FFFFFF;
         font-size: size-calc-iPhone(18);
         font-weight: 700;
         margin: 0;

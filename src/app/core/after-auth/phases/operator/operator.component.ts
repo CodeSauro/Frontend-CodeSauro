@@ -5,6 +5,7 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { MockPhasesDataTypeService } from '../../../../service/mock-phases-data-type.service';
 import { CommonModule } from '@angular/common';
 import { ProgressBarService } from '../../../../service/progress-bar.service';
+import { ProgressStarService } from '../../../../service/progress-star.service';
 
 @Component({
   selector: 'app-data-type',
@@ -36,15 +37,14 @@ export class ArithmeticOperatorComponent implements OnInit {
   numberOfPagesExplaining: number = 0;
   currentPage: number = 0;
   currentPagePhase: number = 0;
-  numberFirstPage: number = 0;
-  numberSecondPage: number = 0;
-  numberResponsePage: number = 0;
+  correctAnswerCount: number = 0;
   contextPhase: string = "";
 
   constructor(
     private mockPhasesDataTypeService: MockPhasesDataTypeService,
     private route: ActivatedRoute,
     private progressBarService: ProgressBarService,
+    private progressStarService: ProgressStarService,
     private router: Router
   ) {}
 
@@ -113,6 +113,9 @@ export class ArithmeticOperatorComponent implements OnInit {
       if (this.currentPage <= (this.numberOfPagesExplaining + this.numberOfPagesPhases)) {
         this.loadPageData(this.phaseId);
       } else {
+        this.progressStarService.updateFases(this.numberOfPagesPhases);
+        this.progressStarService.updateAcertos(this.correctAnswerCount);
+
         this.progressBarService.setCurrentPage(this.currentPage);
         this.router.navigate(['/authenticated/phases/knowledge-validation-rectangular-box', this.phaseId]);
       }
@@ -133,6 +136,7 @@ export class ArithmeticOperatorComponent implements OnInit {
     if (JSON.stringify(sortedAnswers) === JSON.stringify(sortedCorrectAnswers)) {
       this.validationMessage = 'Excelente!';
       this.isCorrect = true;
+      this.correctAnswerCount++;
     } else {
       this.validationMessage = 'Incorreto! Resposta correta: ' + this.correct_answers.join(', ');
       this.isCorrect = false;
@@ -143,16 +147,6 @@ export class ArithmeticOperatorComponent implements OnInit {
     if (this.isDragDisabled) return;
 
     if (event.previousContainer !== event.container) {
-
-      if (event.container.id === 'answersList' && this.answers.length > 0) {
-        transferArrayItem(
-          event.container.data,
-          this.variables,
-          0,
-          this.variables.length
-        );
-      }
-
       transferArrayItem(
         event.previousContainer.data,
         event.container.data,
@@ -163,5 +157,4 @@ export class ArithmeticOperatorComponent implements OnInit {
       this.checkContinueButtonState();
     }
   }
-
 }
