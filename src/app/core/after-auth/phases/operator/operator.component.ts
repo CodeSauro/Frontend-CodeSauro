@@ -6,6 +6,8 @@ import { MockPhasesDataTypeService } from '../../../../service/mock-phases-data-
 import { CommonModule } from '@angular/common';
 import { ProgressBarService } from '../../../../service/progress-bar.service';
 import { ProgressStarService } from '../../../../service/progress-star.service';
+import { AuthService } from '../../../../service/auth.service';
+import { StartPhaseService } from '../../../../service/start-phase.service';
 
 @Component({
   selector: 'app-data-type',
@@ -45,7 +47,9 @@ export class ArithmeticOperatorComponent implements OnInit {
     private route: ActivatedRoute,
     private progressBarService: ProgressBarService,
     private progressStarService: ProgressStarService,
-    private router: Router
+    private router: Router,
+    private authService: AuthService,
+    private startPhaseService: StartPhaseService
   ) {}
 
   ngOnInit(): void {
@@ -140,6 +144,11 @@ export class ArithmeticOperatorComponent implements OnInit {
     } else {
       this.validationMessage = 'Incorreto! Resposta correta: ' + this.correct_answers.join(', ');
       this.isCorrect = false;
+
+      const userId = this.authService.getUserIdFromToken();
+      if (userId) {
+        this.startPhaseService.atualizarVida(userId, false).subscribe();
+      }
     }
   }
 

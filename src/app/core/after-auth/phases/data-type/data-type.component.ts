@@ -1,3 +1,6 @@
+import { AuthService } from './../../../../service/auth.service';
+import { UsuarioService } from './../../../../service/usuario.service';
+import { StartPhaseService } from './../../../../service/start-phase.service';
 import { ProgressStarService } from './../../../../service/progress-star.service';
 import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, DragDropModule, transferArrayItem } from '@angular/cdk/drag-drop';
@@ -44,7 +47,9 @@ export class DataTypeComponent implements OnInit {
     private route: ActivatedRoute,
     private progressBarService: ProgressBarService,
     private progressStarService: ProgressStarService,
-    private router: Router
+    private router: Router,
+    private authService: AuthService,
+    private startPhaseService: StartPhaseService,
   ) {}
 
   ngOnInit(): void {
@@ -129,12 +134,18 @@ export class DataTypeComponent implements OnInit {
     if (JSON.stringify(sortedAnswers) === JSON.stringify(sortedCorrectAnswers)) {
       this.validationMessage = 'Excelente!';
       this.isCorrect = true;
-      this.correctAnswerCount++; 
+      this.correctAnswerCount++;
     } else {
       this.validationMessage = 'Incorreto! Resposta correta: ' + this.correct_answers.join(', ');
       this.isCorrect = false;
+
+      const userId = this.authService.getUserIdFromToken();
+      if (userId) {
+        this.startPhaseService.atualizarVida(userId, false).subscribe();
+      }
     }
   }
+
 
   drop(event: CdkDragDrop<string[]>) {
     if (this.isDragDisabled) return;

@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProgressBarService } from './progress-bar.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject, tap, map } from 'rxjs';
 import { UsuarioProgresso } from '../modules/usuario-progresso.module';
 import { MockPhasesDataTypeService } from './mock-phases-data-type.service';
+import { Usuario } from '../modules/usuario.module';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ import { MockPhasesDataTypeService } from './mock-phases-data-type.service';
 export class StartPhaseService {
 
   private url: string = 'http://localhost:8080/';
+  private vidasSubject: BehaviorSubject<number> = new BehaviorSubject<number>(5);
 
   constructor(
     private router: Router,
@@ -28,6 +30,50 @@ export class StartPhaseService {
       return new HttpHeaders();
     }
   }
+
+  public carregarVidasDoBackend(userId: number): void {
+    this.http.get<Usuario>(`${this.url}usuarios/${userId}`, { headers: this.getHeaders() })
+      .subscribe((usuario: Usuario) => {
+        this.setVidas(usuario.vidas);
+      }, error => {
+        console.error('Erro ao carregar vidas do backend:', error);
+      });
+  }
+
+  public carregarEstrelasDoBackend(userId: number): Observable<number> {
+    return this.http.get<Usuario>(`${this.url}usuarios/${userId}`, { headers: this.getHeaders() })
+      .pipe(
+        map((usuario: Usuario) => usuario.estrelas)
+      );
+  }
+
+  public setVidas(vidas: number): void {
+    this.vidasSubject.next(vidas);
+  }
+
+  public getVidas(): Observable<number> {
+    return this.vidasSubject.asObservable();
+  }
+
+  public atualizarVida(userId: number, respostaCorreta: boolean): Observable<void> {
+    return this.http.put<void>(
+      `${this.url}usuarios/${userId}/vidas`,
+      null,
+      {
+        headers: this.getHeaders(),
+        params: { respostaCorreta: respostaCorreta.toString() }
+      }
+    ).pipe(
+      tap(() => {
+        let vidasAtuais = this.vidasSubject.getValue();
+        if (!respostaCorreta) {
+          vidasAtuais = Math.max(vidasAtuais - 1, 0);
+        }
+        this.vidasSubject.next(vidasAtuais);
+      })
+    );
+  }
+
 
   public startPhaseService(phaseId: number) {
     this.progressBarService.resetProgress();

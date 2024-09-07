@@ -2,6 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProgressBarService } from '../../service/progress-bar.service';
+import { StartPhaseService } from '../../service/start-phase.service';
+import { AuthService } from '../../service/auth.service';
 
 @Component({
   selector: 'app-header-phases',
@@ -14,17 +16,30 @@ import { ProgressBarService } from '../../service/progress-bar.service';
 })
 export class HeaderPhasesComponent implements OnInit {
 
-  public progress: number = 0;
+  progress: number = 0;
+  vidas?: number;
+  userId: number | null = null;
 
   constructor(
     private progressBarService: ProgressBarService,
-    private router: Router
+    private router: Router,
+    private startPhaseService: StartPhaseService,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
     this.progressBarService.currentProgress.subscribe(progress => {
       this.progress = progress;
     });
+
+    this.userId = this.authService.getUserIdFromToken();
+    if (this.userId) {
+      this.startPhaseService.carregarVidasDoBackend(this.userId);
+
+      this.startPhaseService.getVidas().subscribe(vidas => {
+        this.vidas = vidas;
+      });
+    }
   }
 
   public leave() {

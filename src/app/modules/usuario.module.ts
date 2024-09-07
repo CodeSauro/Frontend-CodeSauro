@@ -4,5 +4,7 @@ export interface Usuario {
   apelido: string,
   email: string,
   telefone: string,
-  senha: string
+  senha: string,
+  estrelas: number,
+  vidas: number
 }

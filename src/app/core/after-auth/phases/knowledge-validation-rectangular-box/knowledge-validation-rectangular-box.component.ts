@@ -70,9 +70,15 @@ export class KnowledgeValidationRectangularBoxComponent implements OnInit {
       } else {
         this.validationMessage = `${this.knowledgeValidationCorrectAnswer}`;
         this.isCorrect = false;
+
+        const userId = this.authService.getUserIdFromToken();
+        if (userId) {
+          this.startPhaseService.atualizarVida(userId, false).subscribe();
+        }
       }
     }
   }
+
 
   continue(): void {
     if (this.isValidationMode) {

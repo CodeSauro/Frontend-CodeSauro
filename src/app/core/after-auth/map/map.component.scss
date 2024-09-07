@@ -40,6 +40,10 @@ main {
       left: 50%;
       transform: translateX(-50%);
 
+      @media (min-width: 540px) {
+        //width: 80vw;
+      }
+
       &::before {
         content: '';
         flex: 1;
@@ -64,7 +68,7 @@ main {
         @media (min-width: 540px) {
           border-bottom: size-calc-iPad(4) solid rgba(72, 77, 80, 0.8);
           //border-radius: size-calc-iPhone(10);
-          margin-right: size-calc-iPad(18);
+          margin-left: size-calc-iPad(18);
         }
       }
 

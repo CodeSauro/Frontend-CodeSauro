@@ -1,11 +1,14 @@
-import { AfterViewInit, ChangeDetectorRef, Component, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { StartPhaseService } from './../../../../service/start-phase.service';
+import { ProgressStarService } from './../../../../service/progress-star.service';
+import { Component, OnInit } from '@angular/core';
+import { CdkDragDrop, DragDropModule, transferArrayItem } from '@angular/cdk/drag-drop';
 import { HeaderPhasesComponent } from '../../../../shared/header-phases/header-phases.component';
-import { CdkDragDrop, CdkDropList, DragDropModule, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MockPhasesDataTypeService } from '../../../../service/mock-phases-data-type.service';
 import { ProgressBarService } from '../../../../service/progress-bar.service';
-import { ProgressStarService } from '../../../../service/progress-star.service';
+import { UsuarioService } from '../../../../service/usuario.service';
+import { AuthService } from '../../../../service/auth.service';
 
 @Component({
   selector: 'app-conditional-structures',
@@ -17,7 +20,7 @@ import { ProgressStarService } from '../../../../service/progress-star.service';
     CommonModule,
   ],
   templateUrl: './conditional-structures.component.html',
-  styleUrl: './conditional-structures.component.scss'
+  styleUrls: ['./conditional-structures.component.scss']
 })
 export class ConditionalStructuresComponent implements OnInit {
 
@@ -39,12 +42,14 @@ export class ConditionalStructuresComponent implements OnInit {
   dropListIds: string[] = [];
   mazeConfiguration: { class: string; content?: string; }[] = [];
 
-
   constructor(
     private mockPhasesDataTypeService: MockPhasesDataTypeService,
     private route: ActivatedRoute,
     private progressBarService: ProgressBarService,
     private progressStarService: ProgressStarService,
+    private usuarioService: UsuarioService,
+    private authService: AuthService,
+    private startPhaseService: StartPhaseService,
     private router: Router
   ) {}
 
@@ -100,6 +105,10 @@ export class ConditionalStructuresComponent implements OnInit {
     this.checkContinueButtonState();
   }
 
+  private checkContinueButtonState() {
+    this.isContinueDisabled = this.variablesArray.some(variable => variable.length === 0);
+  }
+
   continue() {
     this.progressBarService.updateProgress((this.currentPage / this.numberOfPagesTotal) * 100);
     if (this.isValidationMode) {
@@ -128,15 +137,16 @@ export class ConditionalStructuresComponent implements OnInit {
     if (JSON.stringify(currentOrder) === JSON.stringify(this.correct_answers)) {
       this.validationMessage = 'Excelente!';
       this.isCorrect = true;
-      this.correctAnswerCount++; 
+      this.correctAnswerCount++;
     } else {
       this.validationMessage = 'Incorreto! Resposta correta: ' + this.correct_answers.join(', ');
       this.isCorrect = false;
-    }
-  }
 
-  private checkContinueButtonState() {
-    this.isContinueDisabled = this.variablesArray.some(variable => variable.length === 0);
+      const userId = this.authService.getUserIdFromToken();
+      if (userId) {
+        this.startPhaseService.atualizarVida(userId, false).subscribe();
+      }
+    }
   }
 
   drop(event: CdkDragDrop<string[]>, currentIndex: number) {
