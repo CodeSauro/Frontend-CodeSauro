@@ -5,10 +5,11 @@
       <img src="../../../assets/icon-star.png" alt="icon-star" class="icon-star">
       <p>{{ estrelas }}</p>
     </div>
-    <div class="container-lives">
+    <button class="container-lives" (click)="toggleTeste()" (document:click)="onClickOutside($event)">
       <img src="../../../assets/icon-heart.png" alt="icon-heart" class="icon-heart">
       <p>{{ vidas }}</p>
-    </div>
+    </button>
+    <div class="life-time" *ngIf="isTesteVisible"><p>{{ tempoRestante }}</p></div>
   </div>
   <div class="container-button">
     <a [routerLink]="['/authenticated/settings']">

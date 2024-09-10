@@ -12,12 +12,12 @@ import { AuthService } from '../../service/auth.service';
     CommonModule
   ],
   templateUrl: './header-phases.component.html',
-  styleUrl: './header-phases.component.scss'
+  styleUrls: ['./header-phases.component.scss']
 })
 export class HeaderPhasesComponent implements OnInit {
 
   progress: number = 0;
-  vidas?: number;
+  vidas?: number; // Variável que guarda o número de vidas do usuário
   userId: number | null = null;
 
   constructor(
@@ -28,22 +28,28 @@ export class HeaderPhasesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    // Assinando para obter atualizações de progresso
     this.progressBarService.currentProgress.subscribe(progress => {
       this.progress = progress;
     });
 
+    // Obtendo o ID do usuário a partir do token de autenticação
     this.userId = this.authService.getUserIdFromToken();
+
+    // Se o usuário estiver autenticado, carregar as vidas do backend
     if (this.userId) {
       this.startPhaseService.carregarVidasDoBackend(this.userId);
 
+      // Assinando para obter atualizações de vidas
       this.startPhaseService.getVidas().subscribe(vidas => {
-        this.vidas = vidas;
+        this.vidas = vidas; // Atualiza o número de vidas exibido
       });
     }
   }
 
-  public leave() {
-    this.progressBarService.setCurrentPage(1);
-    this.router.navigate(['/authenticated/map']);
+  // Função para sair e retornar ao mapa principal
+  public leave(): void {
+    this.progressBarService.setCurrentPage(1); // Resetando a página atual no progresso
+    this.router.navigate(['/authenticated/map']); // Navegando de volta ao mapa
   }
 }

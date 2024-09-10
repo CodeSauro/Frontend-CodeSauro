@@ -32,6 +32,8 @@ export class KnowledgeValidationRectangularBoxComponent implements OnInit {
   numberOfPagesTotal: number = 0;
   numberOfPagesQuestions: number = 0;
   correctAnswerCount: number = 0;
+  vidas: number = 5;  // Inicializa com um valor temporário até carregar do backend
+  vidasZeradas: boolean = false;
 
   constructor(
     private mockPhasesDataTypeService: MockPhasesDataTypeService,
@@ -49,10 +51,21 @@ export class KnowledgeValidationRectangularBoxComponent implements OnInit {
     this.numberOfPagesTotal = this.progressBarService.getNumberOfPagesTotal();
     this.numberOfPagesQuestions = 1;
     this.currentPage = this.progressBarService.getCurrentPage();
+
+    // Carregar vidas do backend
+    const userId = this.authService.getUserIdFromToken();
+    if (userId) {
+      this.startPhaseService.carregarVidasDoBackend(userId);
+      this.startPhaseService.getVidas().subscribe(vidas => {
+        this.vidas = vidas;
+        this.vidasZeradas = vidas === 0;
+      });
+    }
+
     this.loadPageData(this.phaseId);
   }
 
-  private loadPageData(phaseId: number) {
+  private loadPageData(phaseId: number): void {
     const item = this.mockPhasesDataTypeService.getMockData().find(data => data.id === phaseId);
     this.knowledgeValidationQuestion = item?.knowledge_validation_question || '';
     this.knowledgeValidationAnswers = item?.knowledge_validation_answers || [];
@@ -67,18 +80,23 @@ export class KnowledgeValidationRectangularBoxComponent implements OnInit {
       if (answer === this.knowledgeValidationCorrectAnswer) {
         this.isCorrect = true;
         this.correctAnswerCount++;
+        this.validationMessage = 'Correto!';
       } else {
         this.validationMessage = `${this.knowledgeValidationCorrectAnswer}`;
         this.isCorrect = false;
 
         const userId = this.authService.getUserIdFromToken();
         if (userId) {
-          this.startPhaseService.atualizarVida(userId, false).subscribe();
+          this.startPhaseService.atualizarVida(userId, false).subscribe(() => {
+            this.startPhaseService.getVidas().subscribe(vidas => {
+              this.vidas = vidas;
+              this.vidasZeradas = vidas === 0;
+            });
+          });
         }
       }
     }
   }
-
 
   continue(): void {
     if (this.isValidationMode) {
@@ -86,14 +104,17 @@ export class KnowledgeValidationRectangularBoxComponent implements OnInit {
 
       const userId = this.authService.getUserIdFromToken();
 
+      // Atualizar progresso de fases e acertos
       this.progressStarService.updateFases(this.numberOfPagesQuestions);
       this.progressStarService.updateAcertos(this.correctAnswerCount);
 
+      // Calcular estrelas com base no desempenho
       const estrelas = this.progressStarService.calculateStars();
 
       if (userId) {
         this.startPhaseService.putUserProgress(userId, this.phaseId, estrelas).subscribe(
           response => {
+            // Navegar para a página de pontuação com base no número de estrelas
             switch (estrelas) {
               case 0:
                 this.router.navigate(['/authenticated/punctuation/zero-star']);
@@ -115,6 +136,7 @@ export class KnowledgeValidationRectangularBoxComponent implements OnInit {
         );
       }
 
+      // Resetar progresso das estrelas para a próxima fase
       this.progressStarService.resetProgress();
     }
   }

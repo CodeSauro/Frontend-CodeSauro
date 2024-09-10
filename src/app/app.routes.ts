@@ -17,6 +17,7 @@ import { KnowledgeValidationRectangularBoxComponent } from './core/after-auth/ph
 import { MapComponent } from './core/after-auth/map/map.component';
 import { ArithmeticOperatorComponent } from './core/after-auth/phases/operator/operator.component';
 import { ConditionalStructuresComponent } from './core/after-auth/phases/conditional-structures/conditional-structures.component';
+import { WithoutLifeLockedMapComponent } from './core/after-auth/punctuation/without-life-locked-map/without-life-locked-map.component';
 
 export const routes: Routes = [
   {
@@ -70,6 +71,9 @@ export const routes: Routes = [
       {
         path: 'punctuation',
         children: [
+          {
+            path: 'without-life-locked-map', component: WithoutLifeLockedMapComponent
+          },
           {
           path: 'without-life', component: WithoutLifeComponent
           },

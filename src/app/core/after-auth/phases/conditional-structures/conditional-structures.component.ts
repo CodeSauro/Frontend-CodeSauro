@@ -120,7 +120,6 @@ export class ConditionalStructuresComponent implements OnInit {
       } else {
         this.progressStarService.updateFases(this.numberOfPagesPhases);
         this.progressStarService.updateAcertos(this.correctAnswerCount);
-
         this.progressBarService.setCurrentPage(this.currentPage);
         this.router.navigate(['/authenticated/phases/knowledge-validation-rectangular-box', this.phaseId]);
       }

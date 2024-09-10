@@ -1,5 +1,4 @@
 import { AuthService } from './../../../../service/auth.service';
-import { UsuarioService } from './../../../../service/usuario.service';
 import { StartPhaseService } from './../../../../service/start-phase.service';
 import { ProgressStarService } from './../../../../service/progress-star.service';
 import { Component, OnInit } from '@angular/core';
@@ -58,6 +57,7 @@ export class DataTypeComponent implements OnInit {
     this.progressBarService.loadPageData(this.phaseId);
     this.numberOfPagesTotal = this.progressBarService.getNumberOfPagesTotal();
     this.currentPage = this.progressBarService.getCurrentPage();
+
     this.loadPageData(this.phaseId);
   }
 
@@ -70,7 +70,7 @@ export class DataTypeComponent implements OnInit {
     this.numberOfPagesPhases = item?.number_of_pages_phases || 0;
     this.numberOfPagesExplaining = item?.number_of_pages_explaining || 0;
     this.currentPagePhase = this.currentPage - this.numberOfPagesExplaining;
-    this.dataType = item?.data_type || "";
+    this.dataType = item?.data_type || '';
 
     switch (this.currentPagePhase) {
       case 1:
@@ -113,7 +113,6 @@ export class DataTypeComponent implements OnInit {
       } else {
         this.progressStarService.updateFases(this.numberOfPagesPhases);
         this.progressStarService.updateAcertos(this.correctAnswerCount);
-
         this.progressBarService.setCurrentPage(this.currentPage);
         this.router.navigate(['/authenticated/phases/knowledge-validation-rectangular-box', this.phaseId]);
       }
@@ -146,7 +145,6 @@ export class DataTypeComponent implements OnInit {
     }
   }
 
-
   drop(event: CdkDragDrop<string[]>) {
     if (this.isDragDisabled) return;
     if (event.previousContainer !== event.container) {
@@ -154,7 +152,7 @@ export class DataTypeComponent implements OnInit {
         event.previousContainer.data,
         event.container.data,
         event.previousIndex,
-        event.currentIndex,
+        event.currentIndex
       );
       this.checkContinueButtonState();
     }
