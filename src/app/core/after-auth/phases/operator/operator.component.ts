@@ -10,7 +10,7 @@ import { AuthService } from '../../../../service/auth.service';
 import { StartPhaseService } from '../../../../service/start-phase.service';
 
 @Component({
-  selector: 'app-data-type',
+  selector: 'app-arithmetic-operator',
   standalone: true,
   imports: [
     HeaderPhasesComponent,
@@ -19,7 +19,7 @@ import { StartPhaseService } from '../../../../service/start-phase.service';
     CommonModule,
   ],
   templateUrl: './operator.component.html',
-  styleUrl: './operator.component.scss'
+  styleUrls: ['./operator.component.scss']
 })
 export class ArithmeticOperatorComponent implements OnInit {
 
@@ -41,6 +41,7 @@ export class ArithmeticOperatorComponent implements OnInit {
   currentPagePhase: number = 0;
   correctAnswerCount: number = 0;
   contextPhase: string = "";
+  vidasZeradas: boolean = false;  // Estado de vidas zeradas
 
   constructor(
     private mockPhasesDataTypeService: MockPhasesDataTypeService,
@@ -112,16 +113,21 @@ export class ArithmeticOperatorComponent implements OnInit {
   continue() {
     this.progressBarService.updateProgress((this.currentPage / this.numberOfPagesTotal) * 100);
     if (this.isValidationMode) {
-      this.currentPage++;
-      this.currentPagePhase++;
-      if (this.currentPage <= (this.numberOfPagesExplaining + this.numberOfPagesPhases)) {
-        this.loadPageData(this.phaseId);
+      if (this.vidasZeradas) {
+        // Redirecionar se as vidas estiverem zeradas
+        this.router.navigate(['/authenticated/punctuation/without-life']);
       } else {
-        this.progressStarService.updateFases(this.numberOfPagesPhases);
-        this.progressStarService.updateAcertos(this.correctAnswerCount);
+        this.currentPage++;
+        this.currentPagePhase++;
+        if (this.currentPage <= (this.numberOfPagesExplaining + this.numberOfPagesPhases)) {
+          this.loadPageData(this.phaseId);
+        } else {
+          this.progressStarService.updateFases(this.numberOfPagesPhases);
+          this.progressStarService.updateAcertos(this.correctAnswerCount);
 
-        this.progressBarService.setCurrentPage(this.currentPage);
-        this.router.navigate(['/authenticated/phases/knowledge-validation-rectangular-box', this.phaseId]);
+          this.progressBarService.setCurrentPage(this.currentPage);
+          this.router.navigate(['/authenticated/phases/knowledge-validation-rectangular-box', this.phaseId]);
+        }
       }
       this.isValidationMode = false;
       this.validationMessage = '';
@@ -147,7 +153,14 @@ export class ArithmeticOperatorComponent implements OnInit {
 
       const userId = this.authService.getUserIdFromToken();
       if (userId) {
-        this.startPhaseService.atualizarVida(userId, false).subscribe();
+        this.startPhaseService.atualizarVida(userId, false).subscribe(() => {
+          // Verifica se as vidas zeraram após a atualização
+          this.startPhaseService.getVidas().subscribe(vidas => {
+            if (vidas === 0) {
+              this.vidasZeradas = true;  // Marca que as vidas foram zeradas
+            }
+          });
+        });
       }
     }
   }
