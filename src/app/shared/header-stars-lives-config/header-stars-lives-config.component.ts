@@ -18,7 +18,7 @@ export class HeaderStarsLivesComponent implements OnInit {
 
   estrelas: number = 0;
   vidas?: number;
-  tempoRestante: string = '00:00:00';  // Inicializa o tempo de regeneração
+  tempoRestante: string = '00:00:00';
   userId: number | null = null;
   isTesteVisible: boolean = false;
 

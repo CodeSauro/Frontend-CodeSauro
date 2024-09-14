@@ -145,9 +145,9 @@ export class StartPhaseService {
 
   // Método para obter o tempo de regeneração de vidas
   public getTempoRegeneracaoVidas(userId: number): Observable<string> {
-    return this.http.get<string>(`${this.url}usuarios/${userId}/tempo-regeneracao`, {
-      headers: this.getHeaders()
-    });
+    return this.http.get<Usuario>(`${this.url}usuarios/${userId}`, { headers: this.getHeaders() })
+      .pipe(
+        map((usuario: Usuario) => usuario.tempoParaProximaVida)
+    );
   }
-
 }

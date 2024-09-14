@@ -6,5 +6,6 @@ export interface Usuario {
   telefone: string,
   senha: string,
   estrelas: number,
-  vidas: number
+  vidas: number,
+  tempoParaProximaVida: string
 }
