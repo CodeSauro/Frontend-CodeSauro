@@ -61,6 +61,15 @@ export class StartPhaseService {
     return this.vidasSubject.asObservable();
   }
 
+  // Método para buscar vidas diretamente do backend ignorando cache
+  public buscarVidasDoBackendSemCache(userId: number): Observable<number> {
+    const headers = this.getHeaders().set('Cache-Control', 'no-cache');
+    return this.http.get<Usuario>(`${this.url}usuarios/${userId}`, { headers })
+      .pipe(
+        map((usuario: Usuario) => usuario.vidas)
+      );
+  }
+
   // Verifica se as vidas chegaram a zero
   public verificarVidasZeradas(): boolean {
     return this.vidasZeradas;
