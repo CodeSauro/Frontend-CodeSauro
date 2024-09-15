@@ -17,7 +17,7 @@ import { AuthService } from '../../service/auth.service';
 export class HeaderPhasesComponent implements OnInit {
 
   progress: number = 0;
-  vidas?: number; // Variável que guarda o número de vidas do usuário
+  vidas?: number;
   userId: number | null = null;
 
   constructor(
@@ -28,28 +28,28 @@ export class HeaderPhasesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Assinando para obter atualizações de progresso
     this.progressBarService.currentProgress.subscribe(progress => {
       this.progress = progress;
     });
 
-    // Obtendo o ID do usuário a partir do token de autenticação
     this.userId = this.authService.getUserIdFromToken();
-
-    // Se o usuário estiver autenticado, carregar as vidas do backend
     if (this.userId) {
       this.startPhaseService.carregarVidasDoBackend(this.userId);
-
-      // Assinando para obter atualizações de vidas
       this.startPhaseService.getVidas().subscribe(vidas => {
-        this.vidas = vidas; // Atualiza o número de vidas exibido
+        this.vidas = vidas;
       });
     }
   }
 
-  // Função para sair e retornar ao mapa principal
   public leave(): void {
-    this.progressBarService.setCurrentPage(1); // Resetando a página atual no progresso
-    this.router.navigate(['/authenticated/map']); // Navegando de volta ao mapa
+    if (this.userId) {
+      this.startPhaseService.retomarRegeneracaoVidas(this.userId).subscribe(() => {
+        console.log('Regeneração de vidas retomada com sucesso.');
+        this.progressBarService.setCurrentPage(1);
+        this.router.navigate(['/authenticated/map']);
+      }, error => {
+        console.error('Erro ao retomar regeneração de vidas:', error);
+      });
+    }
   }
 }

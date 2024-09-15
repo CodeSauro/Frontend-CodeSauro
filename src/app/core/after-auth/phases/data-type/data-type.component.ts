@@ -40,7 +40,7 @@ export class DataTypeComponent implements OnInit {
   currentPagePhase: number = 0;
   dataType: string = '';
   correctAnswerCount: number = 0;
-  vidasZeradas: boolean = false;  // Estado de vidas zeradas
+  vidasZeradas: boolean = false;
 
   constructor(
     private mockPhasesDataTypeService: MockPhasesDataTypeService,
@@ -108,7 +108,6 @@ export class DataTypeComponent implements OnInit {
     this.progressBarService.updateProgress((this.currentPage / this.numberOfPagesTotal) * 100);
     if (this.isValidationMode) {
       if (this.vidasZeradas) {
-        // Redirecionar se as vidas estiverem zeradas
         this.router.navigate(['/authenticated/punctuation/without-life']);
       } else {
         this.currentPage++;
@@ -147,10 +146,9 @@ export class DataTypeComponent implements OnInit {
       const userId = this.authService.getUserIdFromToken();
       if (userId) {
         this.startPhaseService.atualizarVida(userId, false).subscribe(() => {
-          // Verifica se as vidas zeraram após a atualização
           this.startPhaseService.getVidas().subscribe(vidas => {
             if (vidas === 0) {
-              this.vidasZeradas = true;  // Marca que as vidas foram zeradas
+              this.vidasZeradas = true; 
             }
           });
         });

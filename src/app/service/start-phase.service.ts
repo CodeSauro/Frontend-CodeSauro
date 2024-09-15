@@ -13,7 +13,7 @@ import { Usuario } from '../modules/usuario.module';
 export class StartPhaseService {
 
   private url: string = 'http://localhost:8080/';
-  private vidasSubject: BehaviorSubject<number> = new BehaviorSubject<number>(5);  // Inicializando com 5 vidas temporárias
+  private vidasSubject: BehaviorSubject<number> = new BehaviorSubject<number>(5);
   private vidasZeradas: boolean = false;
 
   constructor(
@@ -32,17 +32,15 @@ export class StartPhaseService {
     }
   }
 
-  // Método para carregar as vidas do backend
   public carregarVidasDoBackend(userId: number): void {
     this.http.get<Usuario>(`${this.url}usuarios/${userId}`, { headers: this.getHeaders() })
       .subscribe((usuario: Usuario) => {
-        this.setVidas(usuario.vidas);  // Atualiza o BehaviorSubject com o valor de vidas carregado
+        this.setVidas(usuario.vidas);
       }, error => {
         console.error('Erro ao carregar vidas do backend:', error);
       });
   }
 
-  // Carregar estrelas do backend
   public carregarEstrelasDoBackend(userId: number): Observable<number> {
     return this.http.get<Usuario>(`${this.url}usuarios/${userId}`, { headers: this.getHeaders() })
       .pipe(
@@ -50,18 +48,15 @@ export class StartPhaseService {
       );
   }
 
-  // Atualizar o valor das vidas no BehaviorSubject
   public setVidas(vidas: number): void {
     this.vidasSubject.next(vidas);
     this.setVidasZeradas(vidas === 0);
   }
 
-  // Método para obter o valor das vidas como um Observable
   public getVidas(): Observable<number> {
     return this.vidasSubject.asObservable();
   }
 
-  // Método para buscar vidas diretamente do backend ignorando cache
   public buscarVidasDoBackendSemCache(userId: number): Observable<number> {
     const headers = this.getHeaders().set('Cache-Control', 'no-cache');
     return this.http.get<Usuario>(`${this.url}usuarios/${userId}`, { headers })
@@ -70,17 +65,14 @@ export class StartPhaseService {
       );
   }
 
-  // Verifica se as vidas chegaram a zero
   public verificarVidasZeradas(): boolean {
     return this.vidasZeradas;
   }
 
-  // Define se as vidas foram zeradas
   private setVidasZeradas(zeradas: boolean): void {
     this.vidasZeradas = zeradas;
   }
 
-  // Atualiza o número de vidas após uma resposta incorreta
   public atualizarVida(userId: number, respostaCorreta: boolean): Observable<void> {
     return this.http.put<void>(
       `${this.url}usuarios/${userId}/vidas`,
@@ -93,34 +85,34 @@ export class StartPhaseService {
       tap(() => {
         let vidasAtuais = this.vidasSubject.getValue();
         if (!respostaCorreta) {
-          vidasAtuais = Math.max(vidasAtuais - 1, 0);  // Reduz uma vida em caso de erro
-          this.setVidas(vidasAtuais);  // Atualiza o BehaviorSubject com o novo valor
+          vidasAtuais = Math.max(vidasAtuais - 1, 0);
+          this.setVidas(vidasAtuais);
         }
       })
     );
   }
 
-  // Método para iniciar uma fase com verificação de vidas
-  public startPhaseService(phaseId: number): void {
+  public startPhaseService(userId: number, phaseId: number): void {
     if (this.verificarVidasZeradas()) {
-      this.router.navigate(['/authenticated/punctuation/without-life-locked-map']);  // Redireciona se as vidas estiverem zeradas
+      this.router.navigate(['/authenticated/punctuation/without-life-locked-map']); 
       return;
     }
 
-    this.progressBarService.resetProgress();
-    const phaseData = this.mockPhasesDataTypeService.getMockData().find(phase => phase.id === phaseId);
-    if (phaseData) {
-      const numberOfPagesExplaining = phaseData.number_of_pages_explaining || 0;
+    this.pausarRegeneracaoVidas(userId).subscribe(() => {
+      this.progressBarService.resetProgress();
+      const phaseData = this.mockPhasesDataTypeService.getMockData().find(phase => phase.id === phaseId);
+      if (phaseData) {
+        const numberOfPagesExplaining = phaseData.number_of_pages_explaining || 0;
 
-      if (numberOfPagesExplaining > 0) {
-        this.router.navigate(['/authenticated/phases/explaining-phase', phaseId]);
-      } else {
-        this.navigateToPhaseByRA(phaseData.ra, phaseId);
+        if (numberOfPagesExplaining > 0) {
+          this.router.navigate(['/authenticated/phases/explaining-phase', phaseId]);
+        } else {
+          this.navigateToPhaseByRA(phaseData.ra, phaseId);
+        }
       }
-    }
+    });
   }
 
-  // Navegação para diferentes fases com base no RA
   private navigateToPhaseByRA(ra: number, phaseId: number): void {
     switch (ra) {
       case 1:
@@ -135,7 +127,6 @@ export class StartPhaseService {
     }
   }
 
-  // Carregar progresso do usuário no backend
   public getUserProgress(userId: number): Observable<UsuarioProgresso[]> {
     return this.http.get<UsuarioProgresso[]>(
       `${this.url}usuarios/${userId}/progresso`,
@@ -143,7 +134,6 @@ export class StartPhaseService {
     );
   }
 
-  // Atualizar o progresso do usuário
   public putUserProgress(userId: number, faseId: number, estrelas: number): Observable<any> {
     return this.http.put<any>(
       `${this.url}usuarios/${userId}/progresso/${faseId}?estrelas=${estrelas}`,
@@ -152,11 +142,27 @@ export class StartPhaseService {
     );
   }
 
-  // Método para obter o tempo de regeneração de vidas
   public getTempoRegeneracaoVidas(userId: number): Observable<string> {
     return this.http.get<Usuario>(`${this.url}usuarios/${userId}`, { headers: this.getHeaders() })
       .pipe(
         map((usuario: Usuario) => usuario.tempoParaProximaVida)
     );
   }
+
+  public pausarRegeneracaoVidas(userId: number): Observable<void> {
+    return this.http.put<void>(
+      `${this.url}usuarios/${userId}/pausar-regeneracao`,
+      null,
+      { headers: this.getHeaders() }
+    );
+  }
+
+  public retomarRegeneracaoVidas(userId: number): Observable<void> {
+    return this.http.put<void>(
+      `${this.url}usuarios/${userId}/retomar-regeneracao`,
+      null,
+      { headers: this.getHeaders() }
+    );
+  }
+
 }

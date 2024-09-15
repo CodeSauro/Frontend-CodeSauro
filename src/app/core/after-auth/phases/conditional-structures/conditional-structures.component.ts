@@ -41,7 +41,7 @@ export class ConditionalStructuresComponent implements OnInit {
   correctAnswerCount: number = 0;
   dropListIds: string[] = [];
   mazeConfiguration: { class: string; content?: string; }[] = [];
-  vidasZeradas: boolean = false;  // Estado de vidas zeradas
+  vidasZeradas: boolean = false;
 
   constructor(
     private mockPhasesDataTypeService: MockPhasesDataTypeService,
@@ -114,7 +114,6 @@ export class ConditionalStructuresComponent implements OnInit {
     this.progressBarService.updateProgress((this.currentPage / this.numberOfPagesTotal) * 100);
     if (this.isValidationMode) {
       if (this.vidasZeradas) {
-        // Redirecionar se as vidas estiverem zeradas
         this.router.navigate(['/authenticated/punctuation/without-life']);
       } else {
         this.isValidationMode = false;
@@ -150,10 +149,9 @@ export class ConditionalStructuresComponent implements OnInit {
       const userId = this.authService.getUserIdFromToken();
       if (userId) {
         this.startPhaseService.atualizarVida(userId, false).subscribe(() => {
-          // Verifica se as vidas zeraram após a atualização
           this.startPhaseService.getVidas().subscribe(vidas => {
             if (vidas === 0) {
-              this.vidasZeradas = true;  // Marca que as vidas foram zeradas
+              this.vidasZeradas = true;  
             }
           });
         });

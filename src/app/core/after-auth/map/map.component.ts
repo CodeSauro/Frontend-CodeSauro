@@ -90,13 +90,14 @@ export class MapComponent implements OnInit {
   }
 
   public start_phase(phaseId: number) {
-    // Verifica se as vidas estão zeradas antes de iniciar a fase
-    if (this.startPhaseService.verificarVidasZeradas()) {
-      this.startPhaseService.startPhaseService(phaseId);
-    } else {
-      const fase = this.progressos.find(p => p.faseId === phaseId);
-      if (fase && !fase.bloqueada) {
-        this.startPhaseService.startPhaseService(phaseId);
+    if(this.userId) {
+      if (this.startPhaseService.verificarVidasZeradas()) {
+        this.startPhaseService.startPhaseService(this.userId, phaseId);
+      } else {
+        const fase = this.progressos.find(p => p.faseId === phaseId);
+        if (fase && !fase.bloqueada) {
+          this.startPhaseService.startPhaseService(this.userId, phaseId);
+        }
       }
     }
   }
