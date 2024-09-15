@@ -8,4 +8,5 @@ export interface Usuario {
   estrelas: number,
   vidas: number,
   tempoParaProximaVida: string
+  regeneracaoPausada: boolean;
 }
