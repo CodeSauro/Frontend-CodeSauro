@@ -43,6 +43,8 @@ export class ConditionalStructuresComponent implements OnInit {
   mazeConfiguration: { class: string; content?: string; }[] = [];
   vidasZeradas: boolean = false;
 
+  randomizedPages: any[] = [];
+
   constructor(
     private mockPhasesDataTypeService: MockPhasesDataTypeService,
     private route: ActivatedRoute,
@@ -69,41 +71,76 @@ export class ConditionalStructuresComponent implements OnInit {
     this.numberOfPagesExplaining = item?.number_of_pages_explaining || 0;
     this.currentPagePhase = this.currentPage - this.numberOfPagesExplaining;
 
-    switch (this.currentPagePhase) {
-      case 1:
-        this.variablesArray = item.variables_page_1.map((variable: any) => [variable]);
-        this.correct_answers = [...item.correct_answers_page_1];
-        this.mazeConfiguration = [...item.maze_configuration_1];
-        break;
-      case 2:
-        this.variablesArray = item.variables_page_2.map((variable: any) => [variable]);
-        this.correct_answers = [...item.correct_answers_page_2];
-        this.mazeConfiguration = [...item.maze_configuration_2];
-        break;
-      case 3:
-        this.variablesArray = item.variables_page_3.map((variable: any) => [variable]);
-        this.correct_answers = [...item.correct_answers_page_3];
-        this.mazeConfiguration = [...item.maze_configuration_3];
-        break;
-      case 4:
-        this.variablesArray = item.variables_page_4.map((variable: any) => [variable]);
-        this.correct_answers = [...item.correct_answers_page_4];
-        this.mazeConfiguration = [...item.maze_configuration_4];
-        break;
-      case 5:
-        this.variablesArray = item.variables_page_5.map((variable: any) => [variable]);
-        this.correct_answers = [...item.correct_answers_page_5];
-        this.mazeConfiguration = [...item.maze_configuration_5];
-        break;
-      case 6:
-        this.variablesArray = item.variables_page_6.map((variable: any) => [variable]);
-        this.correct_answers = [...item.correct_answers_page_6];
-        this.mazeConfiguration = [...item.maze_configuration_6];
-        break;
+    const pages = [
+      {
+        variables: item.variables_page_1,
+        variables_numbers: item.variables_numbers_page_1,
+        correct_answers: item.correct_answers_page_1,
+        maze_configuration: item.maze_configuration_1
+      },
+      {
+        variables: item.variables_page_2,
+        variables_numbers: item.variables_numbers_page_2,
+        correct_answers: item.correct_answers_page_2,
+        maze_configuration: item.maze_configuration_2
+      },
+      {
+        variables: item.variables_page_3,
+        variables_numbers: item.variables_numbers_page_3,
+        correct_answers: item.correct_answers_page_3,
+        maze_configuration: item.maze_configuration_3
+      },
+      {
+        variables: item.variables_page_4,
+        variables_numbers: item.variables_numbers_page_4,
+        correct_answers: item.correct_answers_page_4,
+        maze_configuration: item.maze_configuration_4
+      },
+      {
+        variables: item.variables_page_5,
+        variables_numbers: item.variables_numbers_page_5,
+        correct_answers: item.correct_answers_page_5,
+        maze_configuration: item.maze_configuration_5
+      },
+      {
+        variables: item.variables_page_6,
+        variables_numbers: item.variables_numbers_page_6,
+        correct_answers: item.correct_answers_page_6,
+        maze_configuration: item.maze_configuration_6
+      },
+    ].filter(page =>
+      page.variables && page.variables.length > 0 &&
+      page.correct_answers && page.correct_answers.length > 0
+    );
+
+    this.randomizedPages = this.shuffleArray(pages);
+
+    if (this.randomizedPages.length > 0 && this.currentPagePhase > 0 && this.currentPagePhase <= this.randomizedPages.length) {
+      const currentPageData = this.randomizedPages[this.currentPagePhase - 1];
+      this.variablesArray = this.shuffleArray(currentPageData.variables.map((variable: any) => [variable]));
+
+      if (currentPageData.variables_numbers) {
+        this.variablesArray = this.variablesArray.concat(this.shuffleArray(currentPageData.variables_numbers.map((variable: any) => [variable])));
+      }
+
+      this.correct_answers = [...currentPageData.correct_answers];
+      this.mazeConfiguration = currentPageData.maze_configuration ? [...currentPageData.maze_configuration] : [];
+    } else {
+      this.variablesArray = [];
+      this.correct_answers = [];
+      this.mazeConfiguration = [];
     }
 
     this.dropListIds = this.variablesArray.map((_, index) => `dropList${index}`);
     this.checkContinueButtonState();
+  }
+
+  private shuffleArray(array: any[]): any[] {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
   }
 
   private checkContinueButtonState() {
@@ -151,7 +188,7 @@ export class ConditionalStructuresComponent implements OnInit {
         this.startPhaseService.atualizarVida(userId, false).subscribe(() => {
           this.startPhaseService.getVidas().subscribe(vidas => {
             if (vidas === 0) {
-              this.vidasZeradas = true;  
+              this.vidasZeradas = true;
             }
           });
         });

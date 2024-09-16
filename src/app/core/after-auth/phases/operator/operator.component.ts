@@ -43,6 +43,8 @@ export class ArithmeticOperatorComponent implements OnInit {
   contextPhase: string = "";
   vidasZeradas: boolean = false;
 
+  randomizedPages: any[] = [];
+
   constructor(
     private mockPhasesDataTypeService: MockPhasesDataTypeService,
     private route: ActivatedRoute,
@@ -73,41 +75,66 @@ export class ArithmeticOperatorComponent implements OnInit {
     this.currentPagePhase = this.currentPage - this.numberOfPagesExplaining;
     this.contextPhase = item?.context_phase;
 
-    switch (this.currentPagePhase) {
-      case 1:
-        this.variables = [...item.variables_page_1];
-        this.variablesNumbers = [...item.variables_numbers_page_1];
-        this.correct_answers = [...item.correct_answers_page_1];
-        break;
-      case 2:
-        this.variables = [...item.variables_page_2];
-        this.variablesNumbers = [...item.variables_numbers_page_2];
-        this.correct_answers = [...item.correct_answers_page_2];
-        break;
-      case 3:
-        this.variables = [...item.variables_page_3];
-        this.variablesNumbers = [...item.variables_numbers_page_3];
-        this.correct_answers = [...item.correct_answers_page_3];
-        break;
-      case 4:
-        this.variables = [...item.variables_page_4];
-        this.variablesNumbers = [...item.variables_numbers_page_4];
-        this.correct_answers = [...item.correct_answers_page_4];
-        break;
-      case 5:
-        this.variables = [...item.variables_page_5];
-        this.variablesNumbers = [...item.variables_numbers_page_5];
-        this.correct_answers = [...item.correct_answers_page_5];
-        break;
-      case 6:
-        this.variables = [...item.variables_page_6];
-        this.variablesNumbers = [...item.variables_numbers_page_6];
-        this.correct_answers = [...item.correct_answers_page_6];
-        break;
+    const pages = [
+      {
+        variables: item.variables_page_1,
+        variables_numbers: item.variables_numbers_page_1,
+        correct_answers: item.correct_answers_page_1
+      },
+      {
+        variables: item.variables_page_2,
+        variables_numbers: item.variables_numbers_page_2,
+        correct_answers: item.correct_answers_page_2
+      },
+      {
+        variables: item.variables_page_3,
+        variables_numbers: item.variables_numbers_page_3,
+        correct_answers: item.correct_answers_page_3
+      },
+      {
+        variables: item.variables_page_4,
+        variables_numbers: item.variables_numbers_page_4,
+        correct_answers: item.correct_answers_page_4
+      },
+      {
+        variables: item.variables_page_5,
+        variables_numbers: item.variables_numbers_page_5,
+        correct_answers: item.correct_answers_page_5
+      },
+      {
+        variables: item.variables_page_6,
+        variables_numbers: item.variables_numbers_page_6,
+        correct_answers: item.correct_answers_page_6
+      },
+    ].filter(page =>
+      page.variables && page.variables.length > 0 &&
+      page.correct_answers && page.correct_answers.length > 0
+    );
+
+    this.randomizedPages = this.shuffleArray(pages);
+
+    if (this.randomizedPages.length > 0 && this.currentPagePhase > 0 && this.currentPagePhase <= this.randomizedPages.length) {
+      const currentPageData = this.randomizedPages[this.currentPagePhase - 1];
+      this.variables = this.shuffleArray([...currentPageData.variables]);
+      this.variablesNumbers = currentPageData.variables_numbers || [];
+
+      this.correct_answers = [...currentPageData.correct_answers];
+    } else {
+      this.variables = [];
+      this.variablesNumbers = [];
+      this.correct_answers = [];
     }
 
     this.answers = [];
     this.checkContinueButtonState();
+  }
+
+  private shuffleArray(array: any[]): any[] {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
   }
 
   continue() {
@@ -155,7 +182,7 @@ export class ArithmeticOperatorComponent implements OnInit {
         this.startPhaseService.atualizarVida(userId, false).subscribe(() => {
           this.startPhaseService.getVidas().subscribe(vidas => {
             if (vidas === 0) {
-              this.vidasZeradas = true; 
+              this.vidasZeradas = true;
             }
           });
         });
