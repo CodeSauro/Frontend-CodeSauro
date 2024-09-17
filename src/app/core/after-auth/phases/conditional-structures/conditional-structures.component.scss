@@ -84,7 +84,7 @@
   padding: 0 size-calc-iPhone(12);
   border: solid #C2955C size-calc-iPhone(3);
   border-radius: size-calc-iPhone(10);
-  font-size: size-calc-iPhone(28);
+  font-size: size-calc-iPhone(24);
   font-weight: 400;
   letter-spacing: size-calc-iPhone(1);
   text-shadow: size-calc-iPhone(-0.5) 0 black, 0 size-calc-iPhone(0.5) black, size-calc-iPhone(0.5) 0 black, 0 size-calc-iPhone(-0.5) black;
@@ -95,7 +95,7 @@
     padding: 0 size-calc-iPad(20);
     border: solid #C2955C size-calc-iPad(3);
     border-radius: size-calc-iPad(12);
-    font-size: size-calc-iPad(36);
+    font-size: size-calc-iPad(32);
     letter-spacing: size-calc-iPad(1);
     text-shadow: size-calc-iPad(-1) 0 black, 0 size-calc-iPad(1) black, size-calc-iPad(1) 0 black, 0 size-calc-iPad(-1) black;
     box-sizing: border-box;
@@ -301,12 +301,12 @@
       .icon-wood {
         background-image: url("../../../../../assets/icon-wood.png");
         background-size: cover;
-        width: size-calc-iPhone(50);
+        width: size-calc-iPhone(46);
         height: size-calc-iPhone(40);
         transform: rotate(25deg);
 
         @media (min-width: 540px) {
-          width: size-calc-iPad(72);
+          width: size-calc-iPad(68);
           height: size-calc-iPad(60);
         }
       }

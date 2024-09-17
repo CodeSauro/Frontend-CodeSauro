@@ -1,0 +1,45 @@
+<main>
+  <app-header-phases></app-header-phases>
+  <div class="context-phase">
+    <p>Organize os blocos na ordem correta:</p>
+  </div>
+  <div class="container">
+    <div *ngFor="let variable of variablesArray; let i = index" class="selection-group">
+      <div
+        cdkDropList
+        id="dropList{{i}}"
+        [cdkDropListConnectedTo]="dropListIds"
+        [cdkDropListData]="variable"
+        class="example-list"
+        (cdkDropListDropped)="drop($event, i)">
+        <div class="example-box" *ngFor="let item of variable" cdkDrag>
+          {{ item }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-maze">
+  <div class="maze">
+    <div *ngFor="let block of mazeConfiguration" [ngClass]="'maze-block ' + block.class">
+      <div *ngIf="block.class === 'red'">
+        <p>{{ block.content }}</p>
+      </div>
+      <div *ngIf="block.class === 'invisible'" class="icon-wood"></div>
+    </div>
+  </div>
+  </div>
+  <div *ngIf="isValidationMode" [ngClass]="{'container-validation': true, 'correct': isCorrect, 'incorrect': !isCorrect}">
+    <div class="correct" *ngIf="isCorrect">
+      <p class="p-correct">{{validationMessage}}</p>
+      <p class="p-right-answer">Você acertou, continue assim</p>
+    </div>
+    <div class="incorrect" *ngIf="!isCorrect">
+      <p class="p-incorrect">Incorreto!</p>
+      <p class="p-right-answer">Resposta correta:</p>
+      <p class="interpolation-right-answer" [innerHTML]="correct_answers.join(',<br><br>')"></p>
+    </div>
+  </div>
+  <div class="button-main">
+    <button class="button-main-red" [disabled]="isContinueDisabled" (click)="continue()">CONTINUAR</button>
+  </div>
+</main>

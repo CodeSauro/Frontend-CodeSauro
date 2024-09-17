@@ -71,19 +71,19 @@
   justify-content: space-around;
 
   p {
-    height: size-calc-iPhone(52);
-    width: size-calc-iPhone(52);
-    font-size: size-calc-iPhone(40);
-    margin-top: size-calc-iPhone(16);
+    height: size-calc-iPhone(44);
+    width: size-calc-iPhone(44);
+    font-size: size-calc-iPhone(32);
+    margin-top: size-calc-iPhone(14);
     text-align: center;
     text-shadow: size-calc-iPhone(-1) 0 black, 0 size-calc-iPhone(1) black, size-calc-iPhone(1) 0 black, 0 size-calc-iPhone(-1) black;
     letter-spacing: size-calc-iPhone(1);
 
     @media (min-width: 540px) {
-      height: size-calc-iPad(60);
-      width: size-calc-iPad(60);
-      font-size: size-calc-iPad(48);
-      margin-top: size-calc-iPad(20);
+      height: size-calc-iPad(52);
+      width: size-calc-iPad(52);
+      font-size: size-calc-iPad(40);
+      margin-top: size-calc-iPad(18);
       text-shadow: size-calc-iPad(-1) 0 black, 0 size-calc-iPad(1) black, size-calc-iPad(1) 0 black, 0 size-calc-iPad(-1) black;
       letter-spacing: size-calc-iPad(1);
     }

@@ -1,3 +1,4 @@
+import { ConditionalStructuresComplexComponent } from './core/after-auth/phases/conditional-structures-complex/conditional-structures-complex.component';
 import { Routes } from '@angular/router';
 import { HomeComponent } from './core/before-auth/home/home.component';
 import { AuthComponent } from './core/before-auth/auth/auth.component';
@@ -18,6 +19,8 @@ import { MapComponent } from './core/after-auth/map/map.component';
 import { ArithmeticOperatorComponent } from './core/after-auth/phases/operator/operator.component';
 import { ConditionalStructuresComponent } from './core/after-auth/phases/conditional-structures/conditional-structures.component';
 import { WithoutLifeLockedMapComponent } from './core/after-auth/punctuation/without-life-locked-map/without-life-locked-map.component';
+import { OperatorComplexComponent } from './core/after-auth/phases/operator-complex/operator-complex.component';
+import { OperatorComplex2Component } from './core/after-auth/phases/operator-complex-2/operator-complex-2.component';
 
 export const routes: Routes = [
   {
@@ -64,7 +67,16 @@ export const routes: Routes = [
             path: 'operator/:id', component: ArithmeticOperatorComponent
           },
           {
+            path: 'operator-complex/:id', component: OperatorComplexComponent
+          },
+          {
+            path: 'operator-complex-2/:id', component: OperatorComplex2Component
+          },
+          {
             path: 'conditional-structures/:id', component: ConditionalStructuresComponent
+          },
+          {
+            path: 'conditional-structures-complex/:id', component: ConditionalStructuresComplexComponent
           }
         ]
       },

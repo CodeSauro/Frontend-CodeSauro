@@ -31,89 +31,42 @@
 
 .selection-group {
   position: relative;
-  //height: size-calc-iPhone(260);
-  height: size-calc-iPhone(172);
+  height: size-calc-iPhone(34 + 8);
   width: size-calc-iPhone(358);
   display: inline-block;
   vertical-align: top;
   overflow: hidden;
-  //background-color: rgba(255, 0, 0, 0.25);
 
   @media (min-width: 540px) {
-    width: size-calc-iPad(530);
-    //height: size-calc-iPad(278);
-    height: size-calc-iPad(184);
+    width: size-calc-iPad(462);
+    height: size-calc-iPad(42 + 12);
   }
 
   &:first-child {
-    margin-top: size-calc-iPhone(223);
+    margin-top: size-calc-iPhone(205);
 
     @media (min-width: 540px) {
-      margin-top: size-calc-iPad(311);
-    }
-  }
-
-  &:last-child {
-    position: absolute;
-    bottom: 0;
-    //margin-bottom: size-calc-iPhone(60);
-    margin-bottom: size-calc-iPhone(242);
-
-    @media (min-width: 540px) {
-      //margin-bottom: size-calc-iPad(168);
-      margin-bottom: size-calc-iPad(405);
+      margin-top: size-calc-iPad(283);
     }
   }
 }
 
-.selection-group-2 {
+.example-list {
   display: flex;
-  justify-content: space-around;
-
-  p {
-    height: size-calc-iPhone(52);
-    width: size-calc-iPhone(52);
-    font-size: size-calc-iPhone(40);
-    margin-top: size-calc-iPhone(16);
-    text-align: center;
-    text-shadow: size-calc-iPhone(-1) 0 black, 0 size-calc-iPhone(1) black, size-calc-iPhone(1) 0 black, 0 size-calc-iPhone(-1) black;
-    letter-spacing: size-calc-iPhone(1);
-
-    @media (min-width: 540px) {
-      height: size-calc-iPad(60);
-      width: size-calc-iPad(60);
-      font-size: size-calc-iPad(48);
-      margin-top: size-calc-iPad(20);
-      text-shadow: size-calc-iPad(-1) 0 black, 0 size-calc-iPad(1) black, size-calc-iPad(1) 0 black, 0 size-calc-iPad(-1) black;
-      letter-spacing: size-calc-iPad(1);
-    }
-  }
-}
-
-.example-list, .example-list-2 {
-  min-height: size-calc-iPhone(42);
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: size-calc-iPhone(30);
+  flex-wrap: wrap-reverse;
+  justify-content: start;
   overflow: hidden;
-
-  @media (min-width: 540px) {
-    min-height: size-calc-iPad(50);
-    gap: size-calc-iPad(50);
-  }
-}
-
-.example-list-2 {
-  background-color: rgba(0, 0, 0, 0.5);
-  height: size-calc-iPhone(42);
-  width: size-calc-iPhone(42);
+  background-color: rgba(0, 0, 0, 0.50);
+  height: size-calc-iPhone(34);
+  width: size-calc-iPhone(358);
   border-radius: size-calc-iPhone(10);
   box-shadow: 0 size-calc-iPhone(4) size-calc-iPhone(4) rgba(0, 0, 0, 0.25);
 
   @media (min-width: 540px) {
-    height: size-calc-iPad(50);
-    width: size-calc-iPad(50);
+    min-height: size-calc-iPad(42);
+    gap: size-calc-iPad(42);
+    height: size-calc-iPad(42);
+    width: size-calc-iPad(462);
     border-radius: size-calc-iPad(12);
     box-shadow: 0 size-calc-iPhone(4) size-calc-iPhone(4) rgba(0, 0, 0, 0.25);
   }
@@ -122,26 +75,27 @@
 .example-box {
   cursor: move;
   user-select: none;
-  height: size-calc-iPhone(42);
-  width: size-calc-iPhone(42);
+  height: size-calc-iPhone(34);
+  width: fit-content;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #9E6B2B;
+  padding: 0 size-calc-iPhone(12);
   border: solid #C2955C size-calc-iPhone(3);
   border-radius: size-calc-iPhone(10);
-  font-size: size-calc-iPhone(28);
+  font-size: size-calc-iPhone(20);
   font-weight: 400;
   letter-spacing: size-calc-iPhone(1);
   text-shadow: size-calc-iPhone(-0.5) 0 black, 0 size-calc-iPhone(0.5) black, size-calc-iPhone(0.5) 0 black, 0 size-calc-iPhone(-0.5) black;
   box-sizing: border-box;
 
   @media (min-width: 540px) {
-    height: size-calc-iPad(50);
-    width: size-calc-iPad(50);
+    height: size-calc-iPad(42);
+    padding: 0 size-calc-iPad(20);
     border: solid #C2955C size-calc-iPad(3);
     border-radius: size-calc-iPad(12);
-    font-size: size-calc-iPad(36);
+    font-size: size-calc-iPad(28);
     letter-spacing: size-calc-iPad(1);
     text-shadow: size-calc-iPad(-1) 0 black, 0 size-calc-iPad(1) black, size-calc-iPad(1) 0 black, 0 size-calc-iPad(-1) black;
     box-sizing: border-box;
@@ -267,38 +221,113 @@
       }
     }
 
-    div {
-      display: flex;
-      flex-direction: row;
-      gap: size-calc-iPhone(16);
+    .p-right-answer {
+      font-size: size-calc-iPhone(24);
+      font-weight: 600;
+      text-shadow: size-calc-iPhone(-0.5) 0 black, 0 size-calc-iPhone(0.5) black, size-calc-iPhone(0.5) 0 black, 0 size-calc-iPhone(-0.5) black;
 
       @media (min-width: 540px) {
-        gap: size-calc-iPad(16);
+        font-size: size-calc-iPad(32);
+        text-shadow: size-calc-iPad(-1) 0 black, 0 size-calc-iPad(1) black, size-calc-iPad(1) 0 black, 0 size-calc-iPad(-1) black;
+      }
+    }
+
+    .interpolation-right-answer {
+      font-size: size-calc-iPhone(24);
+      font-weight: 300;
+      text-shadow: size-calc-iPhone(-0.5) 0 black, 0 size-calc-iPhone(0.5) black, size-calc-iPhone(0.5) 0 black, 0 size-calc-iPhone(-0.5) black;
+
+      @media (min-width: 540px) {
+        font-size: size-calc-iPad(32);
+        text-shadow: size-calc-iPad(-1) 0 black, 0 size-calc-iPad(1) black, size-calc-iPad(1) 0 black, 0 size-calc-iPad(-1) black;
+      }
+    }
+  }
+}
+
+.container-maze {
+  background-color: rgba(0, 0, 0, 0.8);
+  height: size-calc-iPhone(382);
+  width: 100vw;
+  position: absolute;
+  bottom: 0;
+
+  @media (min-width: 540px) {
+    height: size-calc-iPad(548);
+  }
+
+  .maze {
+    display: flex;
+    flex-wrap: wrap;
+    height: size-calc-iPhone(200);
+    width: size-calc-iPhone(300);
+    margin-top: size-calc-iPhone(25);
+    margin-left: size-calc-iPhone(45);
+
+    @media (min-width: 540px) {
+      height: size-calc-iPad(288);
+      width: size-calc-iPad(432);
+      margin-top: size-calc-iPad(32);
+      margin-left: size-calc-iPad(201);
+    }
+
+    .maze-block, .invisible, .red, .green {
+      height: size-calc-iPhone(48);
+      width: size-calc-iPhone(48);
+      border: solid #FFFFFF size-calc-iPhone(1);
+      border-radius: size-calc-iPhone(10);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      @media (min-width: 540px) {
+        height: size-calc-iPad(68);
+        width: size-calc-iPad(68);
+        border: solid #FFFFFF size-calc-iPad(2);
+        border-radius: size-calc-iPad(12);
+      }
+    }
+
+    .invisible {
+      height: size-calc-iPhone(50);
+      width: size-calc-iPhone(50);
+      border: none;
+
+      @media (min-width: 540px) {
+        height: size-calc-iPad(72);
+        width: size-calc-iPad(72);
       }
 
-      .p-right-answer {
-        font-size: size-calc-iPhone(24);
-        font-weight: 600;
-        text-shadow: size-calc-iPhone(-0.5) 0 black, 0 size-calc-iPhone(0.5) black, size-calc-iPhone(0.5) 0 black, 0 size-calc-iPhone(-0.5) black;
+      .icon-wood {
+        background-image: url("../../../../../assets/icon-wood.png");
+        background-size: cover;
+        width: size-calc-iPhone(46);
+        height: size-calc-iPhone(40);
+        transform: rotate(25deg);
 
         @media (min-width: 540px) {
-          font-size: size-calc-iPad(32);
-          text-shadow: size-calc-iPad(-1) 0 black, 0 size-calc-iPad(1) black, size-calc-iPad(1) 0 black, 0 size-calc-iPad(-1) black;
-        }
-      }
-
-      .interpolation-right-answer {
-        font-size: size-calc-iPhone(24);
-        font-weight: 300;
-        text-shadow: size-calc-iPhone(-0.5) 0 black, 0 size-calc-iPhone(0.5) black, size-calc-iPhone(0.5) 0 black, 0 size-calc-iPhone(-0.5) black;
-
-        @media (min-width: 540px) {
-          font-size: size-calc-iPad(32);
-          text-shadow: size-calc-iPad(-1) 0 black, 0 size-calc-iPad(1) black, size-calc-iPad(1) 0 black, 0 size-calc-iPad(-1) black;
+          width: size-calc-iPad(68);
+          height: size-calc-iPad(60);
         }
       }
     }
 
+    .red {
+      background-color: #EF3349;
 
+      p {
+        font-size: size-calc-iPhone(28);
+        margin: 0;
+        text-align: center;
+
+        @media (min-width: 540px) {
+          font-size: size-calc-iPad(36);
+        }
+      }
+    }
+
+    .green {
+      background-color: #41A014;
+    }
   }
 }

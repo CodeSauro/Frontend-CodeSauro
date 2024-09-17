@@ -94,7 +94,7 @@ export class StartPhaseService {
 
   public startPhaseService(userId: number, phaseId: number): void {
     if (this.verificarVidasZeradas()) {
-      this.router.navigate(['/authenticated/punctuation/without-life-locked-map']); 
+      this.router.navigate(['/authenticated/punctuation/without-life-locked-map']);
       return;
     }
 
@@ -123,6 +123,15 @@ export class StartPhaseService {
         break;
       case 3:
         this.router.navigate(['/authenticated/phases/conditional-structures', phaseId]);
+        break;
+      case 22:
+        this.router.navigate(['/authenticated/phases/operator-complex', phaseId]);
+        break;
+      case 33:
+      this.router.navigate(['/authenticated/phases/conditional-structures-complex', phaseId]);
+        break;
+      case 222:
+        this.router.navigate(['/authenticated/phases/operator-complex-2', phaseId]);
         break;
     }
   }

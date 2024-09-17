@@ -1,0 +1,58 @@
+<main>
+  <app-header-phases></app-header-phases>
+  <div class="context-phase">
+    <p>{{contextPhase}}</p>
+  </div>
+  <div class="container">
+    <div class="selection-group">
+      <div
+        cdkDropList
+        cdkDropListSortingDisabled
+        #variablesList="cdkDropList"
+        [cdkDropListData]="variables"
+        [cdkDropListConnectedTo]="[answersList]"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
+        <div *ngFor="let item of variables" class="example-box" cdkDrag [cdkDragDisabled]="isDragDisabled">{{item}}</div>
+      </div>
+    </div>
+    <div class="trunk"></div>
+    <div class="selection-group selection-group-2">
+      <p>{{variablesNumbers[0]}}</p>
+      <p>{{variablesNumbers[1]}}</p>
+      <p>{{variablesNumbers[2]}}</p>
+      <div
+        cdkDropList
+        cdkDropListSortingDisabled
+        #answersList="cdkDropList"
+        [cdkDropListData]="answers"
+        [cdkDropListConnectedTo]="[variablesList]"
+        id="answersList"
+        class="example-list example-list-2"
+        (cdkDropListDropped)="drop($event)">
+        <div *ngFor="let item of answers" class="example-box" cdkDrag [cdkDragDisabled]="isDragDisabled">{{item}}</div>
+      </div>
+        <p>{{variablesNumbers[3]}}</p>
+        <p>{{variablesNumbers[4]}}</p>
+        <p>{{variablesNumbers[5]}}</p>
+        <p>{{variablesNumbers[6]}}</p>
+        <p>{{variablesNumbers[7]}}</p>
+    </div>
+  </div>
+  <div *ngIf="isValidationMode" [ngClass]="{'container-validation': true, 'correct': isCorrect, 'incorrect': !isCorrect}">
+    <div class="correct" *ngIf="isCorrect">
+      <p class="p-correct">{{validationMessage}}</p>
+      <p class="p-right-answer">Você acertou, continue assim</p>
+    </div>
+    <div class="incorrect" *ngIf="!isCorrect">
+      <p class="p-incorrect">Incorreto!</p>
+      <div>
+        <p class="p-right-answer">Resposta correta:</p>
+        <p class="interpolation-right-answer">{{correct_answers.join(', ')}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="button-main">
+    <button class="button-main-red" [disabled]="isContinueDisabled" (click)="continue()">CONTINUAR</button>
+  </div>
+</main>
