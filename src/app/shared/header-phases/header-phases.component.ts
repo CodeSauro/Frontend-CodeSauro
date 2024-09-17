@@ -44,7 +44,6 @@ export class HeaderPhasesComponent implements OnInit {
   public leave(): void {
     if (this.userId) {
       this.startPhaseService.retomarRegeneracaoVidas(this.userId).subscribe(() => {
-        console.log('Regeneração de vidas retomada com sucesso.');
         this.progressBarService.setCurrentPage(1);
         this.router.navigate(['/authenticated/map']);
       }, error => {

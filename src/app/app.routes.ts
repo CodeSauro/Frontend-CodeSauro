@@ -21,6 +21,8 @@ import { ConditionalStructuresComponent } from './core/after-auth/phases/conditi
 import { WithoutLifeLockedMapComponent } from './core/after-auth/punctuation/without-life-locked-map/without-life-locked-map.component';
 import { OperatorComplexComponent } from './core/after-auth/phases/operator-complex/operator-complex.component';
 import { OperatorComplex2Component } from './core/after-auth/phases/operator-complex-2/operator-complex-2.component';
+import { NewPasswordComponent } from './core/before-auth/new-password/new-password.component';
+import { ExitTheCodesauroComponent } from './core/after-auth/exit-the-codesauro/exit-the-codesauro.component';
 
 export const routes: Routes = [
   {
@@ -38,7 +40,9 @@ export const routes: Routes = [
       {
         path: 'settings', component: SettingsBeforeAuthComponent
       },
-
+      {
+        path: 'new-password', component: NewPasswordComponent
+      }
     ],
   },
   {
@@ -50,6 +54,9 @@ export const routes: Routes = [
       },
       {
         path: 'settings', component: SettingsAfterAuthComponent
+      },
+      {
+        path: 'exit-the-codesauro', component: ExitTheCodesauroComponent
       },
       {
         path: 'phases',

@@ -24,7 +24,7 @@
       </div>
       <div class="container-form-router-link">
         <a [routerLink]="['/register']"><p>Criar cadastro</p></a>
-        <p>Esqueceu a senha?</p>
+        <a [routerLink]="['/new-password']"><p>Esqueceu a senha?</p></a>
       </div>
       <div class="button-main">
         <button mat-button class="button-main-red" [disabled]="!loginForm.form.valid">CONFIRMAR</button>

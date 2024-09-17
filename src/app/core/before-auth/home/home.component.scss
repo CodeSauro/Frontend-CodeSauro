@@ -7,14 +7,28 @@
     align-items: center;
     height: 100vh;
 
-    .logotipo {
-      width: size-calc-iPhone(358);
-      height: auto;
+    .logotipo-wrapper {
+      display: inline-block; // Wrapper para isolar o transform
+      animation: floating 3s ease-in-out infinite;
 
-      @media (min-width: 540px) {
-        width: size-calc-iPad(530);
+      .logotipo {
+        width: size-calc-iPhone(358);
         height: auto;
+
+        @media (min-width: 540px) {
+          width: size-calc-iPad(530);
+          height: auto;
+        }
       }
+    }
+  }
+
+  @keyframes floating {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
     }
   }
 }

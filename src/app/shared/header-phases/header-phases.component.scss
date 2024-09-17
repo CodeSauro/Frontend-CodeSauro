@@ -41,13 +41,16 @@
     }
 
     p {
-      margin: auto 0;
       font-size: size-calc-iPhone(24);
       text-shadow: size-calc-iPhone(-1) 0 black, 0 size-calc-iPhone(1) black, size-calc-iPhone(1) 0 black, 0 size-calc-iPhone(-1) black;
+      font-weight: 700;
+      margin: auto 0;
+      margin-top: size-calc-iPhone(4);
 
       @media (min-width: 540px) {
-        font-size: size-calc-iPad(36);
+        font-size: size-calc-iPad(32);
         text-shadow: size-calc-iPad(-1) 0 black, 0 size-calc-iPad(1) black, size-calc-iPad(1) 0 black, 0 size-calc-iPad(-1) black;
+        margin-top: size-calc-iPad(6);
       }
     }
   }
