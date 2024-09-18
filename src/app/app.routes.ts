@@ -23,6 +23,7 @@ import { OperatorComplexComponent } from './core/after-auth/phases/operator-comp
 import { OperatorComplex2Component } from './core/after-auth/phases/operator-complex-2/operator-complex-2.component';
 import { NewPasswordComponent } from './core/before-auth/new-password/new-password.component';
 import { ExitTheCodesauroComponent } from './core/after-auth/exit-the-codesauro/exit-the-codesauro.component';
+import { RegisteredUserComponent } from './core/before-auth/registered-user/registered-user.component';
 
 export const routes: Routes = [
   {
@@ -42,6 +43,9 @@ export const routes: Routes = [
       },
       {
         path: 'new-password', component: NewPasswordComponent
+      },
+      {
+        path: 'registered-user', component: RegisteredUserComponent
       }
     ],
   },

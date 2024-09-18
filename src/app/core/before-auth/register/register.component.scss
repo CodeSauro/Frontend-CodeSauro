@@ -199,6 +199,24 @@
             font-size: size-calc-iPad(18);
           }
         }
+
+        .input-error {
+          border: size-calc-iPhone(5) solid #C2955C;;
+          animation: draw-border 1s forwards;
+
+          @media (min-width: 540px) {
+            border: size-calc-iPad(5) solid #C2955C;;
+          }
+        }
+
+        @keyframes draw-border {
+          0% {
+            border-color: #C2955C;;
+          }
+          100% {
+            border-color: #EF3349;
+          }
+        }
       }
     }
   }

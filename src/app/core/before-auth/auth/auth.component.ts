@@ -3,9 +3,10 @@ import { HeaderHomeComponent } from '../../../shared/header-home/header-home.com
 import { Usuario } from '../../../modules/usuario.module';
 import { AuthService } from '../../../service/auth.service';
 import { Router, RouterLink } from '@angular/router';
-import { FormsModule } from '@angular/forms';
-import {MatButtonModule} from '@angular/material/button';
+import { FormsModule, NgForm, NgModel } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle } from '@angular/material/dialog';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-auth',
@@ -14,7 +15,8 @@ import { MatDialog, MatDialogActions, MatDialogClose, MatDialogContent, MatDialo
     HeaderHomeComponent,
     RouterLink,
     FormsModule,
-    MatButtonModule
+    MatButtonModule,
+    CommonModule
   ],
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss']
@@ -22,6 +24,8 @@ import { MatDialog, MatDialogActions, MatDialogClose, MatDialogContent, MatDialo
 export class AuthComponent {
   public listaUsuarios: Usuario[] = [];
   public id: any;
+  @ViewChild('loginForm') loginForm!: NgForm; // Referência ao formulário de login
+  formSubmitted: boolean = false;
 
   constructor(
     private service: AuthService,
@@ -30,14 +34,38 @@ export class AuthComponent {
   ) {}
 
   public auth(login: string, senha: string) {
+    this.formSubmitted = true;
+
+    // Chame markFormTouched mesmo se o formulário for inválido
+    this.markFormTouched(this.loginForm);
+
+    // Continua mesmo se o formulário for inválido para permitir a tentativa de envio
     this.service.auth({ login, senha }).subscribe(
       res => {
-        this.router.navigate(['/authenticated/map'])
+        // Sucesso ao autenticar
+        this.router.navigate(['/authenticated/map']);
       },
       error => {
-        // this.openDialog()
+        // Erro ao autenticar
+        this.handleAuthError();
       }
     );
+  }
+
+  private handleAuthError() {
+    // Marcar os campos como inválidos
+    this.loginForm.controls['login'].setErrors({'incorrect': true});
+    this.loginForm.controls['senha'].setErrors({'incorrect': true});
+    // Limpar os campos
+    this.loginForm.resetForm();
+    // Garantir que a borda vermelha apareça
+    this.formSubmitted = true;
+  }
+
+  private markFormTouched(form: NgForm) {
+    Object.values(form.controls).forEach(control => {
+      control.markAsTouched();
+    });
   }
 
   @ViewChild('senha') senhaInput!: ElementRef;
@@ -50,17 +78,4 @@ export class AuthComponent {
   get iconEye() {
     return this.senhaVisivel ? 'icon-eye-close.png' : 'icon-eye.png';
   }
-
-  openDialog() {
-    this.dialog.open(DialogElementsExampleDialog);
-  }
 }
-
-@Component({
-  selector: 'dialog-elements-example-dialog',
-  templateUrl: './dialog-elements-example-dialog.html',
-  styleUrls: ['./dialog-elements-example-dialog.scss'],
-  standalone: true,
-  imports: [MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose, MatButtonModule],
-})
-export class DialogElementsExampleDialog {}

@@ -1,5 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm, NgModel } from '@angular/forms'; 
 import { Router } from '@angular/router';
 import { UsuarioService } from '../../../service/usuario.service';
 import { HeaderAuthHomeComponent } from '../../../shared/header-auth-home/header-auth-home.component';
@@ -18,6 +18,9 @@ import { CommonModule } from '@angular/common';
 })
 export class RegisterComponent {
 
+  @ViewChild('registerForm') registerForm!: NgForm;
+  formSubmitted: boolean = false;
+
   constructor(
     private usuarioService: UsuarioService,
     private router: Router
@@ -30,6 +33,13 @@ export class RegisterComponent {
     telefone: string,
     senha: string
   ) {
+    this.formSubmitted = true;
+
+    if (this.registerForm.invalid) {
+      this.markFormTouched(this.registerForm);
+      return;
+    }
+
     return this.usuarioService.post(
       nome,
       apelido,
@@ -38,12 +48,22 @@ export class RegisterComponent {
       senha
     ).subscribe(
       res => {
-        this.router.navigate(['/auth'])
+        this.router.navigate(['/registered-user'])
       },
       error => {
         console.error('Erro ', error);
       }
-    )
+    );
+  }
+
+  private markFormTouched(form: NgForm) {
+    Object.values(form.controls).forEach(control => {
+      control.markAsTouched();
+    });
+  }
+
+  validateTelefone(telefone: NgModel) {
+    return telefone.value && telefone.value.length === 11 ? null : { 'invalidTelefone': true };
   }
 
   @ViewChild('senha') senhaInput!: ElementRef;
@@ -57,4 +77,10 @@ export class RegisterComponent {
     return this.senhaVisivel ? 'icon-eye-close.png' : 'icon-eye.png';
   }
 
+  formatTelefone(event: any) {
+    const input = event.target;
+    let value = input.value.replace(/\D/g, '');
+    value = value.substring(0, 11);
+    input.value = value;
+  }
 }

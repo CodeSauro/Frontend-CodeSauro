@@ -8,8 +8,8 @@
     height: 100vh;
 
     .logotipo-wrapper {
-      display: inline-block; // Wrapper para isolar o transform
-      animation: floating 3s ease-in-out infinite;
+      // display: inline-block; // Wrapper para isolar o transform
+      // animation: floating 3s ease-in-out infinite;
 
       .logotipo {
         width: size-calc-iPhone(358);
@@ -23,12 +23,12 @@
     }
   }
 
-  @keyframes floating {
-    0%, 100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-5px);
-    }
-  }
+  // @keyframes floating {
+  //   0%, 100% {
+  //     transform: translateY(0);
+  //   }
+  //   50% {
+  //     transform: translateY(-5px);
+  //   }
+  // }
 }
