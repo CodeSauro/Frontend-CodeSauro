@@ -43,13 +43,13 @@ main {
       &::before {
         content: '';
         flex: 1;
-        border-bottom: size-calc-iPhone(3) solid rgba(72, 77, 80, 1);
+        border-bottom: size-calc-iPhone(3) solid rgba(72, 77, 80, 0);
         border-radius: size-calc-iPhone(10);
         margin-right: size-calc-iPhone(16);
         margin-left: size-calc-iPhone(16);
 
         @media (min-width: 540px) {
-          border-bottom: size-calc-iPad(4) solid rgba(72, 77, 80, 1);
+          border-bottom: size-calc-iPad(4) solid rgba(72, 77, 80, 0);
           border-radius: size-calc-iPhone(10);
           margin-right: size-calc-iPad(24);
           margin-left: size-calc-iPad(24);
@@ -59,13 +59,13 @@ main {
       &::after {
         content: '';
         flex: 1;
-        border-bottom: size-calc-iPhone(3) solid rgba(72, 77, 80, 1);
+        border-bottom: size-calc-iPhone(3) solid rgba(72, 77, 80, 0);
         border-radius: size-calc-iPhone(10);
         margin-right: size-calc-iPhone(16);
         margin-left: size-calc-iPhone(16);
 
         @media (min-width: 540px) {
-          border-bottom: size-calc-iPad(4) solid rgba(72, 77, 80, 1);
+          border-bottom: size-calc-iPad(4) solid rgba(72, 77, 80, 0);
           border-radius: size-calc-iPhone(10);
           margin-right: size-calc-iPad(24);
           margin-left: size-calc-iPad(24);
@@ -73,7 +73,7 @@ main {
       }
 
       p {
-        color: rgba(72, 77, 80, 1);
+        color: rgba(72, 77, 80, 0);
         font-size: size-calc-iPhone(18);
         font-weight: 700;
         margin: 0;
