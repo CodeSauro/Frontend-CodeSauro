@@ -271,9 +271,11 @@
 
         p {
           font-size: size-calc-iPhone(14);
+          letter-spacing: size-calc-iPhone(1);
 
           @media (min-width: 540px) {
             font-size: size-calc-iPad(18);
+            letter-spacing: size-calc-iPad(1);
           }
         }
       }
