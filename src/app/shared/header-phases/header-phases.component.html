@@ -10,3 +10,14 @@
     <p>{{ vidas }}</p>
   </div>
 </div>
+
+<div *ngIf="showLeaveContainer" class="overlay" (click)="continueActivity()">
+  <div class="container-leave" (click)="$event.stopPropagation()">
+    <div class="button-continue">
+      <button (click)="continueActivity()"><p>CONTINUAR A ATIVIDADE</p></button>
+    </div>
+    <div class="button-main">
+      <button class="button-main-red" (click)="exit()">SAIR</button>
+    </div>
+  </div>
+</div>

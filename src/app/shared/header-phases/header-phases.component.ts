@@ -19,6 +19,7 @@ export class HeaderPhasesComponent implements OnInit {
   progress: number = 0;
   vidas?: number;
   userId: number | null = null;
+  showLeaveContainer: boolean = false;
 
   constructor(
     private progressBarService: ProgressBarService,
@@ -42,6 +43,14 @@ export class HeaderPhasesComponent implements OnInit {
   }
 
   public leave(): void {
+    this.showLeaveContainer = true;
+  }
+
+  public continueActivity(): void {
+    this.showLeaveContainer = false;
+  }
+
+  public exit(): void {
     if (this.userId) {
       this.startPhaseService.retomarRegeneracaoVidas(this.userId).subscribe(() => {
         this.progressBarService.setCurrentPage(1);

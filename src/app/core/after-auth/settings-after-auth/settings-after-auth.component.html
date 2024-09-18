@@ -35,13 +35,22 @@
         </div>
       </div>
       <div class="container-icon-exit">
-        <a [routerLink]="['/authenticated/exit-the-codesauro']">
-          <button class="icon-exit">
-            <img src="../../../../assets/icon-exit.png" alt="icon-exit" class="icon-exit-img">
-          </button>
-        </a>
+        <button class="icon-exit" type="button" (click)="showLeave()">
+          <img src="../../../../assets/icon-exit.png" alt="icon-exit" class="icon-exit-img">
+        </button>
       </div>
     </form>
   </div>
   <div class="button-main"><button class="button-main-red">CONFIRMAR</button></div>
 </main>
+
+<div *ngIf="showLeaveContainer" class="overlay" (click)="continueActivity()">
+  <div class="container-leave" (click)="$event.stopPropagation()">
+    <div class="button-continue">
+      <button (click)="continueActivity()"><p>CONTINUAR NO JOGO</p></button>
+    </div>
+    <div class="button-main">
+      <button class="button-main-red" (click)="exit()">SAIR</button>
+    </div>
+  </div>
+</div>

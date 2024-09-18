@@ -202,7 +202,7 @@
 
         .input-error {
           border: size-calc-iPhone(5) solid #C2955C;;
-          animation: draw-border 1s forwards;
+          animation: draw-border 0.5s forwards;
 
           @media (min-width: 540px) {
             border: size-calc-iPad(5) solid #C2955C;;

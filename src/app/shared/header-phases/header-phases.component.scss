@@ -109,3 +109,46 @@
     }
   }
 }
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+
+  .container-leave {
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+    height: size-calc-iPhone(210 + 16);
+    background-color: #1A1A1A;
+    z-index: 1000;
+
+    @media (min-width: 540px) {
+      height: size-calc-iPad(290 + 16);
+    }
+
+    .button-continue {
+      text-align: center;
+      margin-top: size-calc-iPhone(36 + 16);
+
+      @media (min-width: 540px) {
+        margin-top: size-calc-iPad(47 + 16);
+      }
+
+      p {
+        font-size: size-calc-iPhone(14);
+
+        @media (min-width: 540px) {
+          font-size: size-calc-iPad(18);
+        }
+      }
+    }
+  }
+}

@@ -194,11 +194,20 @@ export class OperatorComplex2Component implements OnInit {
     if (this.isDragDisabled) return;
 
     if (event.previousContainer !== event.container) {
+      if (event.container.data.length > 0) {
+        transferArrayItem(
+          event.container.data,
+          event.previousContainer.data,
+          0,
+          event.previousContainer.data.length
+        );
+      }
+
       transferArrayItem(
         event.previousContainer.data,
         event.container.data,
         event.previousIndex,
-        event.currentIndex,
+        event.currentIndex
       );
 
       this.checkContinueButtonState();
