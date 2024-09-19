@@ -24,7 +24,7 @@ import { CommonModule } from '@angular/common';
 export class AuthComponent {
   public listaUsuarios: Usuario[] = [];
   public id: any;
-  @ViewChild('loginForm') loginForm!: NgForm; // Referência ao formulário de login
+  @ViewChild('loginForm') loginForm!: NgForm;
   formSubmitted: boolean = false;
 
   constructor(
@@ -35,30 +35,21 @@ export class AuthComponent {
 
   public auth(login: string, senha: string) {
     this.formSubmitted = true;
-
-    // Chame markFormTouched mesmo se o formulário for inválido
     this.markFormTouched(this.loginForm);
-
-    // Continua mesmo se o formulário for inválido para permitir a tentativa de envio
     this.service.auth({ login, senha }).subscribe(
       res => {
-        // Sucesso ao autenticar
         this.router.navigate(['/authenticated/map']);
       },
       error => {
-        // Erro ao autenticar
         this.handleAuthError();
       }
     );
   }
 
   private handleAuthError() {
-    // Marcar os campos como inválidos
     this.loginForm.controls['login'].setErrors({'incorrect': true});
     this.loginForm.controls['senha'].setErrors({'incorrect': true});
-    // Limpar os campos
     this.loginForm.resetForm();
-    // Garantir que a borda vermelha apareça
     this.formSubmitted = true;
   }
 

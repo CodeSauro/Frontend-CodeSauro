@@ -67,8 +67,12 @@ export class KnowledgeValidationRectangularBoxComponent implements OnInit {
   private loadPageData(phaseId: number): void {
     const item = this.mockPhasesDataTypeService.getMockData().find(data => data.id === phaseId);
     this.knowledgeValidationQuestion = item?.knowledge_validation_question || '';
-    this.knowledgeValidationAnswers = item?.knowledge_validation_answers || [];
     this.knowledgeValidationCorrectAnswer = item?.knowledge_validation_correct_answer || '';
+    this.knowledgeValidationAnswers = this.shuffleArray(item?.knowledge_validation_answers || []);
+  }
+
+  private shuffleArray(array: string[]): string[] {
+    return array.sort(() => Math.random() - 0.5);
   }
 
   checkAnswer(answer: string): void {
