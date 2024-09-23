@@ -21,8 +21,10 @@ import { ConditionalStructuresComponent } from './core/after-auth/phases/conditi
 import { WithoutLifeLockedMapComponent } from './core/after-auth/punctuation/without-life-locked-map/without-life-locked-map.component';
 import { OperatorComplexComponent } from './core/after-auth/phases/operator-complex/operator-complex.component';
 import { OperatorComplex2Component } from './core/after-auth/phases/operator-complex-2/operator-complex-2.component';
-import { NewPasswordComponent } from './core/before-auth/new-password/new-password.component';
 import { RegisteredUserComponent } from './core/before-auth/registered-user/registered-user.component';
+import { PasswordChangedComponent } from './core/before-auth/password-changed/password-changed.component';
+import { RequestRecoveryComponent } from './core/before-auth/request-recovery/request-recovery.component';
+import { ResetPasswordComponent } from './core/before-auth/reset-password/reset-password.component';
 
 export const routes: Routes = [
   {
@@ -41,10 +43,19 @@ export const routes: Routes = [
         path: 'settings', component: SettingsBeforeAuthComponent
       },
       {
-        path: 'new-password', component: NewPasswordComponent
-      },
-      {
         path: 'registered-user', component: RegisteredUserComponent
+      }
+      ,
+      {
+        path: 'password-changed', component: PasswordChangedComponent
+      }
+      ,
+      {
+        path: 'request-recovery', component: RequestRecoveryComponent
+      }
+      ,
+      {
+        path: 'reset-password', component: ResetPasswordComponent
       }
     ],
   },

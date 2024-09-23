@@ -2,6 +2,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Usuario } from '../modules/usuario.module';
+import { RecuperacaoSenha } from '../modules/recuperacao-senha.module';
+import { RedefinicaoSenha } from '../modules/redefinicao-senha.module';
 
 @Injectable({
   providedIn: 'root'
@@ -37,4 +39,19 @@ export class UsuarioService {
       { headers: this.getHeaders() }
     );
   }
+
+  public solicitarRecuperacaoSenha(dados: RecuperacaoSenha): Observable<void> {
+    return this.http.post<void>(
+      `${this.url}usuarios/solicitar-recuperacao`,
+      dados
+    );
+  }
+
+  public redefinirSenha(dados: RedefinicaoSenha): Observable<void> {
+    return this.http.put<void>(
+      `${this.url}usuarios/redefinir-senha`,
+      dados
+    );
+  }
+
 }

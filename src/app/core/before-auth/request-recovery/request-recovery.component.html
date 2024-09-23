@@ -1,0 +1,22 @@
+<main>
+  <app-header-auth-home></app-header-auth-home>
+  <div class="container-form">
+    <div class="container-form-tittle">
+      <p>SOLICITAR</p>
+    </div>
+    <form #loginForm="ngForm" (ngSubmit)="solicitarRecuperacaoSenha()" autocomplete="off">
+      <div class="container-form-input">
+        <div>
+          <div class="icon">
+            <img src="../../../../assets/icon-card.png" alt="icon-card" class="icon-card">
+          </div>
+          <input type="email" name="email" #email="ngModel" ngModel required email placeholder="E-MAIL"
+            [ngClass]="{'input-error': (formSubmitted && email.invalid) || (email.touched && email.invalid)}">
+        </div>
+      </div>
+      <div class="button-main">
+        <button mat-button class="button-main-red" type="submit" [disabled]="isProcessing">CONFIRMAR</button>
+      </div>
+    </form>
+  </div>
+</main>

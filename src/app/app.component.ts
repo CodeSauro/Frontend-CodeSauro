@@ -21,7 +21,7 @@ import { CommonModule } from '@angular/common';
             animate('0.1s ease-in', style({ opacity: 1 }))
           ], { optional: true }),
           query(':enter', [
-            style({ opacity: 0 }),
+            style({ opacity: 1 }),
             animate('0.1s ease-out', style({ opacity: 1 }))
           ], { optional: true })
         ])
