@@ -28,7 +28,7 @@ export class RequestRecoveryComponent {
   public id: any;
   @ViewChild('loginForm') loginForm!: NgForm;
   formSubmitted: boolean = false;
-  isProcessing: boolean = false; // Flag para controlar o estado de processamento
+  isProcessing: boolean = false;
 
   constructor(
     private usuarioService: UsuarioService,
@@ -43,17 +43,17 @@ export class RequestRecoveryComponent {
     const email = emailControl.value;
 
     if (this.loginForm.valid) {
-      this.isProcessing = true; // Desativa o botão
+      this.isProcessing = true;
 
       const dados: RecuperacaoSenha = { email };
 
       this.usuarioService.solicitarRecuperacaoSenha(dados).subscribe(
         () => {
-          this.isProcessing = false; // Ativa o botão novamente após a resposta do backend
+          this.isProcessing = false;
           this.router.navigate(['/reset-password']);
         },
         error => {
-          this.isProcessing = false; // Ativa o botão novamente após erro
+          this.isProcessing = false;
           emailControl.reset();
           emailControl.setErrors({ 'invalid': true });
           console.error('Erro ao solicitar recuperação de senha. Tente novamente.');
