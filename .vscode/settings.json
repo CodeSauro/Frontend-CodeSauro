@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/eecfdae7-554d-4c52-82b6-784bf3c227f4/resourceGroups/codesauro/providers/Microsoft.Web/sites/frontend-codesauro",
+    "appService.deploySubpath": "dist/frontend-codesauro"
+}
