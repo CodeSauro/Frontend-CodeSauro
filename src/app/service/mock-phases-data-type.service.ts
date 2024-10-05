@@ -628,7 +628,7 @@ export class MockPhasesDataTypeService {
       },
       {
         id: 28,
-        ra: 3,
+        ra: 33,
         number_of_pages_phases: 1,
         variables_page_1: ["seguir reto", "girar à direita", "SE caminho livre", "SE NÃO", "girar à esquerda"],
         correct_answers_page_1: ["SE caminho livre", "seguir reto", "girar à direita", "SE NÃO", "girar à esquerda"],
@@ -645,7 +645,7 @@ export class MockPhasesDataTypeService {
       },
       {
         id: 29,
-        ra: 3,
+        ra: 33,
         number_of_pages_phases: 1,
         variables_page_1: ["girar à direita", "SE caminho livre", "seguir reto", "girar à esquerda", "SE NÃO"],
         correct_answers_page_1: ["girar à direita", "SE caminho livre", "seguir reto", "girar à esquerda", "SE NÃO"],
@@ -662,7 +662,7 @@ export class MockPhasesDataTypeService {
       },
       {
         id: 30,
-        ra: 3,
+        ra: 33,
         number_of_pages_phases: 1,
         variables_page_1: ["seguir reto", "girar à direita", "SE caminho livre", "girar à esquerda", "SE NÃO"],
         correct_answers_page_1: ["SE caminho livre", "girar à direita", "seguir reto", "girar à esquerda", "SE NÃO"],
