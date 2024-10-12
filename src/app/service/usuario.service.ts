@@ -10,7 +10,7 @@ import { RedefinicaoSenha } from '../modules/redefinicao-senha.module';
 })
 export class UsuarioService {
 
-  private url: string = 'http://localhost:8080/';
+  private url: string = 'https://backend-codesauro.azurewebsites.net/';
 
   constructor(private http: HttpClient) { }
 

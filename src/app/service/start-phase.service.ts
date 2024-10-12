@@ -12,7 +12,7 @@ import { Usuario } from '../modules/usuario.module';
 })
 export class StartPhaseService {
 
-  private url: string = 'http://localhost:8080/';
+  private url: string = 'https://backend-codesauro.azurewebsites.net/';
   private vidasSubject: BehaviorSubject<number> = new BehaviorSubject<number>(5);
   private vidasZeradas: boolean = false;
 
