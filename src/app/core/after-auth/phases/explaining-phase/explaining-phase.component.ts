@@ -92,12 +92,12 @@ export class ExplainingPhaseComponent implements OnInit, AfterViewInit {
           if (index < lines[lineIndex].length) {
             typingAnimationElement.innerHTML += lines[lineIndex].charAt(index);
             index++;
-            setTimeout(typeLine, 0);
+            setTimeout(typeLine, 30);
           } else {
             typingAnimationElement.innerHTML += '<br/>';
             index = 0;
             lineIndex++;
-            setTimeout(typeLine, 0);
+            setTimeout(typeLine, 30);
           }
         } else {
           this.isTyping = false;

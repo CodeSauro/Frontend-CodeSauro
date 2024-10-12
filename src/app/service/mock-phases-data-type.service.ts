@@ -794,7 +794,7 @@ export class MockPhasesDataTypeService {
       },
       {
         id: 37,
-        ra: 5,
+        ra: 3,
         number_of_pages_explaining: 0,
         number_of_pages_phases: 1,
         variables_page_1: ["ENQUANTO não encontrar parede", "seguir reto", "virar à direita", "SE NÃO"],
